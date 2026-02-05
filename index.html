@@ -1,112 +1,1270 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>La Lizière | REWILD Aventures — Séjours Nature à Fontainebleau</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-        <style>
-                    :root {
-                                    --forest: #1A2E1F;
-                                    --forest-deep: #0F1A12;
-                                    --moss: #3D5A45;
-                                    --sage: #7A9B7E;
-                                    --cream: #F8F5EF;
-                                    --cream-warm: #F2EBE0;
-                                    --gold: #C4A35A;
-                                    --navy: #1E2761;
-                    }
-                    * { margin: 0; padding: 0; box-sizing: border-box; }
-                    html { scroll-behavior: smooth; }
-                    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: #1A1A1A; line-height: 1.6; }
-                    h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
-                    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; mix-blend-mode: difference; }
-                    .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: white; text-decoration: none; }
-                    .logo span { display: block; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
-                    .nav-links { display: flex; gap: 3rem; list-style: none; }
-                    .nav-links a { color: white; text-decoration: none; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; }
-                    .hero { height: 100vh; background: linear-gradient(rgba(15,26,18,0.5), rgba(15,26,18,0.8)), url('images/hero-forest.jpg') center/cover; display: flex; align-items: flex-end; padding: 6rem; }
-                    .hero-content { max-width: 800px; }
-                    .hero-tagline { font-size: 0.9rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sage); margin-bottom: 1.5rem; }
-                    .hero h1 { font-size: clamp(3rem, 8vw, 6rem); color: var(--cream); margin-bottom: 1.5rem; }
-                    .hero h1 em { font-style: italic; color: var(--gold); }
-                    .hero-subtitle { font-size: 1.25rem; color: var(--cream); opacity: 0.8; max-width: 500px; margin-bottom: 3rem; }
-                    .cta-button { display: inline-flex; align-items: center; gap: 1rem; padding: 1.25rem 2.5rem; background: var(--cream); color: var(--forest-deep); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; transition: all 0.3s; }
-                    .cta-button:hover { background: var(--gold); transform: translateY(-3px); }
-                    .concept { padding: 8rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; max-width: 1400px; margin: 0 auto; }
-                    .concept-text h2 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--forest); margin-bottom: 2rem; }
-                    .concept-text h2 em { font-style: italic; color: var(--moss); }
-                    .concept-text p { font-size: 1.1rem; opacity: 0.8; margin-bottom: 1.5rem; line-height: 1.8; }
-                    .concept-image { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 0 100px 0 100px; }
-                    .concept-badge { position: absolute; bottom: -2rem; left: -2rem; width: 150px; height: 150px; background: var(--forest); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--cream); text-align: center; }
-                    .concept-badge span { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; }
-                    .concept-badge strong { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 400; }
-                    .concept-visual { position: relative; }
-                    .values { background: var(--forest); padding: 8rem 4rem; }
-                    .values-header { text-align: center; max-width: 700px; margin: 0 auto 5rem; }
-                    .values-header h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--cream); margin-bottom: 1.5rem; }
-                    .values-header p { color: var(--sage); font-size: 1.1rem; }
-                    .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-                    .value-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 2.5rem 2rem; border-radius: 0 30px 0 30px; }
-                    .value-icon { font-size: 2rem; margin-bottom: 1.5rem; }
-                    .value-card h3 { color: var(--cream); font-size: 1.4rem; margin-bottom: 1rem; }
-                    .value-card p { color: var(--sage); font-size: 0.95rem; line-height: 1.7; }
-                    .ambiance { padding: 8rem 4rem; background: var(--cream-warm); }
-                    .ambiance-header { text-align: center; max-width: 700px; margin: 0 auto 5rem; }
-                    .ambiance-header h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); color: var(--forest); margin-bottom: 1rem; }
-                    .ambiance-header p { color: var(--moss); font-size: 1.1rem; }
-                    .ambiance-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, 300px); gap: 1.5rem; max-width: 1200px; margin: 0 auto; }
-                    .ambiance-item { border-radius: 20px; overflow: hidden; position: relative; }
-                    .ambiance-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
-                    .ambiance-item:hover img { transform: scale(1.05); }
-                    .ambiance-item.large { grid-row: span 2; }
-                    .ambiance-item-label { position: absolute; bottom: 1.5rem; left: 1.5rem; background: rgba(255,255,255,0.95); padding: 0.75rem 1.25rem; border-radius: 30px; font-size: 0.85rem; font-weight: 500; color: var(--forest); }
-                    .location { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
-                    .location-image { background: url('images/couple-nature.jpg') center/cover; }
-                    .location-content { background: var(--navy); padding: 6rem; display: flex; flex-direction: column; justify-content: center; }
-                    .location-content h2 { font-size: clamp(2.5rem, 4vw, 3.5rem); color: var(--cream); margin-bottom: 2rem; }
-                    .location-content h2 em { font-style: italic; color: var(--gold); }
-                    .location-content p { color: rgba(255,255,255,0.7); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
-                    .location-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
-                    .location-feature { display: flex; align-items: center; gap: 1rem; color: var(--cream); }
-                    .location-feature-icon { width: 50px; height: 50px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
-                    .cta-section { background: var(--forest); padding: 8rem 4rem; text-align: center; }
-                    .cta-section h2 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--cream); margin-bottom: 1.5rem; }
-                    .cta-section p { color: var(--sage); font-size: 1.2rem; max-width: 600px; margin: 0 auto 3rem; }
-                    footer { background: var(--forest-deep); padding: 5rem 4rem 2rem; }
-                    .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; padding-bottom: 4rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-                    .footer-brand h3 { font-size: 1.5rem; color: var(--cream); margin-bottom: 1rem; }
-                    .footer-brand p { color: var(--sage); font-size: 0.95rem; line-height: 1.7; }
-                    .footer-column h4 { color: var(--cream); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; }
-                    .footer-column ul { list-style: none; }
-                    .footer-column li { margin-bottom: 0.75rem; }
-                    .footer-column a { color: var(--sage); text-decoration: none; font-size: 0.95rem; }
-                    .footer-column a:hover { color: var(--cream); }
-                    .footer-bottom { display: flex; justify-content: space-between; max-width: 1200px; margin: 2rem auto 0; color: var(--sage); font-size: 0.85rem; }
-                    .social-links { display: flex; gap: 1.5rem; }
-                    .social-links a { color: var(--sage); text-decoration: none; }
-                    @media (max-width: 1024px) { nav { padding: 1.5rem 2rem; } .nav-links { display: none; } .hero { padding: 4rem 2rem; } .concept { grid-template-columns: 1fr; padding: 6rem 2rem; gap: 4rem; } .values-grid { grid-template-columns: repeat(2, 1fr); } .ambiance-grid { grid-template-columns: 1fr 1fr; } .ambiance-item.large { grid-row: span 1; } .location { grid-template-columns: 1fr; } .location-image { height: 50vh; } .footer-content { grid-template-columns: 1fr 1fr; } }
-                    @media (max-width: 640px) { .values-grid { grid-template-columns: 1fr; } .ambiance-grid { grid-template-columns: 1fr; } .location-features { grid-template-columns: 1fr; } .footer-content { grid-template-columns: 1fr; } }
-                </style>
-    </head>
-    <body>
-            <nav><a href="#" class="logo">Rewild<span>Aventures</span></a>a><ul class="nav-links"><li><a href="#concept">Le Concept</a>a></li><li><a href="#ambiance">L'Ambiance</a>a></li><li><a href="#location">Le Lieu</a>a></li><li><a href="#contact">Contact</a>a></li></ul>ul></nav>
-        <section class="hero"><div class="hero-content"><p class="hero-tagline">Forêt de Fontainebleau</p>p><h1>Bienvenue à <em>La Lizière</em></h1><p class="hero-subtitle">Le seuil où commence l'aventure. Séjours immersifs en pleine forêt, à moins d'une heure de Paris.</p>p><a href="#contact" class="cta-button">Réserver votre séjour →</a>a></div>div></section>section>
-        <section id="concept" class="concept"><div class="concept-text"><h2>Vivre la forêt, <em>simplement</em></h2><p>La Lizière n'est pas un simple hébergement. C'est une porte d'entrée vers un mode de vie plus lent, plus ancré, plus libre.</p><p>Ici, on redécouvre le rythme de la nature. On se réveille avec le chant des oiseaux. On travaille face aux arbres. On partage un repas sous les étoiles.</p><p>Confort, aventure et conscience écologique ne s'opposent plus — ils se rejoignent pour créer une expérience unique de reconnexion.</p></div>div><div class="concept-visual"><img src="images/glamping-camp.jpg" alt="Glamping camp" class="concept-image"><div class="concept-badge"><span>À seulement</span><strong>1h</strong><span>de Paris</span></div>div></div>div></section>section>
-        <section class="values"><div class="values-header"><h2>Nos Convictions</h2><p>Chaque décision que nous prenons est guidée par ces quatre piliers fondamentaux.</p></div>div><div class="values-grid"><div class="value-card"><div class="value-icon">🌿</div>div><h3>Respect du Vivant</h3><p>Installations légères et démontables, zéro artificialisation, autonomie énergétique.</p></div>div><div class="value-card"><div class="value-icon">🏕️</div>div><h3>Aventure Consciente</h3><p>Des expériences authentiques qui reconnectent sans impacter l'environnement.</p></div>div><div class="value-card"><div class="value-icon">🤝</div>div><h3>Communauté & Partage</h3><p>Partenariats locaux, circuits courts, expériences co-créées avec le territoire.</p></div>div><div class="value-card"><div class="value-icon">🔭</div>div><h3>Apprentissage Continu</h3><p>Ateliers, découvertes, transmission de savoirs ancestraux et modernes.</p></div>div></div>div></section>section>
-        <section id="ambiance" class="ambiance"><div class="ambiance-header"><h2>L'Esprit de La Lizière</h2><p>Une expérience d'éco-séjour alliant confort, design, simplicité et reconnexion à la nature.</p></div>div><div class="ambiance-grid"><div class="ambiance-item large"><img src="images/tents-solar.jpg" alt="Camp"><span class="ambiance-item-label">🏕️ Le Camp</span></div>div><div class="ambiance-item"><img src="images/tent-interior.jpg" alt="Intérieur"><span class="ambiance-item-label">🛋️ Intérieur Cosy</span></div>div><div class="ambiance-item"><img src="images/sauna.jpg" alt="Sauna"><span class="ambiance-item-label">♨️ Sauna</span></div>div><div class="ambiance-item"><img src="images/outdoor-kitchen.jpg" alt="Cuisine"><span class="ambiance-item-label">🍳 Cuisine Extérieure</span></div>div><div class="ambiance-item"><img src="images/equipment.jpg" alt="Équipement"><span class="ambiance-item-label">🚴 Équipement</span></div>div></div>div></section>section>
-        <section id="location" class="location"><div class="location-image"></div>div><div class="location-content"><h2>Un lieu <em>unique</em></h2><p>La Maison Forestière de Macherin, à Barbizon — village des peintres, aux portes de la forêt de Fontainebleau.</p><p>Accessible en train depuis la Gare de Lyon, notre site offre une immersion totale en pleine nature, sans renoncer au confort moderne.</p><div class="location-features"><div class="location-feature"><div class="location-feature-icon">🚂</div>div><span>Train + Bus depuis Paris</span></div>div><div class="location-feature"><div class="location-feature-icon">🌲</div>div><span>En lisière de forêt</span></div>div><div class="location-feature"><div class="location-feature-icon">📶</div>div><span>WiFi & Espace Cowork</span></div>div><div class="location-feature"><div class="location-feature-icon">♨️</div>div><span>Sauna & Douches Chaudes</span></div>div></div>div></div>div></section>section>
-        <section id="contact" class="cta-section"><h2>Prêt à vous reconnecter ?</h2><p>Réservez votre séjour à La Lizière et découvrez ce que signifie vraiment vivre la forêt.</p><a href="mailto:contact@rewild-aventures.com" class="cta-button">Nous contacter →</a>a></section>section>
-        <footer><div class="footer-content"><div class="footer-brand"><h3>Rewild Aventures</h3><p>Vivre, travailler, respirer la nature. Nous concevons des séjours durables pour reconnecter les voyageurs à l'essentiel.</p></div>div><div class="footer-column"><h4>Navigation</h4><ul><li><a href="#concept">Le Concept</a>a></li><li><a href="#ambiance">L'Ambiance</a>a></li><li><a href="#location">Le Lieu<
-                                                                                                                                                                                                                                                                                                                                                                                                                      <body>
-                                                                                                                                                                                                                                                                                                                                                                                                                              <nav><a href="#" class="logo">Rewild<span>Aventures</span></a>a><ul class="nav-links"><li><a href="#concept">Le Concept</a>a></li><li><a href="#ambiance">L'Ambiance</a>a></li><li><a href="#location">Le Lieu</a>a></li><li><a href="#contact">Contact</a>a></li></ul></nav>
-                                                                                                                                                                                                                                                                                                                                                                                                                              <section class="hero"><div class="hero-content"><p class="hero-tagline">Forêt de Fontainebleau</p><h1>Bienvenue à <em>La Lizière</em></h1><p class="hero-subtitle">Le seuil où commence l'aventure. Séjours immersifs en pleine forêt, à moins d'une heure de Paris.</p><a href="#contact" class="cta-button">Réserver votre séjour →</a>a></div>div></section>section>
-                                                                                                                                                                                                                                                                                                                                                                                                                              <section id="concept" class="concept"><div class="concept-text"><h2>Vivre la forêt, <em>simplement</em></h2><p>La Lizière n'est pas un simple hébergement. C'est une porte d'entrée vers un mode de vie plus lent, plus ancré, plus libre.</p><p>Ici, on redécouvre le rythme de la nature. On se réveille avec le chant des oiseaux. On travaille face aux arbres. On partage un repas sous les étoiles.</p><p>Confort, aventure et conscience écologique ne s'opposent plus — ils se rejoignent pour créer une expérience unique de reconnexion.</p></div>div><div class="concept-visual"><img src="images/glamping-camp.jpg" alt="Glamping camp" class="concept-image"><div class="concept-badge"><span>À seulement</span><strong>1h</strong><span>de Paris</span></div>div></div>div></section>section>
-                                                                                                                                                                                                                                                                                                                                                                                                                          <section class="values"><div class="values-header"><h2>Nos Convictions</h2><p>Chaque décision que nous prenons est guidée par ces quatre piliers fondamentaux.</p></div>div><div class="values-grid"><div class="value-card"><div class="value-icon">🌿</div>div><h3>Respect du Vivant</h3><p>Installations légères et démontables, zéro artificialisation, autonomie énergétique.</p></div>div><div class="value-card"><div class="value-icon">🏕️</div>div><h3>Aventure Consciente</h3><p>Des expériences authentiques qui reconnectent sans impacter l'environnement.</p></div>div><div class="value-card"><div class="value-icon">🤝</div>div><h3>Communauté & Partage</h3><p>Partenariats locaux, circuits courts, expériences co-créées avec le territoire.</p></div>div><div class="value-card"><div class="value-icon">🔭</div>div><h3>Apprentissage Continu</h3><p>Ateliers, découvertes, transmission de savoirs ancestraux et modernes.</p></div>div></div>div></section>section>
-                                                                                                                                                                                                                                                                                                                                                                                                                          <section id="ambiance" class="ambiance"><div class="ambiance-header"><h2>L'Esprit de La Lizière</h2><p>Une expérience d'éco-séjour alliant confort, design</p></p>
-                                                                                                                                                                                                                                                                                                                                                                                                                      </body></li></li></ul></p></footer></strong></p></p></em></em></h1></li></li></span></nav>
-    </body>
-        </style></title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Lizière — Glamping en Forêt de Fontainebleau</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest-deep: #1a2e1f;
+            --forest-dark: #2d4a35;
+            --forest-mid: #4a6b52;
+            --moss: #7a9f7e;
+            --sage: #a8c4ab;
+            --cream: #f5f2eb;
+            --warm-white: #fdfcf9;
+            --bark: #8b7355;
+            --amber: #d4a574;
+            --sunset: #e8c4a0;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', system-ui, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--forest-deep);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Grain overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(26, 46, 31, 0.9), transparent);
+            transition: background 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(26, 46, 31, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--cream);
+            letter-spacing: 0.15em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .nav-cta {
+            background: var(--amber);
+            color: var(--forest-deep);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            opacity: 1 !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(165deg, var(--forest-deep) 0%, var(--forest-dark) 50%, var(--forest-mid) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated forest silhouette */
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231a2e1f' fill-opacity='0.3' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,197.3C672,192,768,160,864,165.3C960,171,1056,213,1152,218.7C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+            opacity: 0.5;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(168, 196, 171, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            color: var(--cream);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--amber);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--sage);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
+
+        .hero-proof {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            font-size: 0.9rem;
+            color: var(--cream);
+            opacity: 0.8;
+        }
+
+        .hero-proof span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 3rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--amber);
+            color: var(--forest-deep);
+            box-shadow: 0 4px 30px rgba(212, 165, 116, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(212, 165, 116, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            border: 1px solid rgba(245, 242, 235, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(245, 242, 235, 0.1);
+            border-color: rgba(245, 242, 235, 0.5);
+        }
+
+        .pilot-badge {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--sage);
+            opacity: 0.7;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* Section styling */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--bark);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            color: var(--forest-deep);
+            line-height: 1.3;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--forest-mid);
+        }
+
+        /* What Section */
+        .what-section {
+            background: var(--warm-white);
+        }
+
+        .what-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .what-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(45, 74, 53, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .what-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(26, 46, 31, 0.08);
+        }
+
+        .what-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .what-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+            color: var(--forest-dark);
+        }
+
+        .what-card p {
+            font-size: 0.95rem;
+            color: var(--forest-mid);
+            line-height: 1.6;
+        }
+
+        .what-footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--forest-mid);
+            font-style: italic;
+        }
+
+        /* Place Section */
+        .place-section {
+            background: var(--forest-deep);
+            color: var(--cream);
+        }
+
+        .place-section .section-tag {
+            color: var(--amber);
+        }
+
+        .place-section .section-title {
+            color: var(--cream);
+        }
+
+        .place-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .place-card {
+            background: rgba(245, 242, 235, 0.05);
+            border: 1px solid rgba(245, 242, 235, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .place-card:hover {
+            background: rgba(245, 242, 235, 0.08);
+            border-color: rgba(212, 165, 116, 0.3);
+        }
+
+        .place-card-icon {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .place-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--amber);
+        }
+
+        .place-card ul {
+            list-style: none;
+        }
+
+        .place-card li {
+            font-size: 0.9rem;
+            color: var(--sage);
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .place-card li::before {
+            content: '·';
+            position: absolute;
+            left: 0;
+            color: var(--amber);
+        }
+
+        /* Experiences Section */
+        .exp-section {
+            background: linear-gradient(180deg, var(--cream) 0%, var(--warm-white) 100%);
+        }
+
+        .exp-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            color: var(--forest-mid);
+            font-style: italic;
+        }
+
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .exp-card {
+            background: var(--warm-white);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(26, 46, 31, 0.06);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(45, 74, 53, 0.08);
+        }
+
+        .exp-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(26, 46, 31, 0.12);
+        }
+
+        .exp-card-header {
+            background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-mid) 100%);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exp-card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.2) 0%, transparent 70%);
+        }
+
+        .exp-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--cream);
+            position: relative;
+        }
+
+        .exp-card-body {
+            padding: 2rem;
+        }
+
+        .exp-card-body p {
+            font-size: 0.95rem;
+            color: var(--forest-mid);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .exp-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .exp-tag {
+            background: var(--cream);
+            color: var(--forest-dark);
+            padding: 0.4rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .exp-note {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: var(--bark);
+            font-style: italic;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background: var(--warm-white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--cream);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(45, 74, 53, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--amber);
+            box-shadow: 0 10px 40px rgba(212, 165, 116, 0.2);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Populaire';
+            position: absolute;
+            top: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--amber);
+            color: var(--forest-deep);
+            padding: 0.3rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pricing-emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--forest-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .description {
+            font-size: 0.9rem;
+            color: var(--forest-mid);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card .price {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--forest-deep);
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card .price span {
+            font-size: 0.9rem;
+            color: var(--bark);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            color: var(--forest-mid);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--moss);
+            font-weight: 600;
+        }
+
+        .base-rate {
+            background: var(--forest-deep);
+            color: var(--cream);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .base-rate h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: var(--amber);
+        }
+
+        .base-rate .price {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .base-rate .note {
+            font-size: 0.9rem;
+            color: var(--sage);
+        }
+
+        /* Access Section */
+        .access-section {
+            background: var(--cream);
+        }
+
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .access-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .access-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .access-item p {
+            font-size: 0.95rem;
+            color: var(--forest-mid);
+        }
+
+        .access-item strong {
+            color: var(--forest-dark);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: linear-gradient(135deg, var(--forest-mid) 0%, var(--forest-dark) 100%);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .values-section .section-tag {
+            color: var(--amber);
+        }
+
+        .values-section .section-title {
+            color: var(--cream);
+        }
+
+        .values-intro {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--sage);
+        }
+
+        .values-grid {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+            color: var(--cream);
+        }
+
+        .value-item::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--amber);
+            border-radius: 50%;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: var(--forest-deep);
+            color: var(--cream);
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(212, 165, 116, 0.1) 0%, transparent 60%);
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .final-cta h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            line-height: 1.3;
+        }
+
+        .final-cta h2 em {
+            font-style: italic;
+            color: var(--amber);
+        }
+
+        .final-cta .cta-group {
+            margin-bottom: 2rem;
+        }
+
+        .final-cta .reassurance {
+            font-size: 0.85rem;
+            color: var(--sage);
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1a12;
+            color: var(--sage);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--cream);
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--sage);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--amber);
+        }
+
+        /* Mobile menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--cream);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 3rem;
+            }
+
+            .hero-proof {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .exp-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .final-cta {
+                padding: 5rem 1.5rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">LA LIZIÈRE</a>
+        <ul class="nav-links">
+            <li><a href="#what">Le lieu</a></li>
+            <li><a href="#place">Hébergements</a></li>
+            <li><a href="#experiences">Expériences</a></li>
+            <li><a href="#pricing">Tarifs</a></li>
+            <li><a href="#book" class="nav-cta">Réserver</a></li>
+        </ul>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Dormir à la lisière <em>de la forêt.</em><br>Vivre, travailler, respirer la nature.</h1>
+            <p class="hero-subtitle">Un séjour glamping immersif au cœur de la forêt de Fontainebleau — à moins d'1h de Paris.</p>
+            <div class="hero-proof">
+                <span>🌲 Forêt de Fontainebleau</span>
+                <span>🔥 Expériences guidées</span>
+                <span>⚡ Confort simple & durable</span>
+            </div>
+            <div class="cta-group">
+                <a href="#book" class="btn btn-primary">Réserver un séjour</a>
+                <a href="#what" class="btn btn-secondary">Découvrir le lieu</a>
+            </div>
+            <p class="pilot-badge">Ouverture pilote — places limitées printemps / été 2026</p>
+        </div>
+    </section>
+
+    <!-- What Section -->
+    <section class="what-section" id="what">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Le concept</span>
+                <h2 class="section-title">La Lizière, c'est <em>quoi exactement ?</em></h2>
+            </div>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; color: var(--forest-mid); font-size: 1.05rem;" class="reveal">
+                La Lizière est un lieu de séjour-aventure installé à la Maison Forestière de Macherin, au cœur de la forêt de Fontainebleau. Ici, on vient pour :
+            </p>
+            <div class="what-grid">
+                <div class="what-card reveal">
+                    <div class="what-icon">🌿</div>
+                    <h3>Dormir en pleine nature</h3>
+                    <p>Sans renoncer au confort. Des yourtes spacieuses, des lits douillets, et le silence de la forêt.</p>
+                </div>
+                <div class="what-card reveal">
+                    <div class="what-icon">🚶</div>
+                    <h3>Explorer autrement</h3>
+                    <p>Seul·e ou avec des guides locaux, découvrez les sentiers secrets de Fontainebleau.</p>
+                </div>
+                <div class="what-card reveal">
+                    <div class="what-icon">🍷</div>
+                    <h3>Partager des moments simples</h3>
+                    <p>Autour du feu, d'un apéro ou d'un dîner forestier. Le temps retrouvé.</p>
+                </div>
+                <div class="what-card reveal">
+                    <div class="what-icon">💻</div>
+                    <h3>Télétravailler au vert</h3>
+                    <p>Dans un cadre calme et inspirant. Wi-Fi, espace de travail, concentration maximale.</p>
+                </div>
+            </div>
+            <p class="what-footer reveal">Ni camping classique. Ni hôtel.<br><strong>Un seuil entre les deux.</strong></p>
+        </div>
+    </section>
+
+    <!-- Place Section -->
+    <section class="place-section" id="place">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Sur place</span>
+                <h2 class="section-title">Ce qui vous <em>attend</em></h2>
+            </div>
+            <div class="place-grid">
+                <div class="place-card reveal">
+                    <div class="place-card-icon">🏕️</div>
+                    <h3>Les hébergements</h3>
+                    <ul>
+                        <li>Yourtes spacieuses (2–4 pers)</li>
+                        <li>Lits confortables, linge inclus</li>
+                        <li>Éclairage doux, prises électriques</li>
+                        <li>Chauffage d'appoint si besoin</li>
+                        <li>Espaces pensés pour le calme</li>
+                    </ul>
+                </div>
+                <div class="place-card reveal">
+                    <div class="place-card-icon">🍳</div>
+                    <h3>Les espaces communs</h3>
+                    <ul>
+                        <li>Cuisine extérieure abritée</li>
+                        <li>Plaques, plan de travail, vaisselle</li>
+                        <li>Coin repas & grande table en bois</li>
+                        <li>Espace feu / détente en soirée</li>
+                    </ul>
+                </div>
+                <div class="place-card reveal">
+                    <div class="place-card-icon">🚿</div>
+                    <h3>Le confort essentiel</h3>
+                    <ul>
+                        <li>Douches avec eau chaude</li>
+                        <li>Sanitaires secs, propres et entretenus</li>
+                        <li>Savons & produits écoresponsables</li>
+                    </ul>
+                </div>
+                <div class="place-card reveal">
+                    <div class="place-card-icon">🌱</div>
+                    <h3>L'esprit du lieu</h3>
+                    <ul>
+                        <li>Installations légères & démontables</li>
+                        <li>Respect total du site forestier</li>
+                        <li>Silence, lenteur, simplicité</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section class="exp-section" id="experiences">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Expériences</span>
+                <h2 class="section-title">Vivre la forêt, <em>vraiment</em></h2>
+            </div>
+            <p class="exp-intro reveal">À La Lizière, le séjour est une base. L'aventure commence autour.</p>
+            <div class="exp-grid">
+                <div class="exp-card reveal">
+                    <div class="exp-card-header">
+                        <div class="exp-emoji">🌿</div>
+                        <h3>Rando & Rosé</h3>
+                    </div>
+                    <div class="exp-card-body">
+                        <p>Balade guidée dans les sentiers secrets de Fontainebleau, suivie d'un apéro forestier avec rosé & produits locaux.</p>
+                        <div class="exp-meta">
+                            <span class="exp-tag">~2h</span>
+                            <span class="exp-tag">Couples & amis</span>
+                            <span class="exp-tag">Guide local</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="exp-card reveal">
+                    <div class="exp-card-header">
+                        <div class="exp-emoji">🧗</div>
+                        <h3>Grimpe & Chill</h3>
+                    </div>
+                    <div class="exp-card-body">
+                        <p>Session d'escalade sur les blocs mythiques de Fontainebleau, avec matériel & guide, puis retour détente à La Lizière.</p>
+                        <div class="exp-meta">
+                            <span class="exp-tag">Demi-journée</span>
+                            <span class="exp-tag">Débutant → Intermédiaire</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="exp-card reveal">
+                    <div class="exp-card-header">
+                        <div class="exp-emoji">🐝</div>
+                        <h3>Abeilles & Douceur</h3>
+                    </div>
+                    <div class="exp-card-body">
+                        <p>Immersion dans un rucher avec un apiculteur passionné : ouvrir une ruche, comprendre, goûter. Option atelier bougie ou baume naturel.</p>
+                        <div class="exp-meta">
+                            <span class="exp-tag">2h</span>
+                            <span class="exp-tag">Atelier créatif</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="exp-card reveal">
+                    <div class="exp-card-header">
+                        <div class="exp-emoji">🌬️</div>
+                        <h3>Silence & Souffle</h3>
+                    </div>
+                    <div class="exp-card-body">
+                        <p>Yoga, méditation ou breathwork au lever du soleil, au cœur de la forêt. Reconnexion garantie.</p>
+                        <div class="exp-meta">
+                            <span class="exp-tag">60–90 min</span>
+                            <span class="exp-tag">Tous niveaux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="exp-note reveal">Expériences sur demande — selon disponibilités</p>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Tarifs</span>
+                <h2 class="section-title">Des séjours <em>à votre rythme</em></h2>
+            </div>
+            <div class="base-rate reveal">
+                <h3>🌙 Nuit en yourte</h3>
+                <p class="price">À partir de 85€ <span>/ nuit (2 pers)</span></p>
+                <p class="note">+15–25€ par personne supplémentaire · Linge inclus · Accès aux espaces communs</p>
+            </div>
+            <div class="pricing-grid" style="margin-top: 3rem;">
+                <div class="pricing-card reveal">
+                    <div class="pricing-emoji">💛</div>
+                    <h3>Escapade Forêt</h3>
+                    <p class="description">2 nuits de déconnexion totale</p>
+                    <p class="price">À partir de 170€</p>
+                    <ul class="pricing-features">
+                        <li>2 nuits en yourte</li>
+                        <li>Accès libre à la forêt</li>
+                        <li>Équipements communs</li>
+                    </ul>
+                </div>
+                <div class="pricing-card featured reveal">
+                    <div class="pricing-emoji">🍷</div>
+                    <h3>Week-end Rando & Rosé</h3>
+                    <p class="description">L'expérience complète</p>
+                    <p class="price">À partir de 220€ <span>/ pers</span></p>
+                    <ul class="pricing-features">
+                        <li>2 nuits en yourte</li>
+                        <li>1 expérience guidée</li>
+                        <li>Apéro forestier inclus</li>
+                    </ul>
+                </div>
+                <div class="pricing-card reveal">
+                    <div class="pricing-emoji">💻</div>
+                    <h3>Workation Nature</h3>
+                    <p class="description">4–5 nuits au calme absolu</p>
+                    <p class="price">Tarifs dégressifs</p>
+                    <ul class="pricing-features">
+                        <li>Long séjour au calme</li>
+                        <li>Wi-Fi disponible</li>
+                        <li>Espace de travail dédié</li>
+                        <li>Idéal télétravail</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Access Section -->
+    <section class="access-section" id="access">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Pratique</span>
+                <h2 class="section-title">Accès & <em>infos utiles</em></h2>
+            </div>
+            <div class="access-grid">
+                <div class="access-item reveal">
+                    <div class="access-icon">📍</div>
+                    <p><strong>Adresse</strong>Maison Forestière de Macherin<br>Forêt de Fontainebleau</p>
+                </div>
+                <div class="access-item reveal">
+                    <div class="access-icon">🚆</div>
+                    <p><strong>En train</strong>Train + bus depuis Paris<br>(Gare de Lyon)</p>
+                </div>
+                <div class="access-item reveal">
+                    <div class="access-icon">🚗</div>
+                    <p><strong>En voiture</strong>Parking à proximité</p>
+                </div>
+                <div class="access-item reveal">
+                    <div class="access-icon">🕓</div>
+                    <p><strong>Arrivée</strong>Arrivée autonome possible</p>
+                </div>
+                <div class="access-item reveal">
+                    <div class="access-icon">🐕</div>
+                    <p><strong>Animaux</strong>À confirmer selon périodes</p>
+                </div>
+                <div class="access-item reveal">
+                    <div class="access-icon">🔥</div>
+                    <p><strong>Feu</strong>Autorisé uniquement dans les zones prévues</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section" id="values">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Notre vision</span>
+                <h2 class="section-title">Pourquoi La Lizière <em>existe</em></h2>
+            </div>
+            <p class="values-intro reveal">
+                La Lizière est née d'un besoin simple : réapprendre à vivre dehors, sans renoncer au confort ni au sens.
+            </p>
+            <div class="values-grid reveal">
+                <div class="value-item">Respect du vivant</div>
+                <div class="value-item">Aventure consciente</div>
+                <div class="value-item">Expériences locales</div>
+                <div class="value-item">Impact léger, souvenirs forts</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="book">
+        <div class="final-cta-content">
+            <h2 class="reveal">Prêt·e à passer la nuit<br><em>à la lisière ?</em></h2>
+            <div class="cta-group reveal">
+                <a href="#" class="btn btn-primary">Réserver un séjour</a>
+                <a href="#" class="btn btn-secondary">Me prévenir de l'ouverture</a>
+            </div>
+            <p class="reassurance reveal">Séjours pilotes — nombre de places limité</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">LA LIZIÈRE</div>
+            <p>Maison Forestière de Macherin · Forêt de Fontainebleau</p>
+            <p>© 2026 La Lizière. Tous droits réservés.</p>
+            <div class="footer-links">
+                <a href="#">Contact</a>
+                <a href="#">Instagram</a>
+                <a href="#">Mentions légales</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Reveal on scroll
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                const top = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (top < windowHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
