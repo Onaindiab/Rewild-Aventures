@@ -46,42 +46,14 @@
         a { color: inherit; text-decoration: none; }
 
         /* SCROLL ANIMATIONS */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .fade-in-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-in-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .fade-in-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-in-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .scale-in {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .fade-in-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in-left.visible { opacity: 1; transform: translateX(0); }
+        .fade-in-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in-right.visible { opacity: 1; transform: translateX(0); }
+        .scale-in { opacity: 0; transform: scale(0.9); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
 
         /* NAV */
         .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(26,58,42,0.97); backdrop-filter: blur(12px); }
@@ -92,65 +64,16 @@
         .nav-cta { background: var(--gold) !important; color: var(--forest-dark) !important; padding: 0.65rem 1.25rem; border-radius: var(--radius-sm); opacity: 1 !important; }
         .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; }
 
-        /* ========== HERO - GREEN ========== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 8rem 2rem 5rem;
-            background: 
-                linear-gradient(180deg, rgba(26,58,42,0.88) 0%, rgba(26,58,42,0.85) 100%),
-                url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80') center/cover no-repeat fixed;
-        }
+        /* HERO */
+        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 5rem; background: linear-gradient(180deg, rgba(26,58,42,0.88) 0%, rgba(26,58,42,0.85) 100%), url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80') center/cover no-repeat fixed; }
         .hero-content { max-width: 850px; }
         .hero-logo { margin-bottom: 2.5rem; }
         .hero-logo img { height: 90px; margin: 0 auto; }
-        
-        .hero-quote {
-            font-family: Georgia, serif;
-            font-size: clamp(1.4rem, 3vw, 1.8rem);
-            font-style: italic;
-            color: #a8c4a0;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-welcome {
-            font-family: var(--font-title);
-            font-size: clamp(1.1rem, 2vw, 1.3rem);
-            font-weight: 500;
-            color: var(--cream);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.05em;
-        }
-        
-        .hero-headline {
-            font-family: var(--font-title);
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            font-weight: 700;
-            color: var(--cream);
-            line-height: 1.15;
-            margin-bottom: 2rem;
-        }
-        .hero-headline em {
-            font-style: italic;
-            color: var(--gold);
-            font-weight: 500;
-        }
-        
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--cream);
-            opacity: 0.9;
-            margin-bottom: 2.5rem;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-        
+        .hero-quote { font-family: Georgia, serif; font-size: clamp(1.4rem, 3vw, 1.8rem); font-style: italic; color: #a8c4a0; margin-bottom: 1.5rem; }
+        .hero-welcome { font-family: var(--font-title); font-size: clamp(1.1rem, 2vw, 1.3rem); font-weight: 500; color: var(--cream); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+        .hero-headline { font-family: var(--font-title); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; color: var(--cream); line-height: 1.15; margin-bottom: 2rem; }
+        .hero-headline em { font-style: italic; color: var(--gold); font-weight: 500; }
+        .hero-description { font-size: 1.1rem; color: var(--cream); opacity: 0.9; margin-bottom: 2.5rem; max-width: 650px; margin-left: auto; margin-right: auto; line-height: 1.8; }
         .hero-ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
         .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 2rem; }
         .hero-badge { font-size: 0.85rem; color: var(--cream); background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: var(--radius-xl); border: 1px solid rgba(255,255,255,0.15); }
@@ -159,37 +82,52 @@
         .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
         .btn-secondary { background: transparent; color: var(--cream); border: 2px solid rgba(248,245,235,0.5); }
         .btn-secondary:hover { background: rgba(248,245,235,0.1); }
-
         .hero-note { font-size: 0.8rem; color: var(--cream); opacity: 0.5; letter-spacing: 0.15em; text-transform: uppercase; }
 
-        /* DEFINITION - Separate section with animation */
-        .definition-section {
-            padding: 4rem 2rem;
-            background: var(--forest-dark);
-            text-align: center;
-        }
-        .definition-content {
-            max-width: 550px;
-            margin: 0 auto;
-        }
-        .def-word {
-            font-family: var(--font-title);
-            font-size: 2rem;
-            font-weight: 600;
-            color: var(--cream);
-            margin-bottom: 0.5rem;
-        }
-        .def-phonetic {
-            font-size: 1rem;
-            color: rgba(248,245,235,0.6);
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-        .def-text {
-            font-size: 1.1rem;
-            color: rgba(248,245,235,0.85);
-            line-height: 1.8;
-        }
+        /* RESEAU SECTION */
+        .reseau-section { padding: 5rem 1.5rem; background: var(--cream); }
+        .reseau-container { max-width: 1100px; margin: 0 auto; }
+        .reseau-header { text-align: center; margin-bottom: 3rem; }
+        .reseau-title { font-family: var(--font-title); font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 700; color: var(--forest-dark); margin-bottom: 0.75rem; }
+        .reseau-subtitle { font-size: 1.1rem; color: var(--text-muted); max-width: 500px; margin: 0 auto; }
+        .reseau-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+        .reseau-map { position: relative; width: 100%; aspect-ratio: 1; border-radius: var(--radius-lg); overflow: hidden; background: var(--forest-dark); }
+        .forest-map-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+        .reseau-map-title { position: absolute; top: 1rem; left: 1rem; color: rgba(248,245,235,0.9); font-size: 0.9rem; font-weight: 600; z-index: 5; }
+        .reseau-map-footer { position: absolute; bottom: 1rem; right: 1rem; color: rgba(248,245,235,0.5); font-size: 0.75rem; z-index: 5; }
+        .map-dot { position: absolute; transform: translate(-50%, -50%); background: none; border: none; padding: 0; cursor: pointer; z-index: 10; }
+        .map-dot:focus { outline: none; }
+        .map-dot.active { z-index: 20; }
+        .dot-pulse { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 24px; height: 24px; border-radius: 50%; background: rgba(201,162,39,0.3); opacity: 0; }
+        .map-dot.active .dot-pulse { animation: pulse 2s ease-out infinite; }
+        @keyframes pulse { 0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.8; } 100% { transform: translate(-50%, -50%) scale(2); opacity: 0; } }
+        .dot-point { display: block; width: 12px; height: 12px; border-radius: 50%; background: rgba(248,245,235,0.8); border: 2px solid rgba(248,245,235,0.9); transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+        .map-dot:hover .dot-point, .map-dot.active .dot-point { width: 16px; height: 16px; background: var(--gold); border-color: var(--gold); box-shadow: 0 0 20px rgba(201,162,39,0.6); }
+        .dot-label { position: absolute; left: 50%; transform: translateX(-50%) translateY(-5px); top: 100%; margin-top: 10px; white-space: nowrap; font-size: 0.7rem; font-weight: 600; padding: 5px 10px; border-radius: 6px; background: rgba(26,58,42,0.95); color: var(--cream); opacity: 0; transition: all 0.3s ease; z-index: 30; }
+        .map-dot.active .dot-label { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .reseau-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+        .house-card { display: block; width: 100%; text-align: left; padding: 1rem; border-radius: 12px; border: none; background: white; color: var(--forest-dark); cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .house-card:hover, .house-card.active { background: var(--forest-dark); color: var(--cream); transform: translateY(-2px); }
+        .house-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.35rem; }
+        .house-card-name { font-size: 0.9rem; font-weight: 600; margin: 0; }
+        .house-card-badge { font-size: 0.6rem; font-weight: 600; padding: 3px 8px; border-radius: 20px; background: rgba(26,58,42,0.1); color: rgba(26,58,42,0.6); }
+        .house-card:hover .house-card-badge, .house-card.active .house-card-badge { background: rgba(201,162,39,0.2); color: var(--gold); }
+        .house-card-blurb { font-size: 0.8rem; color: var(--text-muted); margin: 0 0 0.5rem 0; }
+        .house-card:hover .house-card-blurb, .house-card.active .house-card-blurb { color: rgba(248,245,235,0.8); }
+        .house-card-cta { font-size: 0.7rem; font-weight: 600; color: rgba(201,162,39,0.7); }
+        .house-card:hover .house-card-cta, .house-card.active .house-card-cta { color: var(--gold); }
+        .passeport-block { max-width: 600px; margin: 0 auto; }
+        .passeport-card { background: white; border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); border: 1px solid rgba(26,58,42,0.1); }
+        .passeport-title { font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 1rem; }
+        .passeport-text { font-size: 1rem; line-height: 1.8; color: var(--text-muted); }
+        .passeport-highlight { display: block; margin-top: 1rem; color: var(--forest-dark); font-weight: 600; }
+
+        /* DEFINITION */
+        .definition-section { padding: 4rem 2rem; background: var(--forest-dark); text-align: center; }
+        .definition-content { max-width: 550px; margin: 0 auto; }
+        .def-word { font-family: var(--font-title); font-size: 2rem; font-weight: 600; color: var(--cream); margin-bottom: 0.5rem; }
+        .def-phonetic { font-size: 1rem; color: rgba(248,245,235,0.6); margin-bottom: 1.5rem; font-style: italic; }
+        .def-text { font-size: 1.1rem; color: rgba(248,245,235,0.85); line-height: 1.8; }
         .def-text em { color: var(--gold); }
 
         /* SECTIONS BASE */
@@ -205,361 +143,21 @@
         .section--cream .section-title { color: var(--forest-dark); }
         .section--cream .section-intro { color: var(--text-muted); }
 
-        .section--green { 
-            background: linear-gradient(rgba(26,58,42,0.94), rgba(26,58,42,0.94)),
-                url('https://images.unsplash.com/photo-1503785640985-f62e3aeee448?w=1920&q=80') center/cover no-repeat fixed;
-        }
+        .section--green { background: linear-gradient(rgba(26,58,42,0.94), rgba(26,58,42,0.94)), url('https://images.unsplash.com/photo-1503785640985-f62e3aeee448?w=1920&q=80') center/cover no-repeat fixed; }
         .section--green .section-tag { color: var(--gold); }
         .section--green .section-title { color: var(--cream); }
         .section--green .section-intro { color: rgba(248,245,235,0.85); }
 
-        .section--blue { 
-            background: linear-gradient(rgba(30,58,95,0.94), rgba(30,58,95,0.94)),
-                url('https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=1920&q=80') center/cover no-repeat fixed;
-        }
+        .section--blue { background: linear-gradient(rgba(30,58,95,0.94), rgba(30,58,95,0.94)), url('https://images.unsplash.com/photo-1425913397330-cf8af2ff40a1?w=1920&q=80') center/cover no-repeat fixed; }
         .section--blue .section-tag { color: var(--gold); }
         .section--blue .section-title { color: var(--cream); }
         .section--blue .section-intro { color: rgba(248,245,235,0.85); }
 
-        /* Different backgrounds for each green/blue section */
-        #vision.section--green {
-            background: linear-gradient(rgba(26,58,42,0.94), rgba(26,58,42,0.94)),
-                url('https://images.unsplash.com/photo-1542202229-7d93c33f5d07?w=1920&q=80') center/cover no-repeat fixed;
-        }
-        #waitlist.section--green {
-            background: linear-gradient(rgba(26,58,42,0.94), rgba(26,58,42,0.94)),
-                url('https://images.unsplash.com/photo-1507041957456-9c397ce39c97?w=1920&q=80') center/cover no-repeat fixed;
-        }
-        #tarifs.section--blue {
-            background: linear-gradient(rgba(30,58,95,0.94), rgba(30,58,95,0.94)),
-                url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=1920&q=80') center/cover no-repeat fixed;
-        }
+        #vision.section--green { background: linear-gradient(rgba(26,58,42,0.94), rgba(26,58,42,0.94)), url('https://images.unsplash.com/photo-1542202229-7d93c33f5d07?w=1920&q=80') center/cover no-repeat fixed; }
+        #waitlist.section--green { background: linear-gradient(rgba(26,58,42,0.94), rgba(26,58,42,0.94)), url('https://images.unsplash.com/photo-1507041957456-9c397ce39c97?w=1920&q=80') center/cover no-repeat fixed; }
+        #tarifs.section--blue { background: linear-gradient(rgba(30,58,95,0.94), rgba(30,58,95,0.94)), url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=1920&q=80') center/cover no-repeat fixed; }
 
-/* ========== RÉSEAU REWILD SECTION ========== */
-.reseau-section {
-    padding: 5rem 1.5rem;
-    background: #f8f5eb;
-}
-
-.reseau-container {
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.reseau-header {
-    text-align: center;
-    margin-bottom: 3rem;
-}
-
-.reseau-title {
-    font-family: var(--font-title, 'Plus Jakarta Sans', sans-serif);
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 700;
-    color: #1a3a2a;
-    margin-bottom: 0.75rem;
-}
-
-.reseau-subtitle {
-    font-size: 1.1rem;
-    color: #5a6a5a;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-/* Grid Layout */
-.reseau-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-@media (max-width: 900px) {
-    .reseau-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Map Panel */
-.reseau-map {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1;
-    border-radius: 16px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #1a3a2a 0%, #234a35 50%, #2d5a40 100%);
-}
-
-.reseau-map-texture {
-    position: absolute;
-    inset: 0;
-    opacity: 0.15;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-.reseau-map-title {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    color: rgba(248,245,235,0.8);
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.03em;
-}
-
-.reseau-map-footer {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    color: rgba(248,245,235,0.4);
-    font-size: 0.75rem;
-}
-
-/* Map Dots */
-.map-dot {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    z-index: 10;
-    transition: z-index 0s;
-}
-
-.map-dot:focus {
-    outline: none;
-}
-
-.map-dot:focus .dot-point {
-    box-shadow: 0 0 0 3px rgba(201,162,39,0.5);
-}
-
-.map-dot.active {
-    z-index: 20;
-}
-
-.dot-point {
-    display: block;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(248,245,235,0.7);
-    transition: all 0.3s ease;
-}
-
-.map-dot:hover .dot-point,
-.map-dot.active .dot-point {
-    width: 16px;
-    height: 16px;
-    background: #c9a227;
-    box-shadow: 0 0 15px rgba(201,162,39,0.5);
-}
-
-.dot-label {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 100%;
-    margin-top: 8px;
-    white-space: nowrap;
-    font-size: 0.7rem;
-    font-weight: 500;
-    padding: 4px 8px;
-    border-radius: 4px;
-    background: rgba(26,58,42,0.9);
-    color: #f8f5eb;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s ease;
-    transform: translateX(-50%) translateY(-5px);
-}
-
-.map-dot.active .dot-label {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-}
-
-/* Cards Grid */
-.reseau-cards-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-}
-
-@media (max-width: 600px) {
-    .reseau-cards-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* House Card */
-.house-card {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 1rem;
-    border-radius: 12px;
-    border: none;
-    background: white;
-    color: #1a3a2a;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.house-card:hover,
-.house-card.active {
-    background: #1a3a2a;
-    color: #f8f5eb;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    transform: translateY(-2px);
-}
-
-.house-card:focus {
-    outline: 2px solid #c9a227;
-    outline-offset: 2px;
-}
-
-.house-card-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 0.5rem;
-    margin-bottom: 0.35rem;
-}
-
-.house-card-name {
-    font-size: 0.9rem;
-    font-weight: 600;
-    line-height: 1.3;
-    margin: 0;
-}
-
-.house-card-badge {
-    flex-shrink: 0;
-    font-size: 0.6rem;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 20px;
-    background: rgba(26,58,42,0.1);
-    color: rgba(26,58,42,0.6);
-    transition: all 0.3s ease;
-}
-
-.house-card:hover .house-card-badge,
-.house-card.active .house-card-badge {
-    background: rgba(201,162,39,0.2);
-    color: #c9a227;
-}
-
-.house-card-blurb {
-    font-size: 0.8rem;
-    line-height: 1.5;
-    color: #5a6a5a;
-    margin: 0 0 0.5rem 0;
-    transition: color 0.3s ease;
-}
-
-.house-card:hover .house-card-blurb,
-.house-card.active .house-card-blurb {
-    color: rgba(248,245,235,0.8);
-}
-
-.house-card-cta {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: rgba(201,162,39,0.7);
-    transition: color 0.3s ease;
-}
-
-.house-card:hover .house-card-cta,
-.house-card.active .house-card-cta {
-    color: #c9a227;
-}
-
-/* Passeport Block */
-.passeport-block {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.passeport-card {
-    background: white;
-    border-radius: 16px;
-    padding: 2.5rem 2rem;
-    text-align: center;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-    border: 1px solid rgba(26,58,42,0.1);
-}
-
-.passeport-title {
-    font-family: var(--font-title, 'Plus Jakarta Sans', sans-serif);
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #1a3a2a;
-    margin: 0 0 1rem 0;
-}
-
-.passeport-text {
-    font-size: 1rem;
-    line-height: 1.8;
-    color: #5a6a5a;
-    margin: 0;
-}
-
-.passeport-highlight {
-    display: block;
-    margin-top: 1rem;
-    color: #1a3a2a;
-    font-weight: 600;
-}
-</style>
-
-<script>
-// Réseau REWILD Interactive Map
-(function() {
-    const dots = document.querySelectorAll('.map-dot');
-    const cards = document.querySelectorAll('.house-card');
-    
-    function setActiveHouse(houseId) {
-        // Update dots
-        dots.forEach(dot => {
-            if (dot.dataset.house === houseId) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
-        
-        // Update cards
-        cards.forEach(card => {
-            if (card.dataset.house === houseId) {
-                card.classList.add('active');
-            } else {
-                card.classList.remove('active');
-            }
-        });
-    }
-    
-    // Add event listeners to dots
-    dots.forEach(dot => {
-        dot.addEventListener('mouseenter', () => setActiveHouse(dot.dataset.house));
-        dot.addEventListener('focus', () => setActiveHouse(dot.dataset.house));
-        dot.addEventListener('click', () => setActiveHouse(dot.dataset.house));
-    });
-    
-    // Add event listeners to cards
-    cards.forEach(card => {
-        card.addEventListener('mouseenter', () => setActiveHouse(card.dataset.house));
-        card.addEventListener('focus', () => setActiveHouse(card.dataset.house));
-        card.addEventListener('click', () => setActiveHouse(card.dataset.house));
-    });
-})();
-</script>
-
-        
-        /* ========== LE LIEU - CREAM ========== */
+        /* LE LIEU */
         .lieu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
         .lieu-card { border-radius: var(--radius-lg); overflow: hidden; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
         .lieu-card-img { height: 240px; background: var(--cream-dark); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.9rem; }
@@ -572,178 +170,76 @@
         .lieu-card-cta:hover { background: var(--forest-dark); transform: translateY(-2px); }
 
         /* EQUIPEMENTS */
-        .equip-box { 
-            background: linear-gradient(rgba(26,58,42,0.96), rgba(26,58,42,0.96)),
-                url('https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=1920&q=80') center/cover no-repeat;
-            border-radius: var(--radius-lg); 
-            padding: 3rem; 
-            text-align: center; 
-        }
+        .equip-box { background: linear-gradient(rgba(26,58,42,0.96), rgba(26,58,42,0.96)), url('https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=1920&q=80') center/cover no-repeat; border-radius: var(--radius-lg); padding: 3rem; text-align: center; margin-bottom: 2rem; }
         .equip-tagline { font-family: var(--font-title); font-size: 1.4rem; font-weight: 600; color: var(--gold); margin-bottom: 2rem; }
         .equip-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
         .equip-item { text-align: center; }
         .equip-item-icon { font-size: 2rem; margin-bottom: 0.5rem; }
         .equip-item h4 { font-size: 0.95rem; font-weight: 600; color: var(--cream); }
 
-        /* ========== EXPERIENCES - BLUE ========== */
-        .exp-slider-container {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .exp-slider {
-            overflow: hidden;
-            flex: 1;
-        }
-        .exp-slider-track {
-            display: flex;
-            transition: transform 0.5s ease;
-            gap: 1.5rem;
-        }
-        .exp-card {
-            flex: 0 0 calc((100% - 3rem) / 3);
-            background: var(--cream);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
+        /* EXTRAS */
+        .extras-box { background: white; border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .extras-header { text-align: center; margin-bottom: 2rem; }
+        .extras-title { font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 0.5rem; }
+        .extras-subtitle { font-size: 1rem; color: var(--text-muted); }
+        .extras-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .extra-card { background: var(--cream); border-radius: var(--radius-lg); padding: 1.5rem; transition: all 0.3s ease; }
+        .extra-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .extra-card-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+        .extra-card h4 { font-family: var(--font-title); font-size: 1rem; font-weight: 600; color: var(--forest-dark); margin-bottom: 0.5rem; }
+        .extra-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* EXPERIENCES */
+        .exp-slider-container { position: relative; display: flex; align-items: center; gap: 1rem; }
+        .exp-slider { overflow: hidden; flex: 1; }
+        .exp-slider-track { display: flex; transition: transform 0.5s ease; gap: 1.5rem; }
+        .exp-card { flex: 0 0 calc((100% - 3rem) / 3); background: var(--cream); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.3s; }
         .exp-card:hover { transform: translateY(-5px); }
         .exp-card-img { height: 160px; background-size: cover; background-position: center; }
         .exp-card-body { padding: 1.5rem; }
         .exp-card-body h3 { font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
         .exp-card-body p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
         .exp-card-body .exp-tagline { font-size: 0.85rem; color: var(--forest); font-style: italic; margin-top: 0.5rem; }
-        
-        .exp-slider-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid rgba(248,245,235,0.3);
-            background: transparent;
-            color: var(--cream);
-            font-size: 2rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        .exp-slider-btn:hover {
-            background: rgba(248,245,235,0.1);
-            border-color: var(--cream);
-        }
-        
-        .exp-slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-top: 2rem;
-        }
-        .exp-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(248,245,235,0.3);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .exp-dot.active {
-            background: var(--gold);
-            transform: scale(1.2);
-        }
+        .exp-slider-btn { width: 50px; height: 50px; border-radius: 50%; border: 2px solid rgba(248,245,235,0.3); background: transparent; color: var(--cream); font-size: 2rem; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .exp-slider-btn:hover { background: rgba(248,245,235,0.1); border-color: var(--cream); }
+        .exp-slider-dots { display: flex; justify-content: center; gap: 0.75rem; margin-top: 2rem; }
+        .exp-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(248,245,235,0.3); cursor: pointer; transition: all 0.2s; }
+        .exp-dot.active { background: var(--gold); transform: scale(1.2); }
 
-        /* ========== ESPRIT - CREAM ========== */
-        .esprit-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 2rem; 
-            max-width: 900px; 
-            margin: 0 auto; 
-        }
+        /* ESPRIT */
+        .esprit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; }
         .esprit-item { text-align: center; }
-        .esprit-circle { 
-            width: 100px; 
-            height: 100px; 
-            border-radius: 50%; 
-            background: transparent; 
-            border: 2px solid var(--forest);
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            font-size: 2.5rem; 
-            margin: 0 auto 1rem; 
-            transition: transform 0.3s, background 0.3s; 
-        }
-        .esprit-item:hover .esprit-circle { 
-            transform: scale(1.1); 
-            background: rgba(35,74,53,0.1);
-        }
+        .esprit-circle { width: 100px; height: 100px; border-radius: 50%; background: transparent; border: 2px solid var(--forest); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 1rem; transition: transform 0.3s, background 0.3s; }
+        .esprit-item:hover .esprit-circle { transform: scale(1.1); background: rgba(35,74,53,0.1); }
         .esprit-item h3 { font-family: var(--font-title); font-size: 1.1rem; font-weight: 600; color: var(--forest-dark); margin-bottom: 0.5rem; }
         .esprit-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
 
-        /* ========== VISION - GREEN ========== */
-        .vision-stack { 
-            display: flex;
-            flex-direction: column;
-            gap: 1rem; 
-        }
-        .vision-item { 
-            width: 100%;
-            height: 280px; 
-            border-radius: var(--radius-lg); 
-            background: rgba(248,245,235,0.1); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: rgba(248,245,235,0.4); 
-            font-size: 0.85rem; 
-        }
+        /* VISION */
+        .vision-stack { display: flex; flex-direction: column; gap: 1rem; }
+        .vision-item { width: 100%; height: 280px; border-radius: var(--radius-lg); background: rgba(248,245,235,0.1); display: flex; align-items: center; justify-content: center; color: rgba(248,245,235,0.4); font-size: 0.85rem; }
 
-        /* ========== ECO - CREAM ========== */
+        /* ECO */
         .eco-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
         .eco-card { background: white; border-radius: var(--radius-lg); padding: 2rem; text-align: center; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
         .eco-card-icon { font-size: 2.5rem; margin-bottom: 1rem; }
         .eco-card h4 { font-family: var(--font-title); font-size: 1.1rem; font-weight: 600; color: var(--forest-dark); margin-bottom: 0.5rem; }
         .eco-card p { font-size: 0.95rem; color: var(--text-muted); }
 
-        /* ========== TARIFS - BLUE ========== */
+        /* TARIFS */
         .tarif-main { max-width: 450px; margin: 0 auto 3rem; background: rgba(248,245,235,0.1); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; }
         .tarif-price { font-family: var(--font-title); font-size: 2.5rem; font-weight: 700; color: var(--cream); }
         .tarif-details { color: rgba(248,245,235,0.7); font-size: 1rem; }
         .tarif-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 950px; margin: 0 auto; }
-        .tarif-card { 
-            background: var(--cream); 
-            border-radius: var(--radius-lg); 
-            padding: 2rem; 
-            text-align: center; 
-            transition: all 0.3s;
-            cursor: pointer;
-            border: 3px solid transparent;
-        }
-        .tarif-card:hover, .tarif-card.selected { 
-            transform: translateY(-5px); 
-            border-color: var(--gold);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
+        .tarif-card { background: var(--cream); border-radius: var(--radius-lg); padding: 2rem; text-align: center; transition: all 0.3s; cursor: pointer; border: 3px solid transparent; }
+        .tarif-card:hover, .tarif-card.selected { transform: translateY(-5px); border-color: var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .tarif-card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
         .tarif-card h3 { font-family: var(--font-title); font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
         .tarif-card-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
         .tarif-card-price { font-family: var(--font-title); font-size: 1.8rem; font-weight: 700; color: var(--forest); margin-bottom: 1rem; }
-        .tarif-card-cta { 
-            display: inline-block; 
-            padding: 0.75rem 1.5rem; 
-            background: var(--forest); 
-            color: var(--cream); 
-            font-size: 0.9rem; 
-            font-weight: 600; 
-            border-radius: var(--radius-sm); 
-            transition: all 0.2s;
-        }
+        .tarif-card-cta { display: inline-block; padding: 0.75rem 1.5rem; background: var(--forest); color: var(--cream); font-size: 0.9rem; font-weight: 600; border-radius: var(--radius-sm); transition: all 0.2s; }
         .tarif-card-cta:hover { background: var(--forest-dark); }
 
-        /* ========== WAITLIST - GREEN ========== */
+        /* WAITLIST */
         .waitlist-form { max-width: 450px; margin: 0 auto; background: var(--cream); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; }
         .waitlist-form p { color: var(--text-muted); margin-bottom: 0.5rem; }
 
@@ -762,6 +258,10 @@
             .tarif-grid { grid-template-columns: 1fr 1fr; }
             .exp-card { flex: 0 0 calc((100% - 1.5rem) / 2); }
             .esprit-grid { grid-template-columns: repeat(2, 1fr); }
+            .extras-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .reseau-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             body { font-size: 16px; }
@@ -770,14 +270,14 @@
             .hero { padding: 6rem 1.5rem 4rem; }
             .hero-logo img { height: 70px; }
             .section { padding: 4rem 0; }
-            .lieu-grid, .equip-grid, .eco-grid, .tarif-grid { grid-template-columns: 1fr; }
+            .lieu-grid, .equip-grid, .eco-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; }
             .esprit-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
             .esprit-circle { width: 80px; height: 80px; font-size: 2rem; }
             .hero-ctas { flex-direction: column; }
             .hero-ctas .btn { width: 100%; }
             .exp-card { flex: 0 0 100%; }
             .exp-slider-btn { width: 40px; height: 40px; font-size: 1.5rem; }
-            .vision-item { flex: 0 0 250px; height: 180px; }
+            .reseau-cards-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -785,6 +285,7 @@
     <nav class="nav">
         <a href="#" class="nav-logo"><img src="images/rewild-aventures-logo.png" alt="REWILD"></a>
         <div class="nav-links">
+            <a href="#reseau">LE RÉSEAU</a>
             <a href="#lieu">LE LIEU</a>
             <a href="#experiences">EXPÉRIENCES</a>
             <a href="#tarifs">TARIFS</a>
@@ -793,19 +294,14 @@
         <button class="nav-toggle">☰</button>
     </nav>
 
-    <!-- ========== HERO - GREEN ========== -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-logo"><img src="images/rewild-aventures-logo.png" alt="REWILD Aventures"></div>
-            
             <p class="hero-quote">"Déconnecter pour se reconnecter"</p>
-            
             <p class="hero-welcome">Bienvenue à La Lizière</p>
-            
             <h1 class="hero-headline">Glamping éco-responsable & aventures,<br><em>au cœur de la forêt de Fontainebleau</em></h1>
-            
             <p class="hero-description"><strong>Réseau de Maisons Forestières vivantes</strong> créant des séjour-aventures immersifs pour couples, petits groupes et télétravailleurs en quête de reconnexion à la nature.</p>
-            
             <div class="hero-badges">
                 <span class="hero-badge">🥾 Point de départ aventure</span>
                 <span class="hero-badge">🌱 100% éco-conçu</span>
@@ -813,17 +309,69 @@
                 <span class="hero-badge">💰 Prix accessible</span>
                 <span class="hero-badge">💻 Compatible télétravail</span>
             </div>
-            
             <div class="hero-ctas">
                 <a href="#waitlist" class="btn btn-primary">Réserver ma place</a>
-                <a href="#lieu" class="btn btn-secondary">Découvrir le lieu</a>
+                <a href="#reseau" class="btn btn-secondary">Découvrir le réseau</a>
             </div>
-
             <p class="hero-note">OUVERTURE — RENTRÉE 2026</p>
         </div>
     </section>
 
-    <!-- ========== DEFINITION - Animated on scroll ========== -->
+    <!-- RESEAU REWILD -->
+    <section class="reseau-section" id="reseau">
+        <div class="reseau-container">
+            <div class="reseau-header fade-in">
+                <h2 class="reseau-title">🌲 Le Réseau REWILD</h2>
+                <p class="reseau-subtitle">Un archipel de maisons forestières dans le massif de Fontainebleau.</p>
+            </div>
+            <div class="reseau-grid">
+                <div class="reseau-map-panel fade-in-left">
+                    <div class="reseau-map">
+                        <svg class="forest-map-svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+                            <defs><linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a3a2a"/><stop offset="50%" style="stop-color:#234a35"/><stop offset="100%" style="stop-color:#1a3a2a"/></linearGradient></defs>
+                            <rect width="400" height="400" fill="url(#fg)"/>
+                            <path d="M50,120 Q80,80 150,70 Q200,60 250,80 Q320,100 360,150 Q380,200 370,260 Q360,320 300,350 Q240,380 180,370 Q120,360 80,320 Q40,280 35,220 Q30,160 50,120 Z" fill="#2d5a40" opacity="0.4"/>
+                            <path d="M100,150 Q140,120 200,130 Q260,140 300,180 Q330,220 320,280 Q300,330 240,340 Q180,350 130,320 Q90,290 85,240 Q80,190 100,150 Z" fill="#234a35" opacity="0.5"/>
+                            <g stroke="rgba(248,245,235,0.15)" stroke-width="1.5" fill="none"><path d="M20,200 Q100,190 200,200 Q300,210 380,200"/><path d="M200,20 Q190,100 200,200 Q210,300 200,380"/><path d="M50,50 Q150,150 200,200 Q250,250 350,350"/></g>
+                            <g fill="rgba(248,245,235,0.25)" font-size="8"><circle cx="40" cy="200" r="4"/><text x="30" y="215" text-anchor="middle">Milly</text><circle cx="360" cy="180" r="4"/><text x="360" y="195" text-anchor="middle">Fontainebleau</text><circle cx="200" cy="30" r="3"/><text x="200" y="45" text-anchor="middle">Barbizon</text></g>
+                        </svg>
+                        <div class="reseau-map-title">Massif de Fontainebleau</div>
+                        <button class="map-dot active" data-house="macherin" style="left:38%;top:46%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">Macherin</span></button>
+                        <button class="map-dot" data-house="croix-gd-veneur" style="left:52%;top:42%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">Croix du Gd Veneur</span></button>
+                        <button class="map-dot" data-house="de-la-solle" style="left:61%;top:44%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">De la Solle</span></button>
+                        <button class="map-dot" data-house="de-courbuisson" style="left:76%;top:31%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">De Courbuisson</span></button>
+                        <button class="map-dot" data-house="auxiliaire-courbuisson" style="left:79%;top:36%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">Aux. Courbuisson</span></button>
+                        <button class="map-dot" data-house="de-lobelisque" style="left:63%;top:58%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">De l'Obélisque</span></button>
+                        <button class="map-dot" data-house="grande-vallee" style="left:70%;top:76%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">Grande Vallée</span></button>
+                        <button class="map-dot" data-house="de-la-futaie" style="left:46%;top:78%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">De la Futaie</span></button>
+                        <button class="map-dot" data-house="barnolets" style="left:41%;top:73%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">Barnolets</span></button>
+                        <div class="reseau-map-footer">9 maisons · 1 réseau</div>
+                    </div>
+                </div>
+                <div class="reseau-cards-panel fade-in-right">
+                    <div class="reseau-cards-grid">
+                        <button class="house-card active" data-house="macherin"><div class="house-card-header"><h3 class="house-card-name">Macherin</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Silence profond, lisière sauvage.</p><span class="house-card-cta">Voir sur la carte →</span></button>
+                        <button class="house-card" data-house="croix-gd-veneur"><div class="house-card-header"><h3 class="house-card-name">Croix du Gd Veneur</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Au cœur des sentiers historiques.</p><span class="house-card-cta">Voir sur la carte →</span></button>
+                        <button class="house-card" data-house="de-la-solle"><div class="house-card-header"><h3 class="house-card-name">De la Solle</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Clairières proches, forêt dense.</p><span class="house-card-cta">Voir sur la carte →</span></button>
+                        <button class="house-card" data-house="de-courbuisson"><div class="house-card-header"><h3 class="house-card-name">De Courbuisson</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Entre villages et grandes traversées.</p><span class="house-card-cta">Voir sur la carte →</span></button>
+                        <button class="house-card" data-house="auxiliaire-courbuisson"><div class="house-card-header"><h3 class="house-card-name">Auxiliaire de Courbuisson</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Version plus intime, même territoire.</p><span class="house-card-cta">Voir sur la carte →</span></button>
+                        <button class="house-card" data-house="de-lobelisque"><div class="house-card-header"><h3 class="house-card-name">De l'Obélisque</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Accès direct aux grands axes du massif.</p><span class="house-card-cta">Voir sur la carte →</span></button>
+                        <button class="house-card" data-house="grande-vallee"><div class="house-card-header"><h3 class="house-card-name">De la Grande Vallée</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Ouvertures lumineuses, horizon large.</p><span class="house-card-cta">Voir sur la carte →</span></button>
+                        <button class="house-card" data-house="de-la-futaie"><div class="house-card-header"><h3 class="house-card-name">De la Futaie</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Forêt haute, ambiance boisée.</p><span class="house-card-cta">Voir sur la carte →</span></button>
+                        <button class="house-card" data-house="barnolets"><div class="house-card-header"><h3 class="house-card-name">Barnolets</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Plus discret, plus brut.</p><span class="house-card-cta">Voir sur la carte →</span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="passeport-block fade-in">
+                <div class="passeport-card">
+                    <h3 class="passeport-title">🎟️ Passeport REWILD</h3>
+                    <p class="passeport-text">Dormez dans plusieurs maisons.<br>Collectionnez les lieux.<br>Débloquez des avantages.<br><span class="passeport-highlight">Ce n'est pas un séjour. C'est un territoire à parcourir.</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEFINITION -->
     <section class="definition-section">
         <div class="definition-content fade-in">
             <h2 class="def-word">lisière</h2>
@@ -832,12 +380,11 @@
         </div>
     </section>
 
-    <!-- ========== LE LIEU - CREAM ========== -->
+    <!-- LE LIEU -->
     <section class="section section--cream" id="lieu">
         <div class="container">
             <span class="section-tag fade-in">Le Lieu</span>
             <h2 class="section-title fade-in">Ni camping. Ni hôtel.<br>Un seuil entre les deux.</h2>
-            
             <div class="lieu-grid">
                 <div class="lieu-card fade-in-left">
                     <div class="lieu-card-img">🏕️ Image yourtes à ajouter</div>
@@ -868,7 +415,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="equip-box fade-in">
                 <p class="equip-tagline">Outdoor ou indoor. Même esprit. Même confort.</p>
                 <div class="equip-grid">
@@ -882,154 +428,71 @@
                     <div class="equip-item scale-in"><div class="equip-item-icon">📖</div><h4>Guides & cartes</h4></div>
                 </div>
             </div>
+            <div class="extras-box fade-in">
+                <div class="extras-header">
+                    <h3 class="extras-title">🗄️ Extras à la carte</h3>
+                    <p class="extras-subtitle">Personnalisez votre séjour avec nos options additionnelles</p>
+                </div>
+                <div class="extras-grid">
+                    <div class="extra-card"><div class="extra-card-icon">🍳🍽️</div><h4>Équipement cuisine</h4><p>Plaques chauffantes, poêles, couverts. Option paniers petit-déjeuner & produits fermiers locaux.</p></div>
+                    <div class="extra-card"><div class="extra-card-icon">🎬✨</div><h4>Cinéma plein air</h4><p>Location écran & projecteur pour séances sous les étoiles ou sessions créatives en groupe.</p></div>
+                    <div class="extra-card"><div class="extra-card-icon">🧗🚴</div><h4>Équipements sportifs</h4><p>Vélos électriques, crash pads escalade, tapis yoga, slackline. En lien avec Basaventure Barbizon.</p></div>
+                    <div class="extra-card"><div class="extra-card-icon">🧘</div><h4>Bien-être</h4><p>Sauna et bain de glace pour détente avant/après explorations.</p></div>
+                    <div class="extra-card"><div class="extra-card-icon">🛁🍃</div><h4>Pack hygiène éco</h4><p>Kit produits biodégradables, sélectionnés pour efficacité et impact réduit.</p></div>
+                    <div class="extra-card"><div class="extra-card-icon">🔥</div><h4>Option chauffage</h4><p>Chauffage d'appoint pour les mois froids, confort optimal dans l'esprit nature.</p></div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- ========== EXPERIENCES - BLUE ========== -->
+    <!-- EXPERIENCES -->
     <section class="section section--blue" id="experiences">
         <div class="container">
             <span class="section-tag fade-in">Expériences</span>
             <h2 class="section-title fade-in">Vivre la forêt, vraiment</h2>
             <p class="section-intro fade-in">Le séjour est une base. L'aventure commence autour.</p>
-            
             <div class="exp-slider-container fade-in">
                 <button class="exp-slider-btn exp-slider-prev">‹</button>
-                
                 <div class="exp-slider">
                     <div class="exp-slider-track">
-                        <div class="exp-card">
-                            <div class="exp-card-img" style="background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80')"></div>
-                            <div class="exp-card-body">
-                                <h3>🥾 Rando & Rosé</h3>
-                                <p>Balade guidée dans les sentiers secrets de Fontainebleau. Apéro forestier : rosé frais & produits du terroir.</p>
-                                <p class="exp-tagline">Parfait pour couples & petits groupes.</p>
-                            </div>
-                        </div>
-                        <div class="exp-card">
-                            <div class="exp-card-img" style="background-image: url('https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=600&q=80')"></div>
-                            <div class="exp-card-body">
-                                <h3>🧗 Grimpe & Chill</h3>
-                                <p>Session d'escalade à Fontainebleau avec guide & matériel. Retour à La Lizière : détente, douche chaude & dîner.</p>
-                                <p class="exp-tagline">L'expérience des aventuriers actifs.</p>
-                            </div>
-                        </div>
-                        <div class="exp-card">
-                            <div class="exp-card-img" style="background-image: url('https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=600&q=80')"></div>
-                            <div class="exp-card-body">
-                                <h3>🐝 Abeilles & Douceur</h3>
-                                <p>Immersion au rucher avec apiculteur passionné. Ouvrez une ruche & goûtez les miels du Gâtinais.</p>
-                                <p class="exp-tagline">Option : atelier bougie ou baume naturel.</p>
-                            </div>
-                        </div>
-                        <div class="exp-card">
-                            <div class="exp-card-img" style="background-image: url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80')"></div>
-                            <div class="exp-card-body">
-                                <h3>🐴 Chevauchée Sauvage</h3>
-                                <p>Balade équestre guidée entre clairières & rivières. Option pique-nique local en pleine nature.</p>
-                                <p class="exp-tagline">Liberté, mouvement & contemplation.</p>
-                            </div>
-                        </div>
-                        <div class="exp-card">
-                            <div class="exp-card-img" style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80')"></div>
-                            <div class="exp-card-body">
-                                <h3>🍽️ Saveurs de la Lizière</h3>
-                                <p>Atelier culinaire autour des produits du terroir & herbes du jardin. Option dîner locavore avec chef.</p>
-                                <p class="exp-tagline">Goût, partage & créativité durable.</p>
-                            </div>
-                        </div>
-                        <div class="exp-card">
-                            <div class="exp-card-img" style="background-image: url('https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=600&q=80')"></div>
-                            <div class="exp-card-body">
-                                <h3>🚶 La Rewild Loop</h3>
-                                <p>Circuit nature entre forêt, villages & points d'eau secrets. En solo ou guidé, carte & équipement dispo.</p>
-                                <p class="exp-tagline">Liberté totale à deux pas de La Lizière.</p>
-                            </div>
-                        </div>
-                        <div class="exp-card">
-                            <div class="exp-card-img" style="background-image: url('https://images.unsplash.com/photo-1545389336-cf090694435e?w=600&q=80')"></div>
-                            <div class="exp-card-body">
-                                <h3>🧘 Silence & Souffle</h3>
-                                <p>Yoga, méditation ou breathwork au lever du soleil. Respirez, ancrez-vous, reconnectez-vous.</p>
-                                <p class="exp-tagline">Bulle de calme pour esprits en quête d'équilibre.</p>
-                            </div>
-                        </div>
-                        <div class="exp-card">
-                            <div class="exp-card-img" style="background-image: url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80')"></div>
-                            <div class="exp-card-body">
-                                <h3>🐾 Piste & Mystère</h3>
-                                <p>Chasse au trésor nature avec défis & exploration forestière. Apprenez à lire les traces & bâtir un abri.</p>
-                                <p class="exp-tagline">Aventure ludique & mémorable en groupe.</p>
-                            </div>
-                        </div>
-                        <div class="exp-card">
-                            <div class="exp-card-img" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80')"></div>
-                            <div class="exp-card-body">
-                                <h3>🎨 Pause Créative</h3>
-                                <p>Atelier nature de dessin, photo ou écriture avec artiste local. La forêt devient votre atelier.</p>
-                                <p class="exp-tagline">Pour esprits rêveurs & inspirés.</p>
-                            </div>
-                        </div>
+                        <div class="exp-card"><div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1551632811-561732d1e306?w=600&q=80')"></div><div class="exp-card-body"><h3>🥾 Rando & Rosé</h3><p>Balade guidée dans les sentiers secrets de Fontainebleau. Apéro forestier : rosé frais & produits du terroir.</p><p class="exp-tagline">Parfait pour couples & petits groupes.</p></div></div>
+                        <div class="exp-card"><div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=600&q=80')"></div><div class="exp-card-body"><h3>🧗 Grimpe & Chill</h3><p>Session d'escalade à Fontainebleau avec guide & matériel. Retour à La Lizière : détente, douche chaude & dîner.</p><p class="exp-tagline">L'expérience des aventuriers actifs.</p></div></div>
+                        <div class="exp-card"><div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=600&q=80')"></div><div class="exp-card-body"><h3>🐝 Abeilles & Douceur</h3><p>Immersion au rucher avec apiculteur passionné. Ouvrez une ruche & goûtez les miels du Gâtinais.</p><p class="exp-tagline">Option : atelier bougie ou baume naturel.</p></div></div>
+                        <div class="exp-card"><div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=600&q=80')"></div><div class="exp-card-body"><h3>🐴 Chevauchée Sauvage</h3><p>Balade équestre guidée entre clairières & rivières. Option pique-nique local en pleine nature.</p><p class="exp-tagline">Liberté, mouvement & contemplation.</p></div></div>
+                        <div class="exp-card"><div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80')"></div><div class="exp-card-body"><h3>🍽️ Saveurs de la Lizière</h3><p>Atelier culinaire autour des produits du terroir & herbes du jardin. Option dîner locavore avec chef.</p><p class="exp-tagline">Goût, partage & créativité durable.</p></div></div>
+                        <div class="exp-card"><div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1510312305653-8ed496efae75?w=600&q=80')"></div><div class="exp-card-body"><h3>🚶 La Rewild Loop</h3><p>Circuit nature entre forêt, villages & points d'eau secrets. En solo ou guidé, carte & équipement dispo.</p><p class="exp-tagline">Liberté totale à deux pas de La Lizière.</p></div></div>
+                        <div class="exp-card"><div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1545389336-cf090694435e?w=600&q=80')"></div><div class="exp-card-body"><h3>🧘 Silence & Souffle</h3><p>Yoga, méditation ou breathwork au lever du soleil. Respirez, ancrez-vous, reconnectez-vous.</p><p class="exp-tagline">Bulle de calme pour esprits en quête d'équilibre.</p></div></div>
+                        <div class="exp-card"><div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80')"></div><div class="exp-card-body"><h3>🐾 Piste & Mystère</h3><p>Chasse au trésor nature avec défis & exploration forestière. Apprenez à lire les traces & bâtir un abri.</p><p class="exp-tagline">Aventure ludique & mémorable en groupe.</p></div></div>
+                        <div class="exp-card"><div class="exp-card-img" style="background-image:url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&q=80')"></div><div class="exp-card-body"><h3>🎨 Pause Créative</h3><p>Atelier nature de dessin, photo ou écriture avec artiste local. La forêt devient votre atelier.</p><p class="exp-tagline">Pour esprits rêveurs & inspirés.</p></div></div>
                     </div>
                 </div>
-                
                 <button class="exp-slider-btn exp-slider-next">›</button>
             </div>
-            
-            <div class="exp-slider-dots">
-                <span class="exp-dot active" data-index="0"></span>
-                <span class="exp-dot" data-index="1"></span>
-                <span class="exp-dot" data-index="2"></span>
-            </div>
+            <div class="exp-slider-dots"><span class="exp-dot active" data-index="0"></span><span class="exp-dot" data-index="1"></span><span class="exp-dot" data-index="2"></span></div>
         </div>
     </section>
 
-    <!-- ========== ESPRIT - CREAM ========== -->
+    <!-- ESPRIT -->
     <section class="section section--cream" id="esprit">
         <div class="container">
             <span class="section-tag fade-in">Pourquoi venir</span>
             <h2 class="section-title fade-in">L'esprit de La Lizière</h2>
-            
             <div class="esprit-grid">
-                <div class="esprit-item fade-in">
-                    <div class="esprit-circle">🌲</div>
-                    <h3>Dormir en nature</h3>
-                    <p>Vraie forêt. Vrai silence. Yourtes et chambres confortables, design simple et chaleureux.</p>
-                </div>
-                <div class="esprit-item fade-in">
-                    <div class="esprit-circle">🧭</div>
-                    <h3>Explorer autrement</h3>
-                    <p>Sentiers secrets, blocs, ruchers, ateliers. Avec des guides locaux qui connaissent vraiment la forêt.</p>
-                </div>
-                <div class="esprit-item fade-in">
-                    <div class="esprit-circle">🤝</div>
-                    <h3>Se connecter</h3>
-                    <p>Voyageurs, artistes, grimpeurs, télétravailleurs. On partage un feu, une table, une idée.</p>
-                </div>
-                <div class="esprit-item fade-in">
-                    <div class="esprit-circle">🍷</div>
-                    <h3>Moments simples</h3>
-                    <p>Apéro au coucher du soleil. Dîner local. Temps qui ralentit.</p>
-                </div>
-                <div class="esprit-item fade-in">
-                    <div class="esprit-circle">📖</div>
-                    <h3>Collectionner</h3>
-                    <p>Un passeport REWILD. Un tampon par expérience. Un réseau de lieux à découvrir.</p>
-                </div>
-                <div class="esprit-item fade-in">
-                    <div class="esprit-circle">💻</div>
-                    <h3>Travailler au vert</h3>
-                    <p>Wi-Fi fiable. Nature partout. Concentration le matin, aventure l'après-midi.</p>
-                </div>
+                <div class="esprit-item fade-in"><div class="esprit-circle">🌲</div><h3>Dormir en nature</h3><p>Vraie forêt. Vrai silence. Yourtes et chambres confortables, design simple et chaleureux.</p></div>
+                <div class="esprit-item fade-in"><div class="esprit-circle">🧭</div><h3>Explorer autrement</h3><p>Sentiers secrets, blocs, ruchers, ateliers. Avec des guides locaux qui connaissent vraiment la forêt.</p></div>
+                <div class="esprit-item fade-in"><div class="esprit-circle">🤝</div><h3>Se connecter</h3><p>Voyageurs, artistes, grimpeurs, télétravailleurs. On partage un feu, une table, une idée.</p></div>
+                <div class="esprit-item fade-in"><div class="esprit-circle">🍷</div><h3>Moments simples</h3><p>Apéro au coucher du soleil. Dîner local. Temps qui ralentit.</p></div>
+                <div class="esprit-item fade-in"><div class="esprit-circle">📖</div><h3>Collectionner</h3><p>Un passeport REWILD. Un tampon par expérience. Un réseau de lieux à découvrir.</p></div>
+                <div class="esprit-item fade-in"><div class="esprit-circle">💻</div><h3>Travailler au vert</h3><p>Wi-Fi fiable. Nature partout. Concentration le matin, aventure l'après-midi.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ========== VISION - GREEN ========== -->
+    <!-- VISION -->
     <section class="section section--green" id="vision">
         <div class="container">
             <span class="section-tag fade-in">Vision</span>
             <h2 class="section-title fade-in">Aperçu de La Lizière</h2>
-            
             <div class="vision-stack">
                 <div class="vision-item fade-in">Image 1</div>
                 <div class="vision-item fade-in">Image 2</div>
@@ -1041,12 +504,11 @@
         </div>
     </section>
 
-    <!-- ========== ECO - CREAM ========== -->
+    <!-- ECO -->
     <section class="section section--cream" id="eco">
         <div class="container">
             <span class="section-tag fade-in">Éco-conception</span>
             <h2 class="section-title fade-in">Pensé pour la planète</h2>
-            
             <div class="eco-grid">
                 <div class="eco-card fade-in"><div class="eco-card-icon">🏕️</div><h4>100% démontable</h4><p>Zéro fondation permanente</p></div>
                 <div class="eco-card fade-in"><div class="eco-card-icon">☀️</div><h4>Énergie solaire</h4><p>Autonomie respectueuse</p></div>
@@ -1058,184 +520,70 @@
         </div>
     </section>
 
-    <!-- ========== TARIFS - BLUE ========== -->
+    <!-- TARIFS -->
     <section class="section section--blue" id="tarifs">
         <div class="container">
             <span class="section-tag fade-in">Tarifs</span>
             <h2 class="section-title fade-in">Séjours à votre rythme</h2>
-            
-            <div class="tarif-main fade-in">
-                <p class="tarif-details">🌙 Nuit en yourte</p>
-                <div class="tarif-price">À partir de 85€</div>
-                <p class="tarif-details">2 personnes · Linge inclus</p>
-            </div>
-            
+            <div class="tarif-main fade-in"><p class="tarif-details">🌙 Nuit en yourte</p><div class="tarif-price">À partir de 85€</div><p class="tarif-details">2 personnes · Linge inclus</p></div>
             <div class="tarif-grid">
-                <div class="tarif-card fade-in">
-                    <div class="tarif-card-icon">💛</div>
-                    <h3>Escapade Forêt</h3>
-                    <p class="tarif-card-desc">2 nuits de déconnexion totale. Idéal pour un premier séjour découverte en couple ou entre amis.</p>
-                    <div class="tarif-card-price">170€</div>
-                    <a href="#waitlist" class="tarif-card-cta">Réserver maintenant</a>
-                </div>
-                <div class="tarif-card fade-in">
-                    <div class="tarif-card-icon">🍷</div>
-                    <h3>Week-end Rando & Rosé</h3>
-                    <p class="tarif-card-desc">L'expérience complète : hébergement + randonnée guidée + apéro forestier inclus.</p>
-                    <div class="tarif-card-price">220€/pers</div>
-                    <a href="#waitlist" class="tarif-card-cta">Réserver maintenant</a>
-                </div>
-                <div class="tarif-card fade-in">
-                    <div class="tarif-card-icon">💻</div>
-                    <h3>Workation Nature</h3>
-                    <p class="tarif-card-desc">4-5 nuits au calme absolu. Wi-Fi, espace de travail dédié, nature à portée de main.</p>
-                    <div class="tarif-card-price">Tarif dégressif</div>
-                    <a href="#waitlist" class="tarif-card-cta">Réserver maintenant</a>
-                </div>
+                <div class="tarif-card fade-in"><div class="tarif-card-icon">💛</div><h3>Escapade Forêt</h3><p class="tarif-card-desc">2 nuits de déconnexion totale. Idéal pour un premier séjour découverte en couple ou entre amis.</p><div class="tarif-card-price">170€</div><a href="#waitlist" class="tarif-card-cta">Réserver maintenant</a></div>
+                <div class="tarif-card fade-in"><div class="tarif-card-icon">🍷</div><h3>Week-end Rando & Rosé</h3><p class="tarif-card-desc">L'expérience complète : hébergement + randonnée guidée + apéro forestier inclus.</p><div class="tarif-card-price">220€/pers</div><a href="#waitlist" class="tarif-card-cta">Réserver maintenant</a></div>
+                <div class="tarif-card fade-in"><div class="tarif-card-icon">💻</div><h3>Workation Nature</h3><p class="tarif-card-desc">4-5 nuits au calme absolu. Wi-Fi, espace de travail dédié, nature à portée de main.</p><div class="tarif-card-price">Tarif dégressif</div><a href="#waitlist" class="tarif-card-cta">Réserver maintenant</a></div>
             </div>
         </div>
     </section>
 
-    <!-- ========== WAITLIST - GREEN ========== -->
+    <!-- WAITLIST -->
     <section class="section section--green" id="waitlist">
         <div class="container">
             <span class="section-tag fade-in">Réserver</span>
             <h2 class="section-title fade-in">Rejoignez l'aventure</h2>
             <p class="section-intro fade-in">Ouverture rentrée 2026. Inscrivez-vous en priorité.</p>
-            
-            <div class="waitlist-form fade-in">
-                <p>📝 Formulaire à intégrer</p>
-                <p style="font-size: 0.85rem; opacity: 0.7;">Tally ou Google Form</p>
-            </div>
+            <div class="waitlist-form fade-in"><p>📝 Formulaire à intégrer</p><p style="font-size:0.85rem;opacity:0.7">Tally ou Google Form</p></div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <a href="#"><img src="images/rewild-aventures-logo.png" alt="REWILD" class="footer-logo"></a>
         <p class="footer-tagline">Déconnecter pour se reconnecter.</p>
-        <div class="footer-links">
-            <a href="mailto:hello@rewild-aventures.com">Contact</a>
-            <a href="https://instagram.com/rewildaventures">Instagram</a>
-            <a href="mentions-legales.html">Mentions légales</a>
-        </div>
+        <div class="footer-links"><a href="mailto:hello@rewild-aventures.com">Contact</a><a href="https://instagram.com/rewildaventures">Instagram</a><a href="mentions-legales.html">Mentions légales</a></div>
         <p class="footer-bottom">© 2025 REWILD Aventures · La Lizière · Fontainebleau</p>
     </footer>
 
     <script>
         // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
-            });
-        });
-
-        // Scroll animations - Intersection Observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    // Add delay based on element's position in its parent
-                    const delay = entry.target.dataset.delay || 0;
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, delay * 100);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all animated elements
-        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach((el, index) => {
-            el.dataset.delay = index % 5;
-            observer.observe(el);
-        });
-
-        // Experience Slider
+        document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', e => { e.preventDefault(); document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'}); }); });
+        
+        // Scroll animations
+        const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) { setTimeout(() => entry.target.classList.add('visible'), (entry.target.dataset.delay || 0) * 100); } }); }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+        document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach((el, i) => { el.dataset.delay = i % 5; observer.observe(el); });
+        
+        // Reseau map interaction
+        const mapDots = document.querySelectorAll('.map-dot');
+        const houseCards = document.querySelectorAll('.house-card');
+        function setActiveHouse(id) { mapDots.forEach(d => d.classList.toggle('active', d.dataset.house === id)); houseCards.forEach(c => c.classList.toggle('active', c.dataset.house === id)); }
+        mapDots.forEach(d => { d.addEventListener('mouseenter', () => setActiveHouse(d.dataset.house)); d.addEventListener('click', () => setActiveHouse(d.dataset.house)); });
+        houseCards.forEach(c => { c.addEventListener('mouseenter', () => setActiveHouse(c.dataset.house)); c.addEventListener('click', () => setActiveHouse(c.dataset.house)); });
+        
+        // Experience slider
         const track = document.querySelector('.exp-slider-track');
         const cards = document.querySelectorAll('.exp-card');
         const prevBtn = document.querySelector('.exp-slider-prev');
         const nextBtn = document.querySelector('.exp-slider-next');
         const dots = document.querySelectorAll('.exp-dot');
-        
         let currentIndex = 0;
         const totalCards = 9;
-        
-        function getCardsToShow() {
-            if (window.innerWidth < 768) return 1;
-            if (window.innerWidth < 1024) return 2;
-            return 3;
-        }
-        
-        function updateSlider() {
-            const cardsToShow = getCardsToShow();
-            const cardElement = cards[0];
-            const gap = 24;
-            const cardWidth = cardElement.offsetWidth + gap;
-            
-            track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-            
-            // Update dots
-            const maxIndex = totalCards - cardsToShow;
-            dots.forEach((dot, i) => {
-                const dotIndex = Math.floor(i * (maxIndex / 2));
-                dot.classList.toggle('active', currentIndex >= dotIndex && currentIndex < dotIndex + cardsToShow);
-            });
-        }
-        
-        function nextSlide() {
-            const cardsToShow = getCardsToShow();
-            const maxIndex = totalCards - cardsToShow;
-            currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
-            updateSlider();
-        }
-        
-        function prevSlide() {
-            const cardsToShow = getCardsToShow();
-            const maxIndex = totalCards - cardsToShow;
-            currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
-            updateSlider();
-        }
-        
+        function getCardsToShow() { return window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3; }
+        function updateSlider() { const n = getCardsToShow(), w = cards[0].offsetWidth + 24; track.style.transform = 'translateX(-' + (currentIndex * w) + 'px)'; dots.forEach((d, i) => d.classList.toggle('active', currentIndex >= Math.floor(i * (totalCards - n) / 2) && currentIndex < Math.floor(i * (totalCards - n) / 2) + n)); }
+        function nextSlide() { const n = getCardsToShow(); currentIndex = currentIndex >= totalCards - n ? 0 : currentIndex + 1; updateSlider(); }
+        function prevSlide() { const n = getCardsToShow(); currentIndex = currentIndex <= 0 ? totalCards - n : currentIndex - 1; updateSlider(); }
         nextBtn.addEventListener('click', nextSlide);
         prevBtn.addEventListener('click', prevSlide);
-        
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                const cardsToShow = getCardsToShow();
-                const maxIndex = totalCards - cardsToShow;
-                currentIndex = Math.floor(i * (maxIndex / 2));
-                updateSlider();
-            });
-        });
-        
-        // Auto-play
         let autoPlay = setInterval(nextSlide, 4000);
-        
-        // Pause on hover
-        const sliderContainer = document.querySelector('.exp-slider-container');
-        sliderContainer.addEventListener('mouseenter', () => clearInterval(autoPlay));
-        sliderContainer.addEventListener('mouseleave', () => autoPlay = setInterval(nextSlide, 4000));
-        
-        // Recalculate on resize
-        window.addEventListener('resize', () => {
-            currentIndex = 0;
-            updateSlider();
-        });
-        
-        // Tarif card selection
-        document.querySelectorAll('.tarif-card').forEach(card => {
-            card.addEventListener('click', function() {
-                document.querySelectorAll('.tarif-card').forEach(c => c.classList.remove('selected'));
-                this.classList.add('selected');
-            });
-        });
-        
-        // Initial
+        document.querySelector('.exp-slider-container').addEventListener('mouseenter', () => clearInterval(autoPlay));
+        document.querySelector('.exp-slider-container').addEventListener('mouseleave', () => { autoPlay = setInterval(nextSlide, 4000); });
+        window.addEventListener('resize', () => { currentIndex = 0; updateSlider(); });
         updateSlider();
     </script>
 </body>
