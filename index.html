@@ -14,8 +14,8 @@
         @font-face { font-family: 'Axiforma'; src: local('Axiforma Bold'), local('Plus Jakarta Sans'); font-weight: 700; }
         :root { --forest-dark: #1a3a2a; --forest: #234a35; --navy: #1e3a5f; --cream: #f8f5eb; --cream-dark: #efe9d9; --gold: #c9a227; --gold-light: #d4b84a; --text-dark: #1a2a1a; --text-muted: #5a6a5a; --font-title: 'Axiforma', 'Plus Jakarta Sans', sans-serif; --font-body: 'Plus Jakarta Sans', sans-serif; --radius-sm: 6px; --radius-lg: 16px; --radius-xl: 24px; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); background: var(--cream); color: var(--text-dark); line-height: 1.7; font-size: 17px; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: var(--font-body); background: var(--cream); color: var(--text-dark); line-height: 1.7; font-size: 17px; overflow-x: hidden; }
         img { max-width: 100%; height: auto; display: block; }
         a { color: inherit; text-decoration: none; }
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -32,12 +32,18 @@
         .nav-links a { font-size: 0.85rem; font-weight: 600; color: var(--cream); opacity: 0.85; }
         .nav-links a:hover { opacity: 1; }
         .nav-cta { background: var(--gold) !important; color: var(--forest-dark) !important; padding: 0.65rem 1.25rem; border-radius: var(--radius-sm); opacity: 1 !important; }
+        .lang-toggle { display: flex; align-items: center; gap: 0.25rem; margin-left: 1rem; }
+        .lang-option { font-size: 0.75rem; font-weight: 600; color: var(--cream); opacity: 0.5; cursor: pointer; transition: opacity 0.3s; }
+        .lang-option:hover, .lang-option.active { opacity: 1; }
+        .lang-divider { font-size: 0.75rem; color: var(--cream); opacity: 0.3; }
+        .nav-right { display: none; align-items: center; gap: 1rem; }
+        .lang-toggle-mobile { display: flex; align-items: center; gap: 0.25rem; }
         .nav-toggle { display: none; background: none; border: none; color: var(--cream); font-size: 1.5rem; cursor: pointer; }
         .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 5rem; background: linear-gradient(180deg, rgba(26,58,42,0.88) 0%, rgba(26,58,42,0.85) 100%), url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80') center/cover no-repeat fixed; }
         .hero-content { max-width: 850px; }
         .hero-logo { margin-bottom: 2.5rem; }
         .hero-logo img { height: 90px; margin: 0 auto; }
-        .hero-quote { font-family: Georgia, serif; font-size: clamp(1.4rem, 3vw, 1.8rem); font-style: italic; color: #a8c4a0; margin-bottom: 1.5rem; }
+        .hero-quote { font-family: Georgia, serif; font-size: clamp(1.4rem, 3vw, 1.8rem); font-style: italic; color: var(--cream); margin-bottom: 1.5rem; }
         .hero-welcome { font-family: var(--font-title); font-size: clamp(1.1rem, 2vw, 1.3rem); font-weight: 500; color: var(--cream); margin-bottom: 1.5rem; }
         .hero-headline { font-family: var(--font-title); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; color: var(--cream); line-height: 1.15; margin-bottom: 2rem; }
         .hero-headline em { font-style: italic; color: var(--gold); font-weight: 500; }
@@ -62,6 +68,7 @@
         .section-tag { display: block; text-align: center; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
         .section-title { font-family: var(--font-title); font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 700; text-align: center; margin-bottom: 1.5rem; }
         .section-intro { text-align: center; max-width: 600px; margin: 0 auto 3rem; font-size: 1.15rem; }
+        .section-intro-white { color: var(--cream); }
         .section--cream { background: var(--cream); }
         .section--cream .section-tag { color: var(--forest); }
         .section--cream .section-title { color: var(--forest-dark); }
@@ -111,7 +118,10 @@
         .forest-map-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
         .reseau-map-footer { position: absolute; bottom: 0.75rem; right: 0.75rem; color: rgba(248,245,235,0.5); font-size: 0.65rem; z-index: 5; }
         .reseau-map-title { position: absolute; top: 1rem; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.9rem; font-weight: 600; z-index: 5; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+        .map-village { position: absolute; transform: translateX(-50%); font-size: 0.6rem; color: rgba(248,245,235,0.7); font-weight: 500; white-space: nowrap; z-index: 3; display: flex; align-items: center; gap: 3px; }
+        .village-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(248,245,235,0.7); flex-shrink: 0; }
         .reseau-map-compass { position: absolute; top: 1rem; right: 1rem; width: 50px; height: 50px; z-index: 5; }
+        .house-connections { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
         .map-dot { position: absolute; transform: translate(-50%, -50%); background: none; border: none; padding: 0; cursor: pointer; z-index: 10; }
         .map-dot.active { z-index: 20; }
         .dot-pulse { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 28px; height: 28px; border-radius: 50%; background: rgba(201,162,39,0.4); opacity: 0; }
@@ -122,8 +132,11 @@
         .dot-label { position: absolute; left: 50%; transform: translateX(-50%) translateY(-5px); top: 100%; margin-top: 8px; white-space: nowrap; font-size: 0.7rem; font-weight: 600; padding: 4px 8px; border-radius: 4px; background: rgba(26,58,42,0.95); color: var(--cream); opacity: 0; transition: all 0.3s ease; z-index: 30; }
         .map-dot.active .dot-label { opacity: 1; transform: translateX(-50%) translateY(0); }
         .reseau-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-        .house-card { display: block; width: 100%; text-align: left; padding: 1rem; border-radius: 12px; border: none; background: white; color: var(--forest-dark); cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .house-card { display: flex; width: 100%; text-align: left; padding: 0; border-radius: 12px; border: none; background: white; color: var(--forest-dark); cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
         .house-card:hover, .house-card.active { background: var(--forest-dark); color: var(--cream); transform: translateY(-2px); }
+        .house-card-img { width: 70px; height: 70px; background: var(--cream-dark); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .house-card:hover .house-card-img, .house-card.active .house-card-img { background: rgba(255,255,255,0.1); }
+        .house-card-content { padding: 0.75rem 1rem; flex: 1; display: flex; flex-direction: column; justify-content: center; }
         .house-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.35rem; }
         .house-card-name { font-size: 0.9rem; font-weight: 600; margin: 0; }
         .house-card-badge { font-size: 0.6rem; font-weight: 600; padding: 3px 8px; border-radius: 20px; background: rgba(26,58,42,0.1); color: rgba(26,58,42,0.6); }
@@ -187,38 +200,41 @@
         .footer-bottom { font-size: 0.8rem; opacity: 0.6; }
         @media (max-width: 1024px) { .equip-grid, .extras-grid { grid-template-columns: repeat(2, 1fr); } .tarif-grid { grid-template-columns: 1fr 1fr; } .exp-card { flex: 0 0 calc((100% - 1.5rem) / 2); } .esprit-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) { .reseau-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .nav-links { display: none; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .lieu-grid, .equip-grid, .eco-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .hero-ctas { flex-direction: column; } .exp-card { flex: 0 0 100%; } .reseau-cards-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .nav { padding: 1rem 1.5rem; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-headline { font-size: 1.8rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.4rem 0.75rem; } .lieu-grid, .equip-grid, .eco-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .hero-ctas { flex-direction: column; } .exp-card { flex: 0 0 100%; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 1.75rem; } .reseau-title { font-size: 1.3rem; } }
     </style>
 </head>
 <body>
     <nav class="nav">
         <a href="#" class="nav-logo"><img src="images/rewild-aventures-logo.png" alt="REWILD"></a>
-        <div class="nav-links"><a href="#lieu">LE LIEU</a><a href="#reseau">LE RÉSEAU</a><a href="#experiences">EXPÉRIENCES</a><a href="#tarifs">TARIFS</a><a href="#waitlist" class="nav-cta">RÉSERVER</a></div>
-        <button class="nav-toggle">☰</button>
+        <div class="nav-links"><a href="#lieu" data-i18n="nav-lieu">LE LIEU</a><a href="#reseau" data-i18n="nav-reseau">LE RÉSEAU</a><a href="#experiences" data-i18n="nav-experiences">EXPÉRIENCES</a><a href="#tarifs" data-i18n="nav-tarifs">TARIFS</a><a href="#waitlist" class="nav-cta" data-i18n="nav-reserver">RÉSERVER</a><div class="lang-toggle"><span class="lang-option active">FR</span><span class="lang-divider">/</span><span class="lang-option">ENG</span><span class="lang-divider">/</span><span class="lang-option">ESP</span></div></div>
+        <div class="nav-right">
+            <div class="lang-toggle-mobile"><span class="lang-option active">FR</span><span class="lang-divider">/</span><span class="lang-option">ENG</span><span class="lang-divider">/</span><span class="lang-option">ESP</span></div>
+            <button class="nav-toggle">☰</button>
+        </div>
     </nav>
     <section class="hero">
         <div class="hero-content">
             <div class="hero-logo"><img src="images/rewild-aventures-logo.png" alt="REWILD Aventures"></div>
-            <p class="hero-quote">"Déconnecter pour se reconnecter"</p>
-            <p class="hero-welcome">Bienvenue à La Lizière</p>
-            <h1 class="hero-headline">Glamping éco-responsable & aventures,<br><em>au cœur de la forêt de Fontainebleau</em></h1>
-            <p class="hero-description"><strong>Réseau de Maisons Forestières vivantes</strong> créant des séjour-aventures immersifs pour couples, petits groupes et télétravailleurs en quête de reconnexion à la nature.</p>
+            <p class="hero-quote" data-i18n="hero-quote">"Déconnecter pour se reconnecter"</p>
+            <p class="hero-welcome" data-i18n="hero-welcome">Bienvenue à La Lizière</p>
+            <h1 class="hero-headline" data-i18n="hero-headline">Glamping éco-responsable & aventures,<br><em>au cœur de la forêt de Fontainebleau</em></h1>
+            <p class="hero-description" data-i18n="hero-desc"><strong>Réseau de Maisons Forestières vivantes</strong> créant des séjour-aventures immersifs pour couples, petits groupes et télétravailleurs en quête de reconnexion à la nature.</p>
             <div class="hero-badges"><span class="hero-badge">🥾 Point de départ aventure</span><span class="hero-badge">🌱 100% éco-conçu</span><span class="hero-badge">🏕️ Outdoor & indoor</span><span class="hero-badge">💰 Prix accessible</span><span class="hero-badge">💻 Compatible télétravail</span></div>
-            <div class="hero-ctas"><a href="#waitlist" class="btn btn-primary">Réserver ma place</a><a href="#lieu" class="btn btn-secondary">Découvrir le lieu</a></div>
-            <p class="hero-note">OUVERTURE — RENTRÉE 2026</p>
+            <div class="hero-ctas"><a href="#waitlist" class="btn btn-primary" data-i18n="btn-reserver">Réserver ma place</a><a href="#lieu" class="btn btn-secondary" data-i18n="btn-decouvrir">Découvrir le lieu</a></div>
+            <p class="hero-note" data-i18n="hero-note">OUVERTURE — RENTRÉE 2026</p>
         </div>
     </section>
     <section class="definition-section">
         <div class="definition-content fade-in">
-            <h2 class="def-word">lisière</h2>
-            <p class="def-phonetic">nom féminin · Le seuil où commence l'aventure</p>
-            <p class="def-text">Bord de la forêt, frontière douce où deux espaces se mêlent — <em>ni dedans ni dehors, mais entre.</em></p>
+            <h2 class="def-word" data-i18n="def-word">lisière</h2>
+            <p class="def-phonetic" data-i18n="def-phonetic">nom féminin · Le seuil où commence l'aventure</p>
+            <p class="def-text" data-i18n="def-text">Bord de la forêt, frontière douce où deux espaces se mêlent — <em>ni dedans ni dehors, mais entre.</em></p>
         </div>
     </section>
     <section class="section section--cream" id="lieu">
         <div class="container">
-            <span class="section-tag fade-in">Le Lieu</span>
-            <h2 class="section-title fade-in">Ni camping. Ni hôtel.<br>Un seuil entre les deux.</h2>
+            <span class="section-tag fade-in" data-i18n="lieu-tag">Le Lieu</span>
+            <h2 class="section-title fade-in" data-i18n="lieu-title">Ni camping. Ni hôtel.<br>Un seuil entre les deux.</h2>
             <div class="lieu-grid">
                 <div class="lieu-card fade-in-left">
                     <div class="lieu-card-img">🏕️ Image yourtes à ajouter</div>
@@ -258,8 +274,8 @@
     <section class="reseau-section" id="reseau">
         <div class="reseau-container">
             <div class="reseau-header fade-in">
-                <span class="reseau-tag">Réseau</span>
-                <h2 class="reseau-title">Plusieurs sites. Une même vision.<br>À explorer et collectionner.</h2>
+                <span class="reseau-tag" data-i18n="reseau-tag">Réseau</span>
+                <h2 class="reseau-title" data-i18n="reseau-title">Plusieurs sites. Une même vision.<br>À explorer et collectionner.</h2>
             </div>
             <div class="reseau-grid">
                 <div class="reseau-map-panel fade-in-left">
@@ -273,7 +289,57 @@
                             <polygon points="25,14 27,22 25,20 23,22" fill="rgba(248,245,235,0.9)"/>
                             <polygon points="25,36 27,28 25,30 23,28" fill="rgba(248,245,235,0.4)"/>
                         </svg>
+                        <svg class="house-connections" viewBox="0 0 100 100" preserveAspectRatio="none">
+                            <line x1="42" y1="50" x2="52" y2="40" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="42" y1="50" x2="62" y2="42" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="42" y1="50" x2="72" y2="30" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="42" y1="50" x2="76" y2="36" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="42" y1="50" x2="64" y2="55" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="42" y1="50" x2="66" y2="70" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="42" y1="50" x2="52" y2="72" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="42" y1="50" x2="46" y2="68" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="52" y1="40" x2="62" y2="42" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="52" y1="40" x2="72" y2="30" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="52" y1="40" x2="76" y2="36" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="52" y1="40" x2="64" y2="55" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="52" y1="40" x2="66" y2="70" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="52" y1="40" x2="52" y2="72" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="52" y1="40" x2="46" y2="68" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="62" y1="42" x2="72" y2="30" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="62" y1="42" x2="76" y2="36" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="62" y1="42" x2="64" y2="55" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="62" y1="42" x2="66" y2="70" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="62" y1="42" x2="52" y2="72" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="62" y1="42" x2="46" y2="68" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="72" y1="30" x2="76" y2="36" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="72" y1="30" x2="64" y2="55" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="72" y1="30" x2="66" y2="70" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="72" y1="30" x2="52" y2="72" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="72" y1="30" x2="46" y2="68" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="76" y1="36" x2="64" y2="55" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="76" y1="36" x2="66" y2="70" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="76" y1="36" x2="52" y2="72" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="76" y1="36" x2="46" y2="68" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="64" y1="55" x2="66" y2="70" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="64" y1="55" x2="52" y2="72" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="64" y1="55" x2="46" y2="68" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="66" y1="70" x2="52" y2="72" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="66" y1="70" x2="46" y2="68" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                            <line x1="52" y1="72" x2="46" y2="68" stroke="rgba(201,162,39,0.08)" stroke-width="0.3"/>
+                        </svg>
                         <div class="reseau-map-title">Massif de Fontainebleau</div>
+                        <span class="map-village" style="left:8%;top:48%"><span class="village-dot"></span>Milly-la-Forêt</span>
+                        <span class="map-village" style="left:25%;top:28%"><span class="village-dot"></span>Barbizon</span>
+                        <span class="map-village" style="left:28%;top:38%"><span class="village-dot"></span>Arbonne</span>
+                        <span class="map-village" style="left:22%;top:72%"><span class="village-dot"></span>Achères-la-Forêt</span>
+                        <span class="map-village" style="left:48%;top:82%"><span class="village-dot"></span>Recloses</span>
+                        <span class="map-village" style="left:62%;top:85%"><span class="village-dot"></span>Bourron-Marlotte</span>
+                        <span class="map-village" style="left:82%;top:78%"><span class="village-dot"></span>Montigny-sur-Loing</span>
+                        <span class="map-village" style="left:88%;top:48%"><span class="village-dot"></span>Thomery</span>
+                        <span class="map-village" style="left:78%;top:40%"><span class="village-dot"></span>Avon</span>
+                        <span class="map-village" style="left:72%;top:18%"><span class="village-dot"></span>Bois-le-Roi</span>
+                        <span class="map-village" style="left:52%;top:12%"><span class="village-dot"></span>Dammarie-les-Lys</span>
+                        <span class="map-village" style="left:68%;top:50%"><span class="village-dot"></span>Fontainebleau</span>
                         <button class="map-dot active" data-house="macherin" style="left:42%;top:50%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">MF Macherin</span></button>
                         <button class="map-dot" data-house="croix-gd-veneur" style="left:52%;top:40%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">MF Croix du Gd Veneur</span></button>
                         <button class="map-dot" data-house="de-la-solle" style="left:62%;top:42%"><span class="dot-pulse"></span><span class="dot-point"></span><span class="dot-label">MF De la Solle</span></button>
@@ -288,15 +354,15 @@
                 </div>
                 <div class="reseau-cards-panel fade-in-right">
                     <div class="reseau-cards-grid">
-                        <button class="house-card active" data-house="macherin"><div class="house-card-header"><h3 class="house-card-name">MF Macherin</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Silence profond, lisière sauvage.</p><span class="house-card-cta">Voir sur la carte →</span></button>
-                        <button class="house-card" data-house="croix-gd-veneur"><div class="house-card-header"><h3 class="house-card-name">MF Croix du Gd Veneur</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Au cœur des sentiers historiques.</p><span class="house-card-cta">Voir sur la carte →</span></button>
-                        <button class="house-card" data-house="de-la-solle"><div class="house-card-header"><h3 class="house-card-name">MF De la Solle</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Clairières proches, forêt dense.</p><span class="house-card-cta">Voir sur la carte →</span></button>
-                        <button class="house-card" data-house="de-courbuisson"><div class="house-card-header"><h3 class="house-card-name">MF De Courbuisson</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Entre villages et grandes traversées.</p><span class="house-card-cta">Voir sur la carte →</span></button>
-                        <button class="house-card" data-house="auxiliaire-courbuisson"><div class="house-card-header"><h3 class="house-card-name">MF Aux. Courbuisson</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Version plus intime, même territoire.</p><span class="house-card-cta">Voir sur la carte →</span></button>
-                        <button class="house-card" data-house="de-lobelisque"><div class="house-card-header"><h3 class="house-card-name">MF De l'Obélisque</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Accès direct aux grands axes du massif.</p><span class="house-card-cta">Voir sur la carte →</span></button>
-                        <button class="house-card" data-house="grande-vallee"><div class="house-card-header"><h3 class="house-card-name">MF Grande Vallée</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Ouvertures lumineuses, horizon large.</p><span class="house-card-cta">Voir sur la carte →</span></button>
-                        <button class="house-card" data-house="de-la-futaie"><div class="house-card-header"><h3 class="house-card-name">MF De la Futaie</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Forêt haute, ambiance boisée.</p><span class="house-card-cta">Voir sur la carte →</span></button>
-                        <button class="house-card" data-house="barnolets"><div class="house-card-header"><h3 class="house-card-name">MF Barnolets</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Plus discret, plus brut.</p><span class="house-card-cta">Voir sur la carte →</span></button>
+                        <button class="house-card active" data-house="macherin"><div class="house-card-img">🏡</div><div class="house-card-content"><div class="house-card-header"><h3 class="house-card-name">MF Macherin</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Silence profond, lisière sauvage.</p><span class="house-card-cta">Voir sur la carte →</span></div></button>
+                        <button class="house-card" data-house="croix-gd-veneur"><div class="house-card-img">🏡</div><div class="house-card-content"><div class="house-card-header"><h3 class="house-card-name">MF Croix du Gd Veneur</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Au cœur des sentiers historiques.</p><span class="house-card-cta">Voir sur la carte →</span></div></button>
+                        <button class="house-card" data-house="de-la-solle"><div class="house-card-img">🏡</div><div class="house-card-content"><div class="house-card-header"><h3 class="house-card-name">MF De la Solle</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Clairières proches, forêt dense.</p><span class="house-card-cta">Voir sur la carte →</span></div></button>
+                        <button class="house-card" data-house="de-courbuisson"><div class="house-card-img">🏡</div><div class="house-card-content"><div class="house-card-header"><h3 class="house-card-name">MF De Courbuisson</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Entre villages et grandes traversées.</p><span class="house-card-cta">Voir sur la carte →</span></div></button>
+                        <button class="house-card" data-house="auxiliaire-courbuisson"><div class="house-card-img">🏡</div><div class="house-card-content"><div class="house-card-header"><h3 class="house-card-name">MF Aux. Courbuisson</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Version plus intime, même territoire.</p><span class="house-card-cta">Voir sur la carte →</span></div></button>
+                        <button class="house-card" data-house="de-lobelisque"><div class="house-card-img">🏡</div><div class="house-card-content"><div class="house-card-header"><h3 class="house-card-name">MF De l'Obélisque</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Accès direct aux grands axes du massif.</p><span class="house-card-cta">Voir sur la carte →</span></div></button>
+                        <button class="house-card" data-house="grande-vallee"><div class="house-card-img">🏡</div><div class="house-card-content"><div class="house-card-header"><h3 class="house-card-name">MF Grande Vallée</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Ouvertures lumineuses, horizon large.</p><span class="house-card-cta">Voir sur la carte →</span></div></button>
+                        <button class="house-card" data-house="de-la-futaie"><div class="house-card-img">🏡</div><div class="house-card-content"><div class="house-card-header"><h3 class="house-card-name">MF De la Futaie</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Forêt haute, ambiance boisée.</p><span class="house-card-cta">Voir sur la carte →</span></div></button>
+                        <button class="house-card" data-house="barnolets"><div class="house-card-img">🏡</div><div class="house-card-content"><div class="house-card-header"><h3 class="house-card-name">MF Barnolets</h3><span class="house-card-badge">Bientôt</span></div><p class="house-card-blurb">Plus discret, plus brut.</p><span class="house-card-cta">Voir sur la carte →</span></div></button>
                     </div>
                 </div>
             </div>
@@ -305,9 +371,9 @@
     </section>
     <section class="section section--blue" id="experiences">
         <div class="container">
-            <span class="section-tag fade-in">Expériences</span>
-            <h2 class="section-title fade-in">Vivre la forêt, vraiment</h2>
-            <p class="section-intro fade-in">Le séjour est une base. L'aventure commence autour.</p>
+            <span class="section-tag fade-in" data-i18n="exp-tag">Expériences</span>
+            <h2 class="section-title fade-in" data-i18n="exp-title">Vivre la forêt, vraiment</h2>
+            <p class="section-intro section-intro-white fade-in" data-i18n="exp-intro">Le séjour est une base. L'aventure commence autour.</p>
             <div class="exp-slider-container fade-in">
                 <button class="exp-slider-btn exp-slider-prev">‹</button>
                 <div class="exp-slider">
@@ -330,8 +396,8 @@
     </section>
     <section class="section section--cream" id="esprit">
         <div class="container">
-            <span class="section-tag fade-in">Pourquoi venir</span>
-            <h2 class="section-title fade-in">L'esprit de La Lizière</h2>
+            <span class="section-tag fade-in" data-i18n="esprit-tag">Pourquoi venir</span>
+            <h2 class="section-title fade-in" data-i18n="esprit-title">L'esprit de La Lizière</h2>
             <div class="esprit-grid">
                 <div class="esprit-item fade-in"><div class="esprit-circle">🌲</div><h3>Dormir en nature</h3><p>Vraie forêt. Vrai silence. Yourtes et chambres confortables, design simple et chaleureux.</p></div>
                 <div class="esprit-item fade-in"><div class="esprit-circle">🧭</div><h3>Explorer autrement</h3><p>Sentiers secrets, blocs, ruchers, ateliers. Avec des guides locaux qui connaissent vraiment la forêt.</p></div>
@@ -344,15 +410,15 @@
     </section>
     <section class="section section--green" id="vision">
         <div class="container">
-            <span class="section-tag fade-in">Vision</span>
-            <h2 class="section-title fade-in">Aperçu de La Lizière</h2>
+            <span class="section-tag fade-in" data-i18n="vision-tag">Vision</span>
+            <h2 class="section-title fade-in" data-i18n="vision-title">Aperçu de La Lizière</h2>
             <div class="vision-stack"><div class="vision-item fade-in">Image 1</div><div class="vision-item fade-in">Image 2</div><div class="vision-item fade-in">Image 3</div><div class="vision-item fade-in">Image 4</div><div class="vision-item fade-in">Image 5</div><div class="vision-item fade-in">Image 6</div></div>
         </div>
     </section>
     <section class="section section--cream" id="eco">
         <div class="container">
-            <span class="section-tag fade-in">Éco-conception</span>
-            <h2 class="section-title fade-in">Pensé pour la planète</h2>
+            <span class="section-tag fade-in" data-i18n="eco-tag">Éco-conception</span>
+            <h2 class="section-title fade-in" data-i18n="eco-title">Pensé pour la planète</h2>
             <div class="eco-grid">
                 <div class="eco-card fade-in"><div class="eco-card-icon">🏕️</div><h4>100% démontable</h4><p>Zéro fondation permanente</p></div>
                 <div class="eco-card fade-in"><div class="eco-card-icon">☀️</div><h4>Énergie solaire</h4><p>Autonomie respectueuse</p></div>
@@ -365,8 +431,8 @@
     </section>
     <section class="section section--blue" id="tarifs">
         <div class="container">
-            <span class="section-tag fade-in">Tarifs</span>
-            <h2 class="section-title fade-in">Séjours à votre rythme</h2>
+            <span class="section-tag fade-in" data-i18n="tarifs-tag">Tarifs</span>
+            <h2 class="section-title fade-in" data-i18n="tarifs-title">Séjours à votre rythme</h2>
             <div class="tarif-main fade-in"><p class="tarif-details">🌙 Nuit en yourte</p><div class="tarif-price">À partir de 85€</div><p class="tarif-details">2 personnes · Linge inclus</p></div>
             <div class="tarif-grid">
                 <div class="tarif-card fade-in"><div class="tarif-card-icon">💛</div><h3>Escapade Forêt</h3><p class="tarif-card-desc">2 nuits de déconnexion totale. Idéal pour un premier séjour découverte en couple ou entre amis.</p><div class="tarif-card-price">170€</div><a href="#waitlist" class="tarif-card-cta">Réserver maintenant</a></div>
@@ -377,14 +443,14 @@
     </section>
     <section class="section section--green" id="waitlist">
         <div class="container">
-            <span class="section-tag fade-in">Réserver</span>
-            <h2 class="section-title fade-in">Rejoignez l'aventure</h2>
-            <p class="section-intro fade-in">Ouverture rentrée 2026. Inscrivez-vous en priorité.</p>
+            <span class="section-tag fade-in" data-i18n="waitlist-tag">Réserver</span>
+            <h2 class="section-title fade-in" data-i18n="waitlist-title">Rejoignez l'aventure</h2>
+            <p class="section-intro fade-in" data-i18n="waitlist-intro">Ouverture rentrée 2026. Inscrivez-vous en priorité.</p>
             <div class="waitlist-form fade-in"><p>📝 Formulaire à intégrer</p><p style="font-size:0.85rem;opacity:0.7">Tally ou Google Form</p></div>
         </div>
     </section>
     <footer class="footer">
-        <p class="footer-tagline">Déconnecter pour se reconnecter.</p>
+        <p class="footer-tagline" data-i18n="footer-tagline">Déconnecter pour se reconnecter.</p>
         <div class="footer-links"><a href="mailto:hello@rewild-aventures.com">Contact</a><a href="https://instagram.com/rewildaventures">Instagram</a><a href="mentions-legales.html">Mentions légales</a></div>
         <p class="footer-bottom">© 2025 REWILD Aventures · La Lizière · Fontainebleau</p>
     </footer>
@@ -408,6 +474,136 @@
         document.querySelector('.exp-slider-container').addEventListener('mouseleave',()=>{autoPlay=setInterval(nextSlide,4000)});
         window.addEventListener('resize',()=>{currentIndex=0;updateSlider()});
         updateSlider();
+        
+        // Translation system
+        const translations = {
+            fr: {
+                'nav-lieu': 'LE LIEU',
+                'nav-reseau': 'LE RÉSEAU',
+                'nav-experiences': 'EXPÉRIENCES',
+                'nav-tarifs': 'TARIFS',
+                'nav-reserver': 'RÉSERVER',
+                'hero-quote': '"Déconnecter pour se reconnecter"',
+                'hero-welcome': 'Bienvenue à La Lizière',
+                'hero-headline': 'Glamping éco-responsable & aventures,<br><em>au cœur de la forêt de Fontainebleau</em>',
+                'hero-desc': '<strong>Réseau de Maisons Forestières vivantes</strong> créant des séjour-aventures immersifs pour couples, petits groupes et télétravailleurs en quête de reconnexion à la nature.',
+                'hero-note': 'OUVERTURE — RENTRÉE 2026',
+                'def-word': 'lisière',
+                'def-phonetic': 'nom féminin · Le seuil où commence l\'aventure',
+                'def-text': 'Bord de la forêt, frontière douce où deux espaces se mêlent — <em>ni dedans ni dehors, mais entre.</em>',
+                'lieu-tag': 'Le Lieu',
+                'lieu-title': 'Ni camping. Ni hôtel.<br>Un seuil entre les deux.',
+                'reseau-tag': 'Réseau',
+                'reseau-title': 'Plusieurs sites. Une même vision.<br>À explorer et collectionner.',
+                'exp-tag': 'Expériences',
+                'exp-title': 'Vivre la forêt, vraiment',
+                'exp-intro': 'Le séjour est une base. L\'aventure commence autour.',
+                'esprit-tag': 'Pourquoi venir',
+                'esprit-title': 'L\'esprit de La Lizière',
+                'vision-tag': 'Vision',
+                'vision-title': 'Aperçu de La Lizière',
+                'eco-tag': 'Éco-conception',
+                'eco-title': 'Pensé pour la planète',
+                'tarifs-tag': 'Tarifs',
+                'tarifs-title': 'Séjours à votre rythme',
+                'waitlist-tag': 'Réserver',
+                'waitlist-title': 'Rejoignez l\'aventure',
+                'waitlist-intro': 'Ouverture rentrée 2026. Inscrivez-vous en priorité.',
+                'footer-tagline': 'Déconnecter pour se reconnecter.',
+                'btn-reserver': 'Réserver ma place',
+                'btn-decouvrir': 'Découvrir le lieu'
+            },
+            en: {
+                'nav-lieu': 'THE PLACE',
+                'nav-reseau': 'THE NETWORK',
+                'nav-experiences': 'EXPERIENCES',
+                'nav-tarifs': 'RATES',
+                'nav-reserver': 'BOOK',
+                'hero-quote': '"Disconnect to reconnect"',
+                'hero-welcome': 'Welcome to La Lizière',
+                'hero-headline': 'Eco-friendly glamping & adventures,<br><em>in the heart of Fontainebleau forest</em>',
+                'hero-desc': '<strong>Network of living Forest Houses</strong> creating immersive adventure-stays for couples, small groups and remote workers seeking reconnection with nature.',
+                'hero-note': 'OPENING — FALL 2026',
+                'def-word': 'lisière',
+                'def-phonetic': 'noun · The threshold where adventure begins',
+                'def-text': 'Edge of the forest, a gentle border where two spaces blend — <em>neither inside nor outside, but in between.</em>',
+                'lieu-tag': 'The Place',
+                'lieu-title': 'Not camping. Not a hotel.<br>A threshold between both.',
+                'reseau-tag': 'Network',
+                'reseau-title': 'Multiple sites. One vision.<br>To explore and collect.',
+                'exp-tag': 'Experiences',
+                'exp-title': 'Truly live the forest',
+                'exp-intro': 'The stay is a base. Adventure begins around.',
+                'esprit-tag': 'Why come',
+                'esprit-title': 'The spirit of La Lizière',
+                'vision-tag': 'Vision',
+                'vision-title': 'Preview of La Lizière',
+                'eco-tag': 'Eco-design',
+                'eco-title': 'Designed for the planet',
+                'tarifs-tag': 'Rates',
+                'tarifs-title': 'Stays at your pace',
+                'waitlist-tag': 'Book',
+                'waitlist-title': 'Join the adventure',
+                'waitlist-intro': 'Opening fall 2026. Sign up for priority access.',
+                'footer-tagline': 'Disconnect to reconnect.',
+                'btn-reserver': 'Book my spot',
+                'btn-decouvrir': 'Discover the place'
+            },
+            es: {
+                'nav-lieu': 'EL LUGAR',
+                'nav-reseau': 'LA RED',
+                'nav-experiences': 'EXPERIENCIAS',
+                'nav-tarifs': 'TARIFAS',
+                'nav-reserver': 'RESERVAR',
+                'hero-quote': '"Desconectar para reconectar"',
+                'hero-welcome': 'Bienvenido a La Lizière',
+                'hero-headline': 'Glamping ecológico y aventuras,<br><em>en el corazón del bosque de Fontainebleau</em>',
+                'hero-desc': '<strong>Red de Casas Forestales vivas</strong> creando estancias-aventura inmersivas para parejas, grupos pequeños y teletrabajadores en busca de reconexión con la naturaleza.',
+                'hero-note': 'APERTURA — OTOÑO 2026',
+                'def-word': 'lisière',
+                'def-phonetic': 'sustantivo · El umbral donde comienza la aventura',
+                'def-text': 'Borde del bosque, frontera suave donde dos espacios se mezclan — <em>ni dentro ni fuera, sino entre.</em>',
+                'lieu-tag': 'El Lugar',
+                'lieu-title': 'Ni camping. Ni hotel.<br>Un umbral entre ambos.',
+                'reseau-tag': 'Red',
+                'reseau-title': 'Varios sitios. Una misma visión.<br>Para explorar y coleccionar.',
+                'exp-tag': 'Experiencias',
+                'exp-title': 'Vivir el bosque de verdad',
+                'exp-intro': 'La estancia es una base. La aventura comienza alrededor.',
+                'esprit-tag': 'Por qué venir',
+                'esprit-title': 'El espíritu de La Lizière',
+                'vision-tag': 'Visión',
+                'vision-title': 'Vista previa de La Lizière',
+                'eco-tag': 'Eco-diseño',
+                'eco-title': 'Pensado para el planeta',
+                'tarifs-tag': 'Tarifas',
+                'tarifs-title': 'Estancias a tu ritmo',
+                'waitlist-tag': 'Reservar',
+                'waitlist-title': 'Únete a la aventura',
+                'waitlist-intro': 'Apertura otoño 2026. Inscríbete con prioridad.',
+                'footer-tagline': 'Desconectar para reconectar.',
+                'btn-reserver': 'Reservar mi lugar',
+                'btn-decouvrir': 'Descubrir el lugar'
+            }
+        };
+        
+        function setLanguage(lang) {
+            const t = translations[lang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (t[key]) el.innerHTML = t[key];
+            });
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.classList.toggle('active', opt.textContent === (lang === 'fr' ? 'FR' : lang === 'en' ? 'ENG' : 'ESP'));
+            });
+        }
+        
+        document.querySelectorAll('.lang-option').forEach(opt => {
+            opt.addEventListener('click', () => {
+                const lang = opt.textContent === 'FR' ? 'fr' : opt.textContent === 'ENG' ? 'en' : 'es';
+                setLanguage(lang);
+            });
+        });
     </script>
 </body>
 </html>
