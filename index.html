@@ -159,6 +159,7 @@
         .exp-card-body { padding: 1.5rem; }
         .exp-card-body h3 { font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
         .exp-card-body p { font-size: 0.9rem; color: var(--text-muted); }
+        .exp-slider-controls { display: none; }
         .exp-tagline { font-size: 0.85rem; color: var(--forest); font-style: italic; margin-top: 0.5rem; }
         .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
         .exp-tag { font-size: 0.7rem; padding: 0.25rem 0.5rem; background: rgba(26,58,42,0.1); border-radius: var(--radius-sm); color: var(--forest-dark); }
@@ -200,7 +201,7 @@
         .footer-bottom { font-size: 0.8rem; opacity: 0.6; }
         @media (max-width: 1024px) { .equip-grid, .extras-grid { grid-template-columns: repeat(2, 1fr); } .tarif-grid { grid-template-columns: 1fr 1fr; } .exp-card { flex: 0 0 calc((100% - 1.5rem) / 2); } .esprit-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) { .reseau-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .nav { padding: 1rem 1.5rem; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-headline { font-size: 1.8rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-card { flex: 0 0 92%; margin: 0 auto; } .exp-card-img { height: 200px; } .exp-card-body { padding: 1.25rem; } .exp-card-body h3 { font-size: 1.1rem; } .exp-slider-container { gap: 0.5rem; } .exp-slider-btn { width: 40px; height: 40px; font-size: 2rem; flex-shrink: 0; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 1.75rem; } .reseau-title { font-size: 1.3rem; } }
+        @media (max-width: 768px) { .nav { padding: 1rem 1.5rem; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-headline { font-size: 1.8rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; } .exp-slider { width: 100%; overflow: hidden; } .exp-card { flex: 0 0 100%; margin: 0; } .exp-card-img { height: 220px; } .exp-card-body { padding: 1.25rem; } .exp-card-body h3 { font-size: 1.1rem; } .exp-slider-btn { display: none; } .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1rem; } .exp-slider-controls .exp-slider-btn { display: flex; width: 44px; height: 44px; font-size: 1.8rem; border: 2px solid rgba(248,245,235,0.4); background: transparent; color: var(--cream); border-radius: 50%; align-items: center; justify-content: center; cursor: pointer; } .exp-slider-dots { margin-top: 0; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 1.75rem; } .reseau-title { font-size: 1.3rem; } }
     
         /* ===== LIGHTBOX ===== */
         .lb-trigger { display:block; cursor:zoom-in; width:100%; }
@@ -404,7 +405,7 @@
 <div class="exp-slider-container fade-in">
   <button class="exp-slider-btn exp-slider-prev">‹</button>
 
-  <div class="exp-slider">
+  <div class="exp-slider" style="width:100%;">
     <div class="exp-slider-track">
 
       <div class="exp-card">
@@ -503,9 +504,11 @@
   <button class="exp-slider-btn exp-slider-next">›</button>
 </div>
 
-
-            
-            <div class="exp-slider-dots"><span class="exp-dot active" data-index="0"></span><span class="exp-dot" data-index="1"></span><span class="exp-dot" data-index="2"></span></div>
+<div class="exp-slider-controls">
+  <button class="exp-slider-btn exp-slider-prev">‹</button>
+  <div class="exp-slider-dots"><span class="exp-dot active" data-index="0"></span><span class="exp-dot" data-index="1"></span><span class="exp-dot" data-index="2"></span></div>
+  <button class="exp-slider-btn exp-slider-next">›</button>
+</div>
         </div>
     </section>
     <section class="section section--cream" id="esprit">
@@ -665,16 +668,34 @@
         function setActiveHouse(id){mapDots.forEach(d=>d.classList.toggle('active',d.dataset.house===id));houseCards.forEach(c=>c.classList.toggle('active',c.dataset.house===id))}
         mapDots.forEach(d=>{d.addEventListener('mouseenter',()=>setActiveHouse(d.dataset.house));d.addEventListener('click',()=>setActiveHouse(d.dataset.house))});
         houseCards.forEach(c=>{c.addEventListener('mouseenter',()=>setActiveHouse(c.dataset.house));c.addEventListener('click',()=>setActiveHouse(c.dataset.house))});
-        const track=document.querySelector('.exp-slider-track'),cards=document.querySelectorAll('.exp-card'),prevBtn=document.querySelector('.exp-slider-prev'),nextBtn=document.querySelector('.exp-slider-next'),dots=document.querySelectorAll('.exp-dot');
+        const track=document.querySelector('.exp-slider-track'),cards=document.querySelectorAll('.exp-card'),dots=document.querySelectorAll('.exp-dot');
         let currentIndex=0;const totalCards=9;
         function getCardsToShow(){return window.innerWidth<768?1:window.innerWidth<1024?2:3}
-        function updateSlider(){const n=getCardsToShow(),w=cards[0].offsetWidth+24;track.style.transform='translateX(-'+(currentIndex*w)+'px)';dots.forEach((d,i)=>d.classList.toggle('active',currentIndex>=Math.floor(i*(totalCards-n)/2)&&currentIndex<Math.floor(i*(totalCards-n)/2)+n))}
+        function getGap(){return window.innerWidth<768?0:24}
+        function updateSlider(){
+            const n=getCardsToShow(),gap=getGap(),w=cards[0].offsetWidth+gap;
+            // On mobile, no gap between cards
+            if(n===1){track.style.gap='0px';}else{track.style.gap='1.5rem';}
+            track.style.transform='translateX(-'+(currentIndex*w)+'px)';
+            dots.forEach((d,i)=>d.classList.toggle('active',i===Math.min(currentIndex,2)));
+        }
         function nextSlide(){const n=getCardsToShow();currentIndex=currentIndex>=totalCards-n?0:currentIndex+1;updateSlider()}
         function prevSlide(){const n=getCardsToShow();currentIndex=currentIndex<=0?totalCards-n:currentIndex-1;updateSlider()}
-        nextBtn.addEventListener('click',nextSlide);prevBtn.addEventListener('click',prevSlide);
+        document.querySelectorAll('.exp-slider-prev').forEach(b=>b.addEventListener('click',prevSlide));
+        document.querySelectorAll('.exp-slider-next').forEach(b=>b.addEventListener('click',nextSlide));
         let autoPlay=setInterval(nextSlide,4000);
-        document.querySelector('.exp-slider-container').addEventListener('mouseenter',()=>clearInterval(autoPlay));
-        document.querySelector('.exp-slider-container').addEventListener('mouseleave',()=>{autoPlay=setInterval(nextSlide,4000)});
+        const sliderEl=document.querySelector('.exp-slider');
+        sliderEl.addEventListener('mouseenter',()=>clearInterval(autoPlay));
+        sliderEl.addEventListener('mouseleave',()=>{autoPlay=setInterval(nextSlide,4000)});
+        // Touch swipe
+        let touchStartX=0,touchEndX=0;
+        sliderEl.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;clearInterval(autoPlay);},{passive:true});
+        sliderEl.addEventListener('touchend',e=>{
+            touchEndX=e.changedTouches[0].screenX;
+            const diff=touchStartX-touchEndX;
+            if(Math.abs(diff)>40){diff>0?nextSlide():prevSlide();}
+            autoPlay=setInterval(nextSlide,4000);
+        },{passive:true});
         window.addEventListener('resize',()=>{currentIndex=0;updateSlider()});
         updateSlider();
         
