@@ -201,7 +201,7 @@
         .footer-bottom { font-size: 0.8rem; opacity: 0.6; }
         @media (max-width: 1024px) { .equip-grid, .extras-grid { grid-template-columns: repeat(2, 1fr); } .tarif-grid { grid-template-columns: 1fr 1fr; } .exp-card { flex: 0 0 calc((100% - 1.5rem) / 2); } .esprit-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) { .reseau-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .nav { padding: 0.6rem 1rem; } .nav-logo img { height: 46px; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-headline { font-size: 1.8rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; } .exp-slider { width: 100%; overflow: hidden; } .exp-card { flex: 0 0 100%; margin: 0; } .exp-card-img { height: 220px; } .exp-card-body { padding: 1.25rem; } .exp-card-body h3 { font-size: 1.1rem; } .exp-slider-btn { display: none; } .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1rem; } .exp-slider-controls .exp-slider-btn { display: flex; width: 44px; height: 44px; font-size: 1.8rem; border: 2px solid rgba(248,245,235,0.4); background: transparent; color: var(--cream); border-radius: 50%; align-items: center; justify-content: center; cursor: pointer; } .exp-slider-dots { margin-top: 0; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 1.75rem; } .reseau-title { font-size: 1.3rem; } }
+        @media (max-width: 768px) { .nav { padding: 0.6rem 1rem; } .nav-logo img { height: 46px; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; } .exp-slider { width: 100%; overflow: hidden; } .exp-card { flex: 0 0 100%; margin: 0; } .exp-card-img { height: 220px; } .exp-card-body { padding: 1.25rem; } .exp-card-body h3 { font-size: 1.1rem; } .exp-slider-btn { display: none; } .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1rem; } .exp-slider-controls .exp-slider-btn { display: flex; width: 44px; height: 44px; font-size: 1.8rem; border: 2px solid rgba(248,245,235,0.4); background: transparent; color: var(--cream); border-radius: 50%; align-items: center; justify-content: center; cursor: pointer; } .exp-slider-dots { margin-top: 0; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 1.75rem; } .reseau-title { font-size: 1.3rem; } }
     
         /* ===== LIGHTBOX ===== */
         .lb-trigger { display:block; cursor:zoom-in; width:100%; }
@@ -239,7 +239,13 @@
             .nav-toggle { display: block; }
             .lang-toggle-mobile { display: none; }
         }
-
+/* ===== HERO MOBILE SIZE BOOST ===== */
+@media (max-width: 768px) {
+  .hero-headline {
+    font-size: 4rem;
+    line-height: 1.05;
+  }
+}
     </style>
 </head>
 <body>
