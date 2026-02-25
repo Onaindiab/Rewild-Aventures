@@ -193,7 +193,7 @@
         .tarif-card-price { font-family: var(--font-title); font-size: 1.8rem; font-weight: 700; color: var(--forest); margin-bottom: 1rem; }
         .tarif-card-cta { display: inline-block; padding: 0.75rem 1.5rem; background: var(--forest); color: var(--cream); font-weight: 600; border-radius: var(--radius-sm); transition: background 0.3s ease, color 0.3s ease; }
         .tarif-card-cta:hover { background: var(--gold); color: var(--forest-dark); }
-        .waitlist-form { max-width: 450px; margin: 0 auto; background: var(--cream); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; }
+        .waitlist-form { max-width: 450px; margin: 0 auto; background: rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 2.5rem; text-align: center; }
         .footer { padding: 3rem 2rem; background: #0a1a10; color: rgba(248,245,235,0.6); text-align: center; }
         .footer-tagline { font-style: italic; color: var(--gold); opacity: 0.8; margin-bottom: 1.5rem; }
         .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
@@ -606,10 +606,10 @@
     </section>
     <footer class="footer">
         <p class="footer-tagline" data-i18n="footer-tagline">Déconnecter pour se reconnecter.</p>
-        <div class="footer-links"><a href="mailto:hello@rewild-aventures.com">Contact</a><a href="https://instagram.com/rewildaventures">Instagram</a><a href="mentions-legales.html">Mentions légales</a></div>
+        <div class="footer-links"><a href="/cdn-cgi/l/email-protection#09616c656566497b6c7e60656d24687f6c677d7c7b6c7a276a6664">Contact</a><a href="https://instagram.com/rewildaventures">Instagram</a><a href="mentions-legales.html">Mentions légales</a></div>
         <p class="footer-bottom">© 2025 REWILD Aventures · La Lizière · Fontainebleau</p>
     </footer>
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
                 document.querySelectorAll('a[href^="#"]').forEach(a=>{
             a.addEventListener('click',e=>{
                 // Don't hijack clicks that should open the Tally modal
@@ -763,7 +763,7 @@
         document.querySelectorAll('.lang-option').forEach(opt => {
             opt.addEventListener('click', () => {
                 const lang = opt.textContent === 'FR' ? 'fr' : opt.textContent === 'ENG' ? 'en' : 'es';
-                setLanguage(lang);
+                    setLanguage(lang);
             });
         });
     </script>
