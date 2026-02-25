@@ -200,21 +200,37 @@
         .footer-bottom { font-size: 0.8rem; opacity: 0.6; }
         @media (max-width: 1024px) { .equip-grid, .extras-grid { grid-template-columns: repeat(2, 1fr); } .tarif-grid { grid-template-columns: 1fr 1fr; } .exp-card { flex: 0 0 calc((100% - 1.5rem) / 2); } .esprit-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) { .reseau-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .nav { padding: 1rem 1.5rem; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-headline { font-size: 1.8rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.4rem 0.75rem; } .lieu-grid, .equip-grid, .eco-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .hero-ctas { flex-direction: column; } .exp-card { flex: 0 0 100%; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 1.75rem; } .reseau-title { font-size: 1.3rem; } }
+        @media (max-width: 768px) { .nav { padding: 1rem 1.5rem; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-headline { font-size: 1.8rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.4rem 0.75px; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-card { flex: 0 0 100%; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 1.75rem; } .reseau-title { font-size: 1.3rem; } }
+    
+        /* ===== LIGHTBOX ===== */
+        .lb-trigger { display:block; cursor:zoom-in; border-radius:28px; overflow:hidden; position:relative; }
+        .lb-trigger img { transition: transform 0.3s ease; }
+        .lb-trigger:hover img { transform: scale(1.03); }
+        #lightbox { display:none; position:fixed; inset:0; z-index:9000; background:rgba(0,0,0,0.93); align-items:center; justify-content:center; }
+        #lightbox.open { display:flex; }
+        #lb-img { max-width:90vw; max-height:88vh; object-fit:contain; border-radius:12px; box-shadow:0 0 60px rgba(0,0,0,0.6); }
+        #lb-close { position:absolute; top:1.2rem; right:1.5rem; background:none; border:none; color:#fff; font-size:2.5rem; cursor:pointer; line-height:1; opacity:0.8; }
+        #lb-close:hover { opacity:1; }
+        .lb-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(255,255,255,0.12); border:none; color:#fff; font-size:2.5rem; width:56px; height:56px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s; }
+        .lb-arrow:hover { background:rgba(255,255,255,0.25); }
+        #lb-prev { left:1rem; }
+        #lb-next { right:1rem; }
+        #lb-counter { position:absolute; bottom:1rem; left:50%; transform:translateX(-50%); color:rgba(255,255,255,0.6); font-size:0.85rem; }
+
     </style>
 </head>
 <body>
     <nav class="nav">
-        <a href="#" class="nav-logo"><img src="./images/rewild-aventures-logo.png" alt="REWILD"></a>
+        <a href="#hero" class="nav-logo"><img src="./images/rewild-aventures-logo.png" alt="REWILD"></a>
         <div class="nav-links"><a href="#lieu" data-i18n="nav-lieu">LE LIEU</a><a href="#reseau" data-i18n="nav-reseau">LE RÉSEAU</a><a href="#experiences" data-i18n="nav-experiences">EXPÉRIENCES</a><a href="#tarifs" data-i18n="nav-tarifs">PACKAGES</a><a data-tally-open="yPlX2d" data-tally-layout="modal" data-tally-width="520" href="#waitlist" class="nav-cta" data-i18n="nav-reserver">RÉSERVER</a><div class="lang-toggle"><span class="lang-option active">FR</span><span class="lang-divider">/</span><span class="lang-option">ENG</span><span class="lang-divider">/</span><span class="lang-option">ESP</span></div></div>
         <div class="nav-right">
             <div class="lang-toggle-mobile"><span class="lang-option active">FR</span><span class="lang-divider">/</span><span class="lang-option">ENG</span><span class="lang-divider">/</span><span class="lang-option">ESP</span></div>
             <button class="nav-toggle">☰</button>
         </div>
     </nav>
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
-            <p class="hero-welcome" data-i18n="hero-welcome">Bienvenue à La Lizière</p>
+            <p class="hero-welcome" data-i18n="hero-welcome" style="text-decoration:underline;">Bienvenue à La Lizière</p>
             <h1 class="hero-headline" data-i18n="hero-headline">Glamping éco-responsable & aventures,<br><em>au cœur de la forêt de Fontainebleau</em></h1>
             <p class="hero-description" data-i18n="hero-desc"><strong>Réseau de Maisons Forestières vivantes</strong> créant des séjour-aventures immersifs pour couples, petits groupes et télétravailleurs en quête de reconnexion à la nature.</p>
             <div class="hero-badges"><span class="hero-badge">🥾 Point de départ aventure</span><span class="hero-badge">🌱 100% éco-conçu</span><span class="hero-badge">🏕️ Outdoor & indoor</span><span class="hero-badge">💰 Prix accessible</span><span class="hero-badge">💻 Compatible télétravail</span></div>
@@ -512,47 +528,63 @@
             <h2 class="section-title fade-in" data-i18n="vision-title">Aperçu de La Lizière</h2>
             <div class="vision-stack" style="display:flex; flex-direction:column; gap:50px;">
 
-    <div class="vision-stack"
+    <div class="vision-stack vision-stack-grid"
      style="display:grid; grid-template-columns:repeat(2, 1fr); gap:28px;">
 
   <div class="vision-item fade-in" style="border-radius:28px; overflow:hidden;">
+    <a class="lb-trigger" data-lb="0" href="javascript:void(0)">
     <img src="./images/chambre-forestiere.png" alt="Chambre forestiere"
          style="width:100%; height:300px; object-fit:cover; display:block;">
+    </a>
   </div>
         
   <div class="vision-item fade-in" style="border-radius:28px; overflow:hidden;">
+    <a class="lb-trigger" data-lb="1" href="javascript:void(0)">
     <img src="./images/yourtes.png" alt="Yourtes"
          style="width:100%; height:300px; object-fit:cover; display:block;">
+    </a>
   </div>
         
   <div class="vision-item fade-in" style="border-radius:28px; overflow:hidden;">
+    <a class="lb-trigger" data-lb="2" href="javascript:void(0)">
     <img src="./images/yourte-interieur.png" alt="Yourte interieur"
          style="width:100%; height:300px; object-fit:cover; display:block;">
+    </a>
   </div>      
 
   <div class="vision-item fade-in" style="border-radius:28px; overflow:hidden;">
+    <a class="lb-trigger" data-lb="3" href="javascript:void(0)">
     <img src="./images/netflix-and-chill.png" alt="Netflix and chill"
          style="width:100%; height:300px; object-fit:cover; display:block;">
+    </a>
   </div>
 
   <div class="vision-item fade-in" style="border-radius:28px; overflow:hidden;">
+    <a class="lb-trigger" data-lb="4" href="javascript:void(0)">
     <img src="./images/cuisine-abritee.png" alt="Cuisine abritee"
          style="width:100%; height:300px; object-fit:cover; display:block;">
+    </a>
   </div>
 
   <div class="vision-item fade-in" style="border-radius:28px; overflow:hidden;">
+    <a class="lb-trigger" data-lb="5" href="javascript:void(0)">
     <img src="./images/garage-equipements.png" alt="Garage et equipements"
          style="width:100%; height:300px; object-fit:cover; display:block;">
+    </a>
   </div>
         
   <div class="vision-item fade-in" style="border-radius:28px; overflow:hidden;">
+    <a class="lb-trigger" data-lb="6" href="javascript:void(0)">
     <img src="./images/bathhouse.png" alt="Bathhouse"
          style="width:100%; height:300px; object-fit:cover; display:block;">
+    </a>
   </div>   
         
    <div class="vision-item fade-in" style="border-radius:28px; overflow:hidden;">
+    <a class="lb-trigger" data-lb="7" href="javascript:void(0)">
     <img src="./images/sauna.png" alt="Sauna"
          style="width:100%; height:300px; object-fit:cover; display:block;">
+    </a>
   </div>            
 
 </div>
@@ -589,7 +621,7 @@
         <div class="container">
             <span class="section-tag fade-in" data-i18n="waitlist-tag">Réserver</span>
             <h2 class="section-title fade-in" data-i18n="waitlist-title">Rejoignez l'aventure</h2>
-            <p class="section-intro fade-in" data-i18n="waitlist-intro">Ouverture rentrée 2026. Inscrivez-vous en priorité.</p>
+            <p class="section-intro fade-in" data-i18n="waitlist-intro" style="color:var(--gold);">Ouverture rentrée 2026. Inscrivez-vous en priorité.</p>
             <div class="waitlist-form fade-in">
                 <iframe
                     data-tally-src="https://tally.so/embed/yPlX2d?hideTitle=1&transparentBackground=1"
@@ -766,7 +798,64 @@
                     setLanguage(lang);
             });
         });
+
+        // ===== LIGHTBOX =====
+        (function(){
+            const images = [
+                './images/chambre-forestiere.png',
+                './images/yourtes.png',
+                './images/yourte-interieur.png',
+                './images/netflix-and-chill.png',
+                './images/cuisine-abritee.png',
+                './images/garage-equipements.png',
+                './images/bathhouse.png',
+                './images/sauna.png'
+            ];
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('lb-img');
+            const lbCounter = document.getElementById('lb-counter');
+            let current = 0;
+
+            function open(index) {
+                current = ((index % images.length) + images.length) % images.length;
+                lbImg.src = images[current];
+                lbImg.alt = images[current].split('/').pop().replace(/\.png|\.jpg/i,'').replace(/-/g,' ');
+                lbCounter.textContent = (current + 1) + ' / ' + images.length;
+                lb.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+            function close() {
+                lb.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+            function prev() { open(current - 1); }
+            function next() { open(current + 1); }
+
+            document.querySelectorAll('.lb-trigger').forEach(el => {
+                el.addEventListener('click', () => open(parseInt(el.dataset.lb)));
+            });
+            document.getElementById('lb-close').addEventListener('click', close);
+            document.getElementById('lb-prev').addEventListener('click', prev);
+            document.getElementById('lb-next').addEventListener('click', next);
+            lb.addEventListener('click', e => { if (e.target === lb) close(); });
+            document.addEventListener('keydown', e => {
+                if (!lb.classList.contains('open')) return;
+                if (e.key === 'ArrowLeft') prev();
+                else if (e.key === 'ArrowRight') next();
+                else if (e.key === 'Escape') close();
+            });
+        })();
     </script>
     <script async src="https://tally.so/widgets/embed.js"></script>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" role="dialog" aria-modal="true">
+        <button id="lb-close" aria-label="Fermer">&#x2715;</button>
+        <button class="lb-arrow" id="lb-prev" aria-label="Précédent">&#8249;</button>
+        <img id="lb-img" src="" alt="">
+        <button class="lb-arrow" id="lb-next" aria-label="Suivant">&#8250;</button>
+        <div id="lb-counter"></div>
+    </div>
+
 </body>
 </html>
