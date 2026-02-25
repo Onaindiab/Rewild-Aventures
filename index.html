@@ -1,6 +1,145 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Lisière — REWILD Aventures</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --forest-dark: #1a3a2a;
+  --forest-grey: #243c34;
+  --forest-light: #2f4f45;
+  --cream: #f8f5eb;
+  --gold: #c9a227;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--cream);
+  color: #1a2a1a;
+  line-height: 1.6;
+}
+
+/* ===== WAITLIST SECTION ===== */
+
+#waitlist {
+  padding: 100px 20px;
+  background: linear-gradient(
+      rgba(26,58,42,0.94),
+      rgba(26,58,42,0.94)
+    ),
+    url('https://images.unsplash.com/photo-1507041957456-9c397ce39c97?w=1920&q=80')
+    center/cover no-repeat;
+  text-align: center;
+  color: var(--cream);
+}
+
+#waitlist h2 {
+  font-size: 2.6rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+#waitlist p {
+  max-width: 600px;
+  margin: 0 auto 50px;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+/* ===== DARK FORM CONTAINER ===== */
+
+.tally-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--forest-grey);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* IFRAME */
+
+.tally-wrapper iframe {
+  width: 100%;
+  height: 750px;
+  border: none;
+  border-radius: 12px;
+  background: var(--forest-grey);
+}
+
+/* Optional subtle glow */
+
+.tally-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  #waitlist {
+    padding: 70px 20px;
+  }
+
+  .tally-wrapper {
+    padding: 25px;
+  }
+
+  .tally-wrapper iframe {
+    height: 820px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<section id="waitlist">
+  <h2>Rejoignez les Explorateurs Fondateurs</h2>
+  <p>
+    Ouverture 2026 près de Fontainebleau. Accès prioritaire & tarifs fondateurs.
+  </p>
+
+  <div class="tally-wrapper">
+    <iframe
+      data-tally-src="https://tally.so/embed/yPlX2d?hideTitle=1&transparentBackground=1"
+      loading="lazy"
+      title="Pré-réservation Rewild">
+    </iframe>
+  </div>
+
+</section>
+
+<!-- Tally Embed Script -->
+<script async src="https://tally.so/widgets/embed.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Lizière — Glamping éco-responsable | REWILD Aventures</title>
