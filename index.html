@@ -331,8 +331,8 @@
             grid-template-columns: 1.4fr 1fr 1fr 1fr;
             gap: 3rem;
         }
-        .footer-brand {}
-        .footer-brand-logo { height: 70px; margin-bottom: 1.5rem; object-fit: contain; }
+        .footer-brand { display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .footer-brand-logo { height: 100px; margin-bottom: 1.25rem; object-fit: contain; }
         .footer-brand-tagline { font-family: var(--font-title); font-size: 1rem; font-style: italic; font-weight: 700; color: var(--gold); opacity: 0.9; margin-bottom: 1rem; line-height: 1.4; }
         .footer-brand-desc { font-family: var(--font-title); font-size: 0.82rem; color: rgba(248,245,235,0.5); line-height: 1.65; }
         .footer-col-title { font-family: var(--font-title); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); opacity: 0.8; margin-bottom: 1.25rem; }
@@ -379,7 +379,7 @@
         }
         @media (max-width: 600px) {
             .footer-top { grid-template-columns: 1fr; padding: 2rem 1.5rem 1.25rem; gap: 1.1rem; }
-            .footer-brand-logo { height: 50px; margin-bottom: 0.6rem; }
+            .footer-brand-logo { height: 80px; margin-bottom: 0.75rem; }
             .footer-brand-tagline { font-size: 0.88rem; margin-bottom: 0.4rem; }
             .footer-brand-desc { font-size: 0.76rem; }
             .footer-col-title { margin-bottom: 0.55rem; }
