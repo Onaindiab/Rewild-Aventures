@@ -200,6 +200,82 @@
         .footer-tagline { font-style: italic; color: var(--gold); opacity: 0.8; margin-bottom: 1.5rem; }
         .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; }
         .footer-bottom { font-size: 0.8rem; opacity: 0.6; }
+        /* ===== SCROLL NAV ===== */
+        .scroll-nav {
+            position: fixed;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.55rem;
+        }
+        .scroll-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            cursor: pointer;
+        }
+        .scroll-nav-label {
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.75);
+            background: rgba(20,38,20,0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0.28rem 0.6rem;
+            border-radius: 20px;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(6px);
+            transition: opacity 0.22s ease, transform 0.22s ease;
+            pointer-events: none;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .scroll-nav-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.25);
+            border: 1.5px solid rgba(255,255,255,0.45);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            box-shadow: 0 0 0 0 rgba(201,162,39,0);
+        }
+        .scroll-nav-item:hover .scroll-nav-label {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scroll-nav-item:hover .scroll-nav-dot {
+            background: rgba(201,162,39,0.7);
+            border-color: var(--gold);
+            transform: scale(1.35);
+        }
+        .scroll-nav-item.active .scroll-nav-dot {
+            background: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201,162,39,0.22);
+            transform: scale(1.25);
+        }
+        .scroll-nav-item.active .scroll-nav-label {
+            opacity: 1;
+            transform: translateX(0);
+            color: var(--gold-light);
+            border-color: rgba(201,162,39,0.25);
+        }
+        @media (max-width: 768px) {
+            .scroll-nav {
+                right: 0.6rem;
+                gap: 0.45rem;
+            }
+            .scroll-nav-label { display: none; }
+            .scroll-nav-dot { width: 6px; height: 6px; }
+        }
         @media (max-width: 1024px) { .equip-grid, .extras-grid { grid-template-columns: repeat(2, 1fr); } .tarif-grid { grid-template-columns: 1fr 1fr; } .exp-card { flex: 0 0 calc((100% - 1.5rem) / 2); } .esprit-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) { .reseau-grid { grid-template-columns: 1fr; } }
         @media (max-width: 768px) { .nav { padding: 0.6rem 1rem; } .nav-logo img { height: 46px; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; } .exp-slider { width: 100%; overflow: hidden; } .exp-card { flex: 0 0 100%; margin: 0; } .exp-card-img { height: 220px; } .exp-card-body { padding: 1.25rem; } .exp-card-body h3 { font-size: 1.1rem; } .exp-slider-btn { display: none; } .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1rem; } .exp-slider-controls .exp-slider-btn { display: flex; width: 44px; height: 44px; font-size: 1.8rem; border: 2px solid rgba(248,245,235,0.4); background: transparent; color: var(--cream); border-radius: 50%; align-items: center; justify-content: center; cursor: pointer; } .exp-slider-dots { margin-top: 0; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 2.2rem; } .reseau-title { font-size: 2.2rem; } }
@@ -1068,7 +1144,87 @@
             });
         })();
     </script>
-    <script async src="https://tally.so/widgets/embed.js"></script>
+    <!-- SCROLL NAV -->
+    <nav class="scroll-nav" id="scrollNav" aria-label="Navigation sections">
+        <div class="scroll-nav-item" data-target="hero">
+            <span class="scroll-nav-label">Accueil</span>
+            <span class="scroll-nav-dot"></span>
+        </div>
+        <div class="scroll-nav-item" data-target="lieu">
+            <span class="scroll-nav-label">Le Lieu</span>
+            <span class="scroll-nav-dot"></span>
+        </div>
+        <div class="scroll-nav-item" data-target="reseau">
+            <span class="scroll-nav-label">Le Réseau</span>
+            <span class="scroll-nav-dot"></span>
+        </div>
+        <div class="scroll-nav-item" data-target="experiences">
+            <span class="scroll-nav-label">Expériences</span>
+            <span class="scroll-nav-dot"></span>
+        </div>
+        <div class="scroll-nav-item" data-target="esprit">
+            <span class="scroll-nav-label">L'Esprit</span>
+            <span class="scroll-nav-dot"></span>
+        </div>
+        <div class="scroll-nav-item" data-target="vision">
+            <span class="scroll-nav-label">La Vision</span>
+            <span class="scroll-nav-dot"></span>
+        </div>
+        <div class="scroll-nav-item" data-target="eco">
+            <span class="scroll-nav-label">Éco-geste</span>
+            <span class="scroll-nav-dot"></span>
+        </div>
+        <div class="scroll-nav-item" data-target="tarifs">
+            <span class="scroll-nav-label">Tarifs</span>
+            <span class="scroll-nav-dot"></span>
+        </div>
+        <div class="scroll-nav-item" data-target="waitlist">
+            <span class="scroll-nav-label">Liste d'attente</span>
+            <span class="scroll-nav-dot"></span>
+        </div>
+    </nav>
 
+    <script>
+    // ===== SCROLL NAV LOGIC =====
+    (function(){
+        const nav = document.getElementById('scrollNav');
+        const items = nav.querySelectorAll('.scroll-nav-item');
+        const sections = [];
+
+        items.forEach(item => {
+            const id = item.dataset.target;
+            const el = document.getElementById(id);
+            if (el) sections.push({ id, el, item });
+            item.addEventListener('click', () => {
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        function update() {
+            const scrollY = window.scrollY;
+            const winH = window.innerHeight;
+            let activeIndex = 0;
+
+            sections.forEach((s, i) => {
+                const rect = s.el.getBoundingClientRect();
+                const top = rect.top + scrollY;
+                if (scrollY >= top - winH * 0.45) {
+                    activeIndex = i;
+                }
+            });
+
+            sections.forEach((s, i) => {
+                s.item.classList.toggle('active', i === activeIndex);
+            });
+        }
+
+        window.addEventListener('scroll', update, { passive: true });
+        update();
+    })();
+    </script>
+
+    <script async src="https://tally.so/widgets/embed.js"></script>
 </body>
 </html>
