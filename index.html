@@ -26,8 +26,8 @@
         .fade-in-right.visible { opacity: 1; transform: translateX(0); }
         .scale-in { opacity: 0; transform: scale(0.9); transition: opacity 0.6s ease, transform 0.6s ease; }
         .scale-in.visible { opacity: 1; transform: scale(1); }
-        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.9rem 2.5rem 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(26,58,42,0.97); backdrop-filter: blur(12px); }
-        .nav-logo img { height: 76px; object-fit: contain; object-position: left center; display: block; }
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.5rem 2.5rem 0.5rem 1.5rem; display: flex; justify-content: space-between; align-items: center; background: rgba(26,58,42,0.97); backdrop-filter: blur(12px); }
+        .nav-logo img { height: 76px; object-fit: contain; object-position: left center; display: block; margin-top: -6px; }
         .nav-logo { display: flex; align-items: center; }
         .nav-links { display: flex; align-items: center; gap: 2.5rem; }
         .nav-links a { font-size: 0.85rem; font-weight: 600; color: var(--cream); opacity: 0.85; }
@@ -463,7 +463,7 @@
         }
         @media (max-width: 1024px) { .equip-grid, .extras-grid { grid-template-columns: repeat(2, 1fr); } .tarif-grid { grid-template-columns: 1fr 1fr; } .exp-card { flex: 0 0 calc((100% - 1.5rem) / 2); } .esprit-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) { .reseau-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .nav { padding: 0.6rem 1rem 0.6rem 0.75rem; } .nav-logo img { height: 58px; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; } .exp-slider { width: 100%; overflow: hidden; } .exp-card { flex: 0 0 100%; margin: 0; } .exp-card-img { height: 220px; } .exp-card-body { padding: 1.25rem; } .exp-card-body h3 { font-size: 1.1rem; } .exp-slider-btn { display: none; } .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1rem; } .exp-slider-controls .exp-slider-btn { display: flex; width: 44px; height: 44px; font-size: 1.8rem; border: 2px solid rgba(248,245,235,0.4); background: transparent; color: var(--cream); border-radius: 50%; align-items: center; justify-content: center; cursor: pointer; } .exp-slider-dots { margin-top: 0; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 2.2rem; } .reseau-title { font-size: 2.2rem; } }
+        @media (max-width: 768px) { .nav { padding: 0.3rem 1rem 0.3rem 0.75rem; } .nav-logo img { height: 58px; margin-top: -4px; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; } .exp-slider { width: 100%; overflow: hidden; } .exp-card { flex: 0 0 100%; margin: 0; } .exp-card-img { height: 220px; } .exp-card-body { padding: 1.25rem; } .exp-card-body h3 { font-size: 1.1rem; } .exp-slider-btn { display: none; } .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1rem; } .exp-slider-controls .exp-slider-btn { display: flex; width: 44px; height: 44px; font-size: 1.8rem; border: 2px solid rgba(248,245,235,0.4); background: transparent; color: var(--cream); border-radius: 50%; align-items: center; justify-content: center; cursor: pointer; } .exp-slider-dots { margin-top: 0; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 2.2rem; } .reseau-title { font-size: 2.2rem; } }
     
         /* ===== LIGHTBOX ===== */
         .lb-trigger { display:block; cursor:zoom-in; width:100%; }
@@ -483,17 +483,19 @@
     
         /* ===== MOBILE MENU ===== */
         .nav-cta-mobile { display: none; }
+        .nav-right { display: none; align-items: center; gap: 1rem; }
         .mobile-menu { display: none; position: fixed; inset: 0; z-index: 200; background: var(--forest-dark); flex-direction: column; padding: 0; overflow-y: auto; }
         .mobile-menu.open { display: flex; }
         .mobile-menu-header { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 1.5rem; border-bottom: 1px solid rgba(248,245,235,0.1); }
         .mobile-menu-logo img { height: 60px; object-fit: contain; }
         .mobile-menu-close { background: none; border: none; color: var(--cream); font-size: 1.6rem; cursor: pointer; padding: 0.25rem 0.5rem; opacity: 0.8; }
         .mobile-menu-close:hover { opacity: 1; }
-        .nav-right { display: none; align-items: center; gap: 1rem; }
-        .mobile-menu-links { display: flex; flex-direction: column; padding: 1rem 1.5rem 2rem; gap: 0.25rem; flex: 1; }
+        .mobile-menu-links { display: flex; flex-direction: column; padding: 1rem 1.5rem 1.5rem; gap: 0.25rem; flex: 1; }
         .mobile-menu-link { font-family: var(--font-title); font-size: 2rem; font-weight: 700; color: var(--cream); opacity: 0.85; padding: 0.75rem 0; border-bottom: 1px solid rgba(248,245,235,0.08); text-decoration: none; transition: opacity 0.2s, padding-left 0.2s; }
         .mobile-menu-link:hover { opacity: 1; padding-left: 0.5rem; }
+        .mobile-menu-cta { display: block; margin: 1rem 1.5rem 2rem; background: var(--gold); color: var(--forest-dark) !important; text-align: center; padding: 1rem; border-radius: var(--radius-sm); font-size: 1rem; font-weight: 700; text-decoration: none; }
         @media (max-width: 768px) {
+            .nav-right { display: flex; }
             .nav-cta-mobile { display: flex; align-items: center; background: var(--gold); color: var(--forest-dark) !important; padding: 0.55rem 1rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; white-space: nowrap; text-decoration: none; }
             .nav-toggle { display: block; }
         }
@@ -522,6 +524,7 @@
             <a href="#experiences" class="mobile-menu-link" data-i18n="nav-experiences">EXPÉRIENCES</a>
             <a href="#tarifs" class="mobile-menu-link" data-i18n="nav-tarifs">PACKAGES</a>
         </nav>
+        <a data-tally-open="yPlX2d" data-tally-layout="modal" data-tally-width="520" href="#waitlist" class="mobile-menu-cta" data-i18n="nav-reserver">RÉSERVER</a>
     </div>
     <section class="hero" id="hero">
         <div class="hero-content">
