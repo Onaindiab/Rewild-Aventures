@@ -671,18 +671,18 @@
             .exp-slider::-webkit-scrollbar { display: none; }
             .exp-slider-track {
                 display: flex;
-                gap: 0;
+                gap: 1rem;
                 width: max-content;
                 transform: none !important;
                 transition: none;
+                padding: 0 1.5rem;
             }
             .exp-card {
-                flex: 0 0 100vw;
-                width: 100vw;
-                padding: 0 1.5rem;
-                box-sizing: border-box;
+                flex: 0 0 calc(100vw - 3rem);
+                width: calc(100vw - 3rem);
+                margin: 0 1.5rem 0 0;
                 scroll-snap-align: start;
-                margin: 0;
+                box-sizing: border-box;
             }
             .exp-card-img { height: 220px; }
             .exp-card-body { padding: 1.25rem; }
@@ -1437,7 +1437,8 @@
             if(n===1){
                 // Mobile: scroll the slider element directly
                 const sliderEl=document.querySelector('.exp-slider');
-                sliderEl.scrollTo({left: currentIndex * sliderEl.offsetWidth, behavior:'smooth'});
+                const cardW = document.querySelector('.exp-card').offsetWidth + 16; // 16 = gap
+                sliderEl.scrollTo({left: currentIndex * cardW, behavior:'smooth'});
                 dots.forEach((d,i)=>d.classList.toggle('active',i===currentIndex));
                 return;
             }
@@ -1473,7 +1474,7 @@
                 'nav-lieu': 'LE LIEU',
                 'nav-reseau': 'LE R\u00c9SEAU',
                 'nav-experiences': 'EXP\u00c9RIENCES',
-                'nav-tarifs': 'PACKAGES',
+                'nav-tarifs': 'OFFRES',
                 'nav-reserver': 'R\u00c9SERVER',
                 'hero-quote': '\"D\u00e9connecter pour se reconnecter\"',
                 'hero-welcome': '\u2014 Bienvenue \u00e0 La Lizi\u00e8re \u2014',
@@ -1496,7 +1497,7 @@
                 'vision-title': 'Aper\u00e7u de La Lizi\u00e8re',
                 'eco-tag': '\u00c9co-conception',
                 'eco-title': 'Pens\u00e9 pour la plan\u00e8te',
-                'tarifs-tag': 'Packages',
+                'tarifs-tag': 'Offres',
                 'tarifs-title': 'S\u00e9jours \u00e0 votre rythme',
                 'waitlist-tag': 'R\u00e9server',
                 'waitlist-title': 'Rejoignez l\'aventure',
@@ -1532,7 +1533,7 @@
                 'vision-title': 'A preview of La Lizi\u00e8re',
                 'eco-tag': 'Eco-design',
                 'eco-title': 'Designed for the planet',
-                'tarifs-tag': 'Packages',
+                'tarifs-tag': 'Offres',
                 'tarifs-title': 'Stays at your own pace',
                 'waitlist-tag': 'Book',
                 'waitlist-title': 'Join the adventure',
