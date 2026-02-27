@@ -659,26 +659,45 @@
             .nav-toggle { display: block; }
         }
         @media (max-width: 768px) { .nav { padding: 0.65rem 1rem 0.65rem 0.75rem; } .nav-logo img { height: 36px; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; }
-            .exp-slider { width: 100%; overflow: hidden; }
-            .exp-slider-clip { overflow: visible; padding: 20px 0 28px 0; margin: -20px 0 -28px 0; }
-            .exp-slider-track {
-                display: flex;
+            .exp-slider-clip { all: unset; display: block; }
+            .exp-slider { 
+                width: 100%; 
                 overflow-x: scroll;
+                overflow-y: visible;
                 scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
-                gap: 1rem;
-                padding: 0 1.5rem;
+            }
+            .exp-slider::-webkit-scrollbar { display: none; }
+            .exp-slider-track {
+                display: flex;
+                gap: 0;
+                width: max-content;
                 transform: none !important;
                 transition: none;
             }
-            .exp-slider-track::-webkit-scrollbar { display: none; }
             .exp-card {
-                flex: 0 0 85%;
-                min-width: 0;
-                margin: 0;
+                flex: 0 0 100vw;
+                width: 100vw;
+                padding: 0 1.5rem;
+                box-sizing: border-box;
                 scroll-snap-align: start;
-            } .exp-card-img { height: 220px; } .exp-card-body { padding: 1.25rem; } .exp-card-body h3 { font-size: 1.1rem; } .exp-slider-btn { display: none; } .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1rem; } .exp-slider-controls .exp-slider-btn { display: flex; width: 44px; height: 44px; border-radius: 50%; align-items: center; justify-content: center; cursor: pointer; } .exp-slider-dots { margin-top: 0; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 2.2rem; } .reseau-title { font-size: 2.2rem; } }
+                margin: 0;
+            }
+            .exp-card-img { height: 220px; }
+            .exp-card-body { padding: 1.25rem; }
+            .exp-card-body h3 { font-size: 1.1rem; }
+            .exp-slider-btn { display: none; }
+            .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1rem; }
+            .exp-slider-controls .exp-slider-btn { display: flex; width: 44px; height: 44px; border-radius: 50%; align-items: center; justify-content: center; cursor: pointer; }
+            .exp-slider-dots { margin-top: 0; }
+            .reseau-cards-grid { grid-template-columns: 1fr; }
+            .esprit-grid { grid-template-columns: 1fr; }
+            .section { padding: 3rem 0; }
+            .container { padding: 0 1.5rem; }
+            .section-title { font-size: 2.2rem; }
+            .reseau-title { font-size: 2.2rem; }
+        }
     
         /* ===== LIGHTBOX ===== */
         .lb-trigger { display:block; cursor:zoom-in; width:100%; }
@@ -1416,8 +1435,10 @@
         function updateSlider(){
             const n=getCardsToShow();
             if(n===1){
-                // Mobile: CSS scroll-snap handles it, just update dots
-                dots.forEach((d,i)=>d.classList.toggle('active',i===Math.min(currentIndex,2)));
+                // Mobile: scroll the slider element directly
+                const sliderEl=document.querySelector('.exp-slider');
+                sliderEl.scrollTo({left: currentIndex * sliderEl.offsetWidth, behavior:'smooth'});
+                dots.forEach((d,i)=>d.classList.toggle('active',i===currentIndex));
                 return;
             }
             track.style.gap='1.5rem';
@@ -1425,8 +1446,8 @@
             track.style.transform='translateX(-'+(currentIndex*w)+'px)';
             dots.forEach((d,i)=>d.classList.toggle('active',i===Math.min(currentIndex,2)));
         }
-        function nextSlide(){const n=getCardsToShow();currentIndex=currentIndex>=totalCards-n?0:currentIndex+1;updateSlider()}
-        function prevSlide(){const n=getCardsToShow();currentIndex=currentIndex<=0?totalCards-n:currentIndex-1;updateSlider()}
+        function nextSlide(){const n=getCardsToShow();currentIndex=currentIndex>=totalCards-1?0:currentIndex+1;updateSlider()}
+        function prevSlide(){const n=getCardsToShow();currentIndex=currentIndex<=0?totalCards-1:currentIndex-1;updateSlider()}
         document.querySelectorAll('.exp-slider-prev').forEach(b=>b.addEventListener('click',prevSlide));
         document.querySelectorAll('.exp-slider-next').forEach(b=>b.addEventListener('click',nextSlide));
         let autoPlay=setInterval(nextSlide,4000);
