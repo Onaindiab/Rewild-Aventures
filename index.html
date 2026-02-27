@@ -15,7 +15,7 @@
         :root { --forest-dark: #1a3a2a; --forest: #234a35; --navy: #1e3a5f; --cream: #f8f5eb; --cream-dark: #efe9d9; --gold: #c9a227; --gold-light: #d4b84a; --text-dark: #1a2a1a; --text-muted: #5a6a5a; --font-title: 'Axiforma', 'Plus Jakarta Sans', sans-serif; --font-h1: 'Cormorant Garamond', Georgia, serif; --font-body: 'Plus Jakarta Sans', sans-serif; --radius-sm: 6px; --radius-lg: 16px; --radius-xl: 24px; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
-        body { font-family: var(--font-body); background: var(--cream); color: var(--text-dark); line-height: 1.7; font-size: 17px; }
+        body { font-family: var(--font-body); background: var(--cream); color: var(--text-dark); line-height: 1.7; font-size: 17px; overflow-x: hidden; }
         img { max-width: 100%; height: auto; display: block; }
         a { color: inherit; text-decoration: none; }
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -285,7 +285,7 @@
         .exp-slider-container { position: relative; display: flex; align-items: center; gap: 1rem; margin-top: 1rem; margin-bottom: 0.5rem; }
         #experiences .container { overflow: visible; }
         .exp-slider { overflow: visible; flex: 1; }
-        .exp-slider-clip { overflow: hidden; padding-top: 24px; margin-top: -24px; padding-bottom: 28px; margin-bottom: -28px; padding-right: 30px; margin-right: -30px; }
+        .exp-slider-clip { overflow: hidden; padding-top: 20px; margin-top: -20px; padding-bottom: 24px; margin-bottom: -24px; }
         .exp-slider-track { display: flex; transition: transform 0.5s ease; gap: 1.5rem; }
         .exp-card { flex: 0 0 calc((100% - 3rem) / 3); background: var(--cream); border-radius: var(--radius-lg); overflow: visible; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .exp-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
@@ -659,23 +659,28 @@
             .nav-toggle { display: block; }
         }
         @media (max-width: 768px) { .nav { padding: 0.65rem 1rem 0.65rem 0.75rem; } .nav-logo img { height: 36px; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; }
-            /* Mobile slider: bypass all nested wrappers, scroll on track directly */
-            .exp-slider-container { overflow: hidden; }
-            .exp-slider-clip { display: contents; }
-            .exp-slider { display: contents; }
-            .exp-slider-track {
-                display: flex;
+            .exp-slider-container { display: block; overflow: hidden; width: 100%; }
+            .exp-slider-clip { display: block; overflow: hidden; width: 100%; padding: 0; margin: 0; }
+            .exp-slider {
+                display: block;
+                width: 100%;
                 overflow-x: scroll;
+                overflow-y: hidden;
                 scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
+            }
+            .exp-slider::-webkit-scrollbar { display: none; }
+            .exp-slider-track {
+                display: flex;
+                width: 100%;
                 gap: 0;
                 transform: none !important;
                 transition: none;
             }
-            .exp-slider-track::-webkit-scrollbar { display: none; }
             .exp-card {
                 flex: 0 0 100%;
+                width: 100%;
                 min-width: 100%;
                 scroll-snap-align: start;
                 box-sizing: border-box;
@@ -1435,9 +1440,8 @@
             if(n===1){
                 // Mobile: scroll the slider element directly
                 const sliderEl=document.querySelector('.exp-slider');
-                const mobileTrack = document.querySelector('.exp-slider-track');
-                const cardWidth = mobileTrack.offsetWidth;
-                mobileTrack.scrollTo({left: currentIndex * cardWidth, behavior:'smooth'});
+                const mobileSlider = document.querySelector('.exp-slider');
+                mobileSlider.scrollTo({left: currentIndex * mobileSlider.offsetWidth, behavior:'smooth'});
                 dots.forEach((d,i)=>d.classList.toggle('active',i===currentIndex));
                 return;
             }
