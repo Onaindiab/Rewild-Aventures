@@ -155,11 +155,75 @@
         .extras-title { font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 0.5rem; }
         .extras-subtitle { color: var(--text-muted); }
         .extras-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-        .extra-card { background: var(--cream); border-radius: var(--radius-lg); padding: 1.5rem; transition: all 0.3s ease; }
-        .extra-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+
+        /* ===== ADD-ON CARDS ===== */
+        .extra-card {
+            position: relative;
+            background: var(--cream);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: visible;
+        }
+        .extra-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+        }
+        /* Geometric CSS cross — pixel-perfect center, no font rendering issues */
+        .extra-plus {
+            position: absolute;
+            top: -11px;
+            right: -11px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: rgba(180,180,180,0.35);
+            transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+            transform-origin: 50% 50%;
+            user-select: none;
+            pointer-events: none;
+            animation: plusPulse 2.8s ease-in-out infinite;
+        }
+        /* Horizontal bar of cross */
+        .extra-plus::before,
+        .extra-plus::after {
+            content: '';
+            position: absolute;
+            background: rgba(90,90,90,0.55);
+            border-radius: 1px;
+            transition: background 0.25s ease;
+            top: 50%;
+            left: 50%;
+        }
+        .extra-plus::before {
+            width: 10px;
+            height: 2px;
+            transform: translate(-50%, -50%);
+        }
+        .extra-plus::after {
+            width: 2px;
+            height: 10px;
+            transform: translate(-50%, -50%);
+        }
+        .extra-card:hover .extra-plus {
+            background: var(--gold);
+            transform: rotate(90deg) scale(1.12);
+            box-shadow: 0 3px 10px rgba(201,162,39,0.5);
+            animation: none;
+        }
+        .extra-card:hover .extra-plus::before,
+        .extra-card:hover .extra-plus::after {
+            background: #fff;
+        }
         .extra-card-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
         .extra-card h4 { font-family: var(--font-title); font-size: 1rem; font-weight: 600; color: var(--forest-dark); margin-bottom: 0.5rem; }
         .extra-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+
+        @keyframes plusPulse {
+            0%, 100% { box-shadow: none; }
+            50% { box-shadow: 0 0 0 5px rgba(180,180,180,0.18); }
+        }
         .reseau-container { max-width: 1100px; margin: 0 auto; }
         .reseau-header { text-align: center; margin-bottom: 3rem; }
         .reseau-tag { display: block; text-align: center; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; color: var(--forest); }
@@ -183,10 +247,10 @@
         .dot-label { position: absolute; left: 50%; transform: translateX(-50%) translateY(-5px); top: 100%; margin-top: 8px; white-space: nowrap; font-size: 0.7rem; font-weight: 700; font-family: var(--font-title); padding: 4px 8px; border-radius: 4px; background: rgba(26,58,42,0.95); color: var(--cream); opacity: 0; transition: all 0.3s ease; z-index: 30; }
         .map-dot.active .dot-label { opacity: 1; transform: translateX(-50%) translateY(0); }
         .reseau-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-        .house-card { display: flex; width: 100%; text-align: left; padding: 10px; border-radius: 12px; border: none; background: white; color: var(--forest-dark); cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
+        .house-card { display: flex; width: 100%; text-align: left; padding: 6px; border-radius: 12px; border: none; background: white; color: var(--forest-dark); cursor: pointer; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.05); overflow: hidden; }
         .house-card:hover, .house-card.active { background: var(--forest-dark); color: var(--cream); transform: translateY(-2px); }
-        .house-card-img { width: 70px; height: 70px; background: var(--cream-dark); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-        .house-card:hover .house-card-img, .house-card.active .house-card-img { background: rgba(255,255,255,0.1); }
+        .house-card-img { width: 80px; height: 80px; background: transparent; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .house-card:hover .house-card-img, .house-card.active .house-card-img { background: transparent; }
         .house-card-content { padding: 0.75rem 1rem; flex: 1; display: flex; flex-direction: column; justify-content: center; }
         .house-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.35rem; }
         .house-card-name { font-size: 0.9rem; font-weight: 600; font-family: var(--font-title); margin: 0; }
@@ -597,12 +661,12 @@
             <div class="extras-box fade-in">
                 <div class="extras-header"><h3 class="extras-title">🗄️ Extras à la carte</h3><p class="extras-subtitle">Personnalisez votre séjour avec nos options additionnelles</p></div>
                 <div class="extras-grid">
-                    <div class="extra-card"><div class="extra-card-icon">🍳🍽️</div><h4>Équipement cuisine</h4><p>Plaques chauffantes, poêles, couverts. Option paniers petit-déjeuner & produits fermiers locaux.</p></div>
-                    <div class="extra-card"><div class="extra-card-icon">🎬✨</div><h4>Cinéma plein air</h4><p>Location écran & projecteur pour séances sous les étoiles ou sessions créatives en groupe.</p></div>
-                    <div class="extra-card"><div class="extra-card-icon">🧗🚴</div><h4>Équipements sportifs</h4><p>Vélos électriques, crash pads escalade, tapis yoga, slackline. En lien avec Basaventure Barbizon.</p></div>
-                    <div class="extra-card"><div class="extra-card-icon">🧘</div><h4>Bien-être</h4><p>Sauna et bain de glace pour détente avant/après explorations.</p></div>
-                    <div class="extra-card"><div class="extra-card-icon">🛁🍃</div><h4>Pack hygiène éco</h4><p>Kit produits biodégradables, sélectionnés pour efficacité et impact réduit.</p></div>
-                    <div class="extra-card"><div class="extra-card-icon">🔥</div><h4>Option chauffage</h4><p>Chauffage d'appoint pour les mois froids, confort optimal dans l'esprit nature.</p></div>
+                    <div class="extra-card"><span class="extra-plus"></span><div class="extra-card-icon">🍳🍽️</div><h4>Équipement cuisine</h4><p>Plaques chauffantes, poêles, couverts. Option paniers petit-déjeuner & produits fermiers locaux.</p></div>
+                    <div class="extra-card"><span class="extra-plus"></span><div class="extra-card-icon">🎬✨</div><h4>Cinéma plein air</h4><p>Location écran & projecteur pour séances sous les étoiles ou sessions créatives en groupe.</p></div>
+                    <div class="extra-card"><span class="extra-plus"></span><div class="extra-card-icon">🧗🚴</div><h4>Équipements sportifs</h4><p>Vélos électriques, crash pads escalade, tapis yoga, slackline. En lien avec Basaventure Barbizon.</p></div>
+                    <div class="extra-card"><span class="extra-plus"></span><div class="extra-card-icon">🧘</div><h4>Bien-être</h4><p>Sauna et bain de glace pour détente avant/après explorations.</p></div>
+                    <div class="extra-card"><span class="extra-plus"></span><div class="extra-card-icon">🛁🍃</div><h4>Pack hygiène éco</h4><p>Kit produits biodégradables, sélectionnés pour efficacité et impact réduit.</p></div>
+                    <div class="extra-card"><span class="extra-plus"></span><div class="extra-card-icon">🔥</div><h4>Option chauffage</h4><p>Chauffage d'appoint pour les mois froids, confort optimal dans l'esprit nature.</p></div>
                 </div>
             </div>
         </div>
@@ -692,8 +756,8 @@
                     <div class="reseau-cards-grid">
                         
                         <button class="house-card active" data-house="macherin">
-  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:8px;">
-    <img src="images/badge-mf-macherin.png" alt="Badge MF Macherin" style="width:90px;height:auto;display:block;">
+  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:2px;">
+    <img src="images/badge-mf-macherin.png" alt="Badge MF Macherin" style="width:100%;height:100%;object-fit:contain;display:block;">
   </div>
   <div class="house-card-content">
     <div class="house-card-header">
@@ -708,8 +772,8 @@
                         
                         
                         <button class="house-card" data-house="croix-gd-veneur">
-  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:8px;">
-    <img src="images/badge-mf-croix-gd-veneur.png" alt="Badge MF Croix du Gd Veneur" style="width:90px;height:auto;display:block;">
+  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:2px;">
+    <img src="images/badge-mf-croix-gd-veneur.png" alt="Badge MF Croix du Gd Veneur" style="width:100%;height:100%;object-fit:contain;display:block;">
   </div>
   <div class="house-card-content">
     <div class="house-card-header">
@@ -722,8 +786,8 @@
 </button>
 
 <button class="house-card" data-house="de-la-solle">
-  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:8px;">
-    <img src="images/badge-mf-de-la-solle.png" alt="Badge MF De la Solle" style="width:90px;height:auto;display:block;">
+  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:2px;">
+    <img src="images/badge-mf-de-la-solle.png" alt="Badge MF De la Solle" style="width:100%;height:100%;object-fit:contain;display:block;">
   </div>
   <div class="house-card-content">
     <div class="house-card-header">
@@ -736,8 +800,8 @@
 </button>
 
 <button class="house-card" data-house="de-courbuisson">
-  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:8px;">
-    <img src="images/badge-mf-de-courbuisson.png" alt="Badge MF De Courbuisson" style="width:90px;height:auto;display:block;">
+  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:2px;">
+    <img src="images/badge-mf-de-courbuisson.png" alt="Badge MF De Courbuisson" style="width:100%;height:100%;object-fit:contain;display:block;">
   </div>
   <div class="house-card-content">
     <div class="house-card-header">
@@ -750,8 +814,8 @@
 </button>
 
 <button class="house-card" data-house="auxiliaire-courbuisson">
-  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:8px;">
-    <img src="images/badge-mf-auxiliaire-courbuisson.png" alt="Badge MF Aux. Courbuisson" style="width:90px;height:auto;display:block;">
+  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:2px;">
+    <img src="images/badge-mf-auxiliaire-courbuisson.png" alt="Badge MF Aux. Courbuisson" style="width:100%;height:100%;object-fit:contain;display:block;">
   </div>
   <div class="house-card-content">
     <div class="house-card-header">
@@ -764,8 +828,8 @@
 </button>
 
 <button class="house-card" data-house="de-lobelisque">
-  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:8px;">
-    <img src="images/badge-mf-de-lobelisque.png" alt="Badge MF De l'Obélisque" style="width:90px;height:auto;display:block;">
+  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:2px;">
+    <img src="images/badge-mf-de-lobelisque.png" alt="Badge MF De l'Obélisque" style="width:100%;height:100%;object-fit:contain;display:block;">
   </div>
   <div class="house-card-content">
     <div class="house-card-header">
@@ -778,8 +842,8 @@
 </button>
 
 <button class="house-card" data-house="grande-vallee">
-  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:8px;">
-    <img src="images/badge-mf-grande-vallee.png" alt="Badge MF Grande Vallée" style="width:90px;height:auto;display:block;">
+  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:2px;">
+    <img src="images/badge-mf-grande-vallee.png" alt="Badge MF Grande Vallée" style="width:100%;height:100%;object-fit:contain;display:block;">
   </div>
   <div class="house-card-content">
     <div class="house-card-header">
@@ -792,8 +856,8 @@
 </button>
 
 <button class="house-card" data-house="de-la-futaie">
-  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:8px;">
-    <img src="images/badge-mf-de-la-futaie.png" alt="Badge MF De la Futaie" style="width:90px;height:auto;display:block;">
+  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:2px;">
+    <img src="images/badge-mf-de-la-futaie.png" alt="Badge MF De la Futaie" style="width:100%;height:100%;object-fit:contain;display:block;">
   </div>
   <div class="house-card-content">
     <div class="house-card-header">
@@ -806,8 +870,8 @@
 </button>
 
 <button class="house-card" data-house="barnolets">
-  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:8px;">
-    <img src="images/badge-mf-barnolets.png" alt="Badge MF Barnolets" style="width:90px;height:auto;display:block;">
+  <div class="house-card-img" style="display:flex;align-items:center;justify-content:center;padding:2px;">
+    <img src="images/badge-mf-barnolets.png" alt="Badge MF Barnolets" style="width:100%;height:100%;object-fit:contain;display:block;">
   </div>
   <div class="house-card-content">
     <div class="house-card-header">
@@ -1115,7 +1179,7 @@
                 </div>
                 <div class="footer-contact-item">
                     <span class="footer-contact-icon">✉️</span>
-                    <p class="footer-contact-text"><a href="mailto:bonjour@rewildaventures.fr">bonjour@rewildaventures.fr</a></p>
+                    <p class="footer-contact-text"><a href="/cdn-cgi/l/email-protection#f4969b9a9e9b8186b48691839d98909582919a8081869187da9286"><span class="__cf_email__" data-cfemail="62000d0c080d1710221007150b0e060314070c16171007114c0410">[email&#160;protected]</span></a></p>
                 </div>
                 <div class="footer-contact-item">
                     <span class="footer-contact-icon">📞</span>
@@ -1166,7 +1230,7 @@
         <div id="lb-counter"></div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
                 document.querySelectorAll('a[href^="#"]').forEach(a=>{
             a.addEventListener('click',e=>{
                 // Don't hijack clicks that should open the Tally modal
@@ -1699,7 +1763,5 @@
         update();
     })();
     </script>
-
-    <script async src="https://tally.so/widgets/embed.js"></script>
 </body>
 </html>
