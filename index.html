@@ -285,7 +285,7 @@
         .exp-slider-container { position: relative; display: flex; align-items: center; gap: 1rem; margin-top: 1rem; margin-bottom: 0.5rem; }
         #experiences .container { overflow: visible; }
         .exp-slider { overflow: visible; flex: 1; }
-        .exp-slider-clip { overflow: hidden; padding-top: 20px; margin-top: -20px; padding-bottom: 24px; margin-bottom: -24px; }
+        .exp-slider-clip { overflow: hidden; padding-top: 20px; margin-top: -20px; padding-bottom: 24px; margin-bottom: -24px; padding-right: 20px; margin-right: -20px; }
         .exp-slider-track { display: flex; transition: transform 0.5s ease; gap: 1.5rem; }
         .exp-card { flex: 0 0 calc((100% - 3rem) / 3); background: var(--cream); border-radius: var(--radius-lg); overflow: visible; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .exp-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
@@ -660,12 +660,12 @@
         }
         @media (max-width: 768px) { .nav { padding: 0.65rem 1rem 0.65rem 0.75rem; } .nav-logo img { height: 36px; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; }
             .exp-slider-container { display: block; overflow: hidden; width: 100%; }
-            .exp-slider-clip { display: block; overflow: hidden; width: 100%; padding: 0; margin: 0; }
+            .exp-slider-clip { display: block; overflow: visible; padding: 16px 0; margin: -16px 0; width: 100%; }
             .exp-slider {
                 display: block;
                 width: 100%;
                 overflow-x: scroll;
-                overflow-y: hidden;
+                overflow-y: visible;
                 scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
@@ -1459,15 +1459,21 @@
         const sliderEl=document.querySelector('.exp-slider');
         sliderEl.addEventListener('mouseenter',()=>clearInterval(autoPlay));
         sliderEl.addEventListener('mouseleave',()=>{autoPlay=setInterval(nextSlide,4000)});
-        // Touch swipe
-        let touchStartX=0,touchEndX=0;
-        const touchTarget = () => window.innerWidth < 768 ? document.querySelector('.exp-slider-track') : sliderEl;
+        // Touch swipe — on mobile native scroll handles movement, just track index via scroll position
+        let touchStartX=0;
         sliderEl.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;clearInterval(autoPlay);},{passive:true});
-        document.querySelector('.exp-slider-track').addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;clearInterval(autoPlay);},{passive:true});
         sliderEl.addEventListener('touchend',e=>{
-            touchEndX=e.changedTouches[0].screenX;
-            const diff=touchStartX-touchEndX;
-            if(Math.abs(diff)>40){diff>0?nextSlide():prevSlide();}
+            if(window.innerWidth>=768){
+                const diff=touchStartX-e.changedTouches[0].screenX;
+                if(Math.abs(diff)>40){diff>0?nextSlide():prevSlide();}
+            } else {
+                // Sync currentIndex from scroll position after native scroll settles
+                setTimeout(()=>{
+                    const sl=document.querySelector('.exp-slider');
+                    currentIndex=Math.round(sl.scrollLeft/sl.offsetWidth);
+                    dots.forEach((d,i)=>d.classList.toggle('active',i===currentIndex));
+                },350);
+            }
             autoPlay=setInterval(nextSlide,4000);
         },{passive:true});
         window.addEventListener('resize',()=>{currentIndex=0;updateSlider()});
