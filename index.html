@@ -15,7 +15,7 @@
         :root { --forest-dark: #1a3a2a; --forest: #234a35; --navy: #1e3a5f; --cream: #f8f5eb; --cream-dark: #efe9d9; --gold: #c9a227; --gold-light: #d4b84a; --text-dark: #1a2a1a; --text-muted: #5a6a5a; --font-title: 'Axiforma', 'Plus Jakarta Sans', sans-serif; --font-h1: 'Cormorant Garamond', Georgia, serif; --font-body: 'Plus Jakarta Sans', sans-serif; --radius-sm: 6px; --radius-lg: 16px; --radius-xl: 24px; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
-        body { font-family: var(--font-body); background: var(--cream); color: var(--text-dark); line-height: 1.7; font-size: 17px; overflow-x: hidden; }
+        body { font-family: var(--font-body); background: var(--cream); color: var(--text-dark); line-height: 1.7; font-size: 17px; }
         img { max-width: 100%; height: auto; display: block; }
         a { color: inherit; text-decoration: none; }
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -266,20 +266,94 @@
         .passeport-text { font-size: 1rem; line-height: 1.8; color: var(--text-muted); }
         .passeport-highlight { display: block; margin-top: 1rem; color: var(--forest-dark); font-weight: 600; }
         .exp-slider-container { position: relative; display: flex; align-items: center; gap: 1rem; margin-top: 1rem; margin-bottom: 0.5rem; }
-        .exp-slider { overflow: hidden; flex: 1; padding-top: 12px; margin-top: -12px; padding-bottom: 12px; margin-bottom: -12px; }
-        .exp-slider-track { display: flex; transition: transform 0.5s ease; gap: 1.5rem; }
-        .exp-card { flex: 0 0 calc((100% - 3rem) / 3); background: var(--cream); border-radius: var(--radius-lg); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        #experiences .container { overflow: visible; }
+        .exp-slider { overflow: visible; flex: 1; }
+        .exp-slider-clip { overflow: hidden; padding-top: 24px; margin-top: -24px; padding-bottom: 28px; margin-bottom: -28px; padding-right: 30px; margin-right: -30px; }
+        .exp-slider-track { display: flex; transition: transform 0.5s ease; gap: 1.5rem; padding-right: 2px; }
+        .exp-card { flex: 0 0 calc((100% - 3rem) / 3); background: var(--cream); border-radius: var(--radius-lg); overflow: visible; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .exp-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
         .exp-card-img { height: 160px; background-size: cover; background-position: center; }
         .exp-card-body { padding: 1.5rem; }
         .exp-card-body h3 { font-family: var(--font-title); font-size: 1.15rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
         .exp-card-body p { font-size: 0.9rem; color: var(--text-muted); }
+        .exp-card-img { overflow: hidden; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+
+        /* Experience add-on + badge — same style as extras, just bigger */
+        .exp-plus {
+            position: absolute;
+            top: -13px;
+            right: -13px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(180,180,180,0.35);
+            z-index: 10;
+            pointer-events: none;
+            user-select: none;
+            transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+            transform-origin: 50% 50%;
+            animation: plusPulse 2.8s ease-in-out infinite;
+        }
+        .exp-plus::before,
+        .exp-plus::after {
+            content: '';
+            position: absolute;
+            background: rgba(90,90,90,0.55);
+            border-radius: 1px;
+            transition: background 0.25s ease;
+            top: 50%;
+            left: 50%;
+        }
+        .exp-plus::before {
+            width: 13px;
+            height: 2px;
+            transform: translate(-50%, -50%);
+        }
+        .exp-plus::after {
+            width: 2px;
+            height: 13px;
+            transform: translate(-50%, -50%);
+        }
+        .exp-card:hover .exp-plus {
+            background: var(--gold);
+            transform: rotate(90deg) scale(1.12);
+            box-shadow: 0 3px 10px rgba(201,162,39,0.5);
+            animation: none;
+        }
+        .exp-card:hover .exp-plus::before,
+        .exp-card:hover .exp-plus::after {
+            background: #fff;
+        }
         .exp-slider-controls { display: none; }
         .exp-tagline { font-size: 0.85rem; color: var(--forest); font-style: italic; margin-top: 0.5rem; }
         .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
         .exp-tag { font-size: 0.7rem; padding: 0.25rem 0.5rem; background: rgba(26,58,42,0.1); border-radius: var(--radius-sm); color: var(--forest-dark); }
-        .exp-slider-btn { width: 50px; height: 50px; border-radius: 50%; border: 2px solid rgba(248,245,235,0.3); background: transparent; color: var(--cream); font-size: 2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-        .exp-slider-btn:hover { background: rgba(248,245,235,0.1); border-color: var(--cream); }
+        .exp-slider-btn {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgba(248,245,235,0.4);
+            background: transparent;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+        }
+        .exp-slider-btn svg {
+            width: 18px; height: 18px;
+            stroke: rgba(248,245,235,0.85);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke 0.25s ease;
+        }
+        .exp-slider-btn:hover {
+            background: rgba(248,245,235,0.15);
+            border-color: rgba(248,245,235,0.8);
+            transform: scale(1.05);
+        }
+        .exp-slider-btn:hover svg { stroke: #fff; }
         .exp-slider-dots { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1rem; }
         .exp-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(248,245,235,0.3); cursor: pointer; }
         .exp-dot.active { background: var(--gold); transform: scale(1.2); }
@@ -541,7 +615,7 @@
         }
         @media (max-width: 1024px) { .equip-grid, .extras-grid { grid-template-columns: repeat(2, 1fr); } .tarif-grid { grid-template-columns: 1fr 1fr; } .exp-card { flex: 0 0 calc((100% - 1.5rem) / 2); } .esprit-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 900px) { .reseau-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .nav { padding: 0.65rem 1rem 0.65rem 0.75rem; } .nav-logo img { height: 48px; margin-top: -3px; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; } .exp-slider { width: 100%; overflow: hidden; } .exp-card { flex: 0 0 100%; margin: 0; } .exp-card-img { height: 220px; } .exp-card-body { padding: 1.25rem; } .exp-card-body h3 { font-size: 1.1rem; } .exp-slider-btn { display: none; } .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1rem; } .exp-slider-controls .exp-slider-btn { display: flex; width: 44px; height: 44px; font-size: 1.8rem; border: 2px solid rgba(248,245,235,0.4); background: transparent; color: var(--cream); border-radius: 50%; align-items: center; justify-content: center; cursor: pointer; } .exp-slider-dots { margin-top: 0; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 2.2rem; } .reseau-title { font-size: 2.2rem; } }
+        @media (max-width: 768px) { .nav { padding: 0.65rem 1rem 0.65rem 0.75rem; } .nav-logo img { height: 48px; margin-top: -3px; } .nav-links { display: none; } .nav-right { display: flex; } .nav-toggle { display: block; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; } .exp-slider-clip { padding-top: 24px; margin-top: -24px; padding-right: 24px; margin-right: -24px; padding-bottom: 28px; margin-bottom: -28px; } .exp-slider { width: 100%; overflow: visible; } .exp-card { flex: 0 0 100%; margin: 0; } .exp-card-img { height: 220px; } .exp-card-body { padding: 1.25rem; } .exp-card-body h3 { font-size: 1.1rem; } .exp-slider-btn { display: none; } .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1rem; } .exp-slider-controls .exp-slider-btn { display: flex; width: 44px; height: 44px; border-radius: 50%; align-items: center; justify-content: center; cursor: pointer; } .exp-slider-dots { margin-top: 0; } .reseau-cards-grid { grid-template-columns: 1fr; } .esprit-grid { grid-template-columns: 1fr; } .section { padding: 3rem 0; } .container { padding: 0 1.5rem; } .section-title { font-size: 2.2rem; } .reseau-title { font-size: 2.2rem; } }
     
         /* ===== LIGHTBOX ===== */
         .lb-trigger { display:block; cursor:zoom-in; width:100%; }
@@ -897,12 +971,13 @@
 
 
 <div class="exp-slider-container fade-in">
-  <button class="exp-slider-btn exp-slider-prev">‹</button>
+  <button class="exp-slider-btn exp-slider-prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
 
   <div class="exp-slider" style="width:100%;">
+    <div class="exp-slider-clip">
     <div class="exp-slider-track">
 
-      <div class="exp-card">
+      <div class="exp-card"><span class="exp-plus"></span>
         <div class="exp-card-img" style="background-image:url('./images/exp-1-rando.jpg');"></div>
         <div class="exp-card-body">
           <h3>🥾 Rando & Rosé</h3>
@@ -912,7 +987,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card"><span class="exp-plus"></span>
         <div class="exp-card-img" style="background-image:url('./images/exp-2-grimpe.jpg');"></div>
         <div class="exp-card-body">
           <h3>🧗 Grimpe & Chill</h3>
@@ -922,7 +997,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card"><span class="exp-plus"></span>
         <div class="exp-card-img" style="background-image:url('./images/exp-3-abeilles.jpg');"></div>
         <div class="exp-card-body">
           <h3>🐝 Abeilles & Douceur</h3>
@@ -932,7 +1007,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card"><span class="exp-plus"></span>
         <div class="exp-card-img" style="background-image:url('./images/exp-4-chevauchee.jpg');"></div>
         <div class="exp-card-body">
           <h3>🐴 Chevauchée Sauvage</h3>
@@ -942,7 +1017,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card"><span class="exp-plus"></span>
         <div class="exp-card-img" style="background-image:url('./images/exp-5-saveurs.jpg');"></div>
         <div class="exp-card-body">
           <h3>🍽️ Saveurs de la Lizière</h3>
@@ -952,7 +1027,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card"><span class="exp-plus"></span>
         <div class="exp-card-img" style="background-image:url('./images/exp-6-rewild-loop.jpg');"></div>
         <div class="exp-card-body">
           <h3>🚶 La Rewild Loop</h3>
@@ -962,7 +1037,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card"><span class="exp-plus"></span>
         <div class="exp-card-img" style="background-image:url('./images/exp-7-silence.jpg');"></div>
         <div class="exp-card-body">
           <h3>🧘 Silence & Souffle</h3>
@@ -972,7 +1047,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card"><span class="exp-plus"></span>
         <div class="exp-card-img" style="background-image:url('./images/exp-8-piste.jpg');"></div>
         <div class="exp-card-body">
           <h3>🐾 Piste & Mystère</h3>
@@ -982,7 +1057,7 @@
         </div>
       </div>
 
-      <div class="exp-card">
+      <div class="exp-card"><span class="exp-plus"></span>
         <div class="exp-card-img" style="background-image:url('./images/exp-9-creative.jpg');"></div>
         <div class="exp-card-body">
           <h3>🎨 Pause Créative</h3>
@@ -994,14 +1069,15 @@
 
     </div>
   </div>
+    </div>
 
-  <button class="exp-slider-btn exp-slider-next">›</button>
+  <button class="exp-slider-btn exp-slider-next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
 </div>
 
 <div class="exp-slider-controls">
-  <button class="exp-slider-btn exp-slider-prev">‹</button>
+  <button class="exp-slider-btn exp-slider-prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
   <div class="exp-slider-dots"><span class="exp-dot active" data-index="0"></span><span class="exp-dot" data-index="1"></span><span class="exp-dot" data-index="2"></span></div>
-  <button class="exp-slider-btn exp-slider-next">›</button>
+  <button class="exp-slider-btn exp-slider-next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
 </div>
         </div>
     </section>
