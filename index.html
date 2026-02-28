@@ -285,7 +285,7 @@
         .exp-slider-container { position: relative; display: flex; align-items: center; gap: 1rem; margin-top: 1rem; margin-bottom: 0.5rem; }
         #experiences .container { overflow: visible; }
         .exp-slider { overflow: visible; flex: 1; }
-        .exp-slider-clip { overflow: hidden; padding-top: 20px; margin-top: -20px; padding-bottom: 24px; margin-bottom: -24px; padding-right: 20px; margin-right: -20px; }
+        .exp-slider-clip { overflow: hidden; padding-top: 20px; margin-top: -20px; padding-bottom: 24px; margin-bottom: -24px; }
         .exp-slider-track { display: flex; transition: transform 0.5s ease; gap: 1.5rem; }
         .exp-card { flex: 0 0 calc((100% - 3rem) / 3); background: var(--cream); border-radius: var(--radius-lg); overflow: visible; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .exp-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
@@ -658,14 +658,25 @@
             .nav-cta-mobile { display: flex; align-items: center; background: var(--gold); color: var(--forest-dark) !important; padding: 0.55rem 1rem; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; white-space: nowrap; text-decoration: none; }
             .nav-toggle { display: block; }
         }
+        /* Fix background-attachment: fixed on mobile (unsupported on iOS/Android) */
+        @media (max-width: 768px) {
+            .hero,
+            .section--green,
+            .section--blue,
+            #vision.section--green,
+            #waitlist.section--green,
+            #tarifs.section--blue {
+                background-attachment: scroll !important;
+            }
+        }
         @media (max-width: 768px) { .nav { padding: 0.65rem 1rem 0.65rem 0.75rem; } .nav-logo img { height: 36px; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; }
-            .exp-slider-container { display: block; overflow: hidden; width: 100%; }
-            .exp-slider-clip { display: block; overflow: visible; padding: 16px 0; margin: -16px 0; width: 100%; }
+            .exp-slider-container { display: block; width: 100%; }
+            .exp-slider-clip { display: block; overflow: hidden; padding: 0; margin: 0; width: 100%; }
             .exp-slider {
                 display: block;
                 width: 100%;
                 overflow-x: scroll;
-                overflow-y: visible;
+                overflow-y: hidden;
                 scroll-snap-type: x mandatory;
                 -webkit-overflow-scrolling: touch;
                 scrollbar-width: none;
@@ -685,7 +696,10 @@
                 scroll-snap-align: start;
                 box-sizing: border-box;
                 margin: 0;
+                overflow: hidden;
+                transform: none !important;
             }
+            .exp-card:hover { transform: none !important; box-shadow: none; }
             .exp-card-img { height: 220px; }
             .exp-card-body { padding: 1.25rem; }
             .exp-card-body h3 { font-size: 1.1rem; }
@@ -1434,49 +1448,49 @@
         houseCards.forEach(c=>{c.addEventListener('mouseenter',()=>setActiveHouse(c.dataset.house));c.addEventListener('click',()=>setActiveHouse(c.dataset.house))});
         const track=document.querySelector('.exp-slider-track'),cards=document.querySelectorAll('.exp-card'),dots=document.querySelectorAll('.exp-dot');
         let currentIndex=0;const totalCards=9;
-        function getCardsToShow(){return window.innerWidth<768?1:window.innerWidth<1024?2:3}
+        function isMobile(){return window.innerWidth<768;}
+        function getCardsToShow(){return isMobile()?1:window.innerWidth<1024?2:3}
+        function updateDots(){
+            dots.forEach((d,i)=>d.classList.toggle('active',i===Math.min(currentIndex,dots.length-1)));
+        }
         function updateSlider(){
-            const n=getCardsToShow();
-            if(n===1){
-                // Mobile: scroll the slider element directly
+            if(isMobile()){
                 const sliderEl=document.querySelector('.exp-slider');
-                const mobileSlider = document.querySelector('.exp-slider');
-                mobileSlider.scrollTo({left: currentIndex * mobileSlider.offsetWidth, behavior:'smooth'});
-                dots.forEach((d,i)=>d.classList.toggle('active',i===currentIndex));
+                const cardWidth=sliderEl.offsetWidth;
+                if(cardWidth>0){
+                    // Disable snap briefly so programmatic scrollLeft works reliably
+                    sliderEl.style.scrollSnapType='none';
+                    sliderEl.scrollLeft = currentIndex * cardWidth;
+                    setTimeout(()=>{ sliderEl.style.scrollSnapType=''; }, 50);
+                }
+                updateDots();
                 return;
             }
             track.style.gap='1.5rem';
             const gap=24,w=cards[0].offsetWidth+gap;
             track.style.transform='translateX(-'+(currentIndex*w)+'px)';
-            dots.forEach((d,i)=>d.classList.toggle('active',i===Math.min(currentIndex,2)));
+            updateDots();
         }
-        function nextSlide(){const n=getCardsToShow();currentIndex=currentIndex>=totalCards-1?0:currentIndex+1;updateSlider()}
-        function prevSlide(){const n=getCardsToShow();currentIndex=currentIndex<=0?totalCards-1:currentIndex-1;updateSlider()}
-        document.querySelectorAll('.exp-slider-prev').forEach(b=>b.addEventListener('click',prevSlide));
-        document.querySelectorAll('.exp-slider-next').forEach(b=>b.addEventListener('click',nextSlide));
-        let autoPlay=setInterval(nextSlide,4000);
-        window.addEventListener('resize',()=>{currentIndex=0;updateSlider();});
+        function nextSlide(){currentIndex=currentIndex>=totalCards-1?0:currentIndex+1;updateSlider();}
+        function prevSlide(){currentIndex=currentIndex<=0?totalCards-1:currentIndex-1;updateSlider();}
+        document.querySelectorAll('.exp-slider-prev').forEach(b=>b.addEventListener('click',()=>{prevSlide();}));
+        document.querySelectorAll('.exp-slider-next').forEach(b=>b.addEventListener('click',()=>{nextSlide();}));
+        let autoPlay=null;
+        function startAutoPlay(){if(!isMobile())autoPlay=setInterval(nextSlide,4000);}
+        function stopAutoPlay(){clearInterval(autoPlay);autoPlay=null;}
+        startAutoPlay();
         const sliderEl=document.querySelector('.exp-slider');
-        sliderEl.addEventListener('mouseenter',()=>clearInterval(autoPlay));
-        sliderEl.addEventListener('mouseleave',()=>{autoPlay=setInterval(nextSlide,4000)});
-        // Touch swipe — on mobile native scroll handles movement, just track index via scroll position
-        let touchStartX=0;
-        sliderEl.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;clearInterval(autoPlay);},{passive:true});
-        sliderEl.addEventListener('touchend',e=>{
-            if(window.innerWidth>=768){
-                const diff=touchStartX-e.changedTouches[0].screenX;
-                if(Math.abs(diff)>40){diff>0?nextSlide():prevSlide();}
-            } else {
-                // Sync currentIndex from scroll position after native scroll settles
-                setTimeout(()=>{
-                    const sl=document.querySelector('.exp-slider');
-                    currentIndex=Math.round(sl.scrollLeft/sl.offsetWidth);
-                    dots.forEach((d,i)=>d.classList.toggle('active',i===currentIndex));
-                },350);
+        sliderEl.addEventListener('mouseenter',stopAutoPlay);
+        sliderEl.addEventListener('mouseleave',startAutoPlay);
+        // On mobile, sync dot index from native scroll position
+        sliderEl.addEventListener('scroll',()=>{
+            if(isMobile()){
+                const w=sliderEl.offsetWidth||1;
+                currentIndex=Math.round(sliderEl.scrollLeft/w);
+                updateDots();
             }
-            autoPlay=setInterval(nextSlide,4000);
         },{passive:true});
-        window.addEventListener('resize',()=>{currentIndex=0;updateSlider()});
+        window.addEventListener('resize',()=>{currentIndex=0;stopAutoPlay();updateSlider();startAutoPlay();});
         updateSlider();
         
         // Translation system
