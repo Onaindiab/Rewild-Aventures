@@ -114,8 +114,10 @@
         .hero-quote { font-family: Georgia, serif; font-size: clamp(1.4rem, 3vw, 1.8rem); font-style: italic; color: var(--cream); margin-bottom: 1.5rem; }
         .hero-welcome { font-family: var(--font-title); font-size: clamp(0.75rem, 1.5vw, 0.95rem); font-weight: 300; color: var(--cream); margin-bottom: 1.5rem; text-decoration: none; letter-spacing: 0.12em; opacity: 0; transform: translateX(-60px); animation: slideInFromLeft 0.9s ease forwards 0.3s; }
         @keyframes slideInFromLeft { to { opacity: 0.65; transform: translateX(0); } }
-        .hero-headline { font-family: var(--font-h1); font-size: clamp(2.8rem, 7vw, 4.2rem); font-weight: 700; color: var(--cream); line-height: 1.1; margin-bottom: 2rem; text-wrap: balance; overflow-wrap: break-word; hyphens: none; }
+        .hero-headline { font-family: var(--font-h1); font-size: clamp(2.8rem, 7vw, 4.2rem); font-weight: 700; color: var(--cream); line-height: 1.1; margin-bottom: 0.75rem; text-wrap: balance; overflow-wrap: break-word; hyphens: none; }
         .hero-headline em { font-style: italic; color: var(--gold); font-weight: 500; }
+        .hero-glamping-def { font-family: var(--font-body); font-size: clamp(0.8rem, 1.5vw, 0.95rem); color: var(--cream); opacity: 0.6; margin-bottom: 2rem; letter-spacing: 0.04em; }
+        .glamping-word { font-family: var(--font-h1); font-style: italic; font-weight: 600; font-size: 1.1em; color: rgba(248,245,235,0.85); }
         .hero-description { font-size: 1.1rem; color: var(--cream); opacity: 0.9; margin-bottom: 2rem; max-width: 650px; margin-left: auto; margin-right: auto; }
         .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 2rem; }
         .hero-badge { font-size: 0.85rem; color: var(--cream); background: rgba(255,255,255,0.1); padding: 0.5rem 1rem; border-radius: var(--radius-xl); border: 1px solid rgba(255,255,255,0.15); }
@@ -284,8 +286,7 @@
         .passeport-highlight { display: block; margin-top: 1rem; color: var(--forest-dark); font-weight: 600; }
         .exp-slider-container { position: relative; display: flex; align-items: center; gap: 1rem; margin-top: 1rem; margin-bottom: 0.5rem; }
         #experiences .container { overflow: visible; }
-        .exp-slider { overflow: visible; flex: 1; }
-        .exp-slider-clip { overflow: hidden; padding-top: 20px; margin-top: -20px; padding-bottom: 24px; margin-bottom: -24px; }
+        .exp-slider { overflow: hidden; flex: 1; padding-top: 20px; margin-top: -20px; padding-bottom: 10px; margin-bottom: -10px; }
         .exp-slider-track { display: flex; transition: transform 0.5s ease; gap: 1.5rem; }
         .exp-card { flex: 0 0 calc((100% - 3rem) / 3); background: var(--cream); border-radius: var(--radius-lg); overflow: visible; position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .exp-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
@@ -341,7 +342,8 @@
         .exp-card:hover .exp-plus::after {
             background: #fff;
         }
-        .exp-slider-controls { display: none; }
+        .exp-slider-controls { display: flex; justify-content: center; align-items: center; gap: 1.5rem; margin-top: 1.25rem; }
+        .exp-slider-controls .exp-slider-btn { display: none; }
         .exp-tagline { font-size: 0.85rem; color: var(--forest); font-style: italic; margin-top: 0.5rem; }
         .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
         .exp-tag { font-size: 0.7rem; padding: 0.25rem 0.5rem; background: rgba(26,58,42,0.1); border-radius: var(--radius-sm); color: var(--forest-dark); }
@@ -671,7 +673,6 @@
         }
         @media (max-width: 768px) { .nav { padding: 0.65rem 1rem 0.65rem 0.75rem; } .nav-logo img { height: 36px; } .hero { padding: 6rem 1.5rem 4rem; } .hero-description { font-size: 1rem; } .hero-badges { gap: 0.5rem; } .hero-badge { font-size: 0.75rem; padding: 0.45rem 0.9rem; white-space: nowrap; } .lieu-grid, .equip-grid, .tarif-grid, .extras-grid { grid-template-columns: 1fr; } .eco-grid { grid-template-columns: repeat(2, 1fr); } .eco-card { padding: 1.25rem 0.75rem; } .eco-card-icon { font-size: 1.75rem; margin-bottom: 0.5rem; } .eco-card h4 { font-size: 0.9rem; } .eco-card p { font-size: 0.8rem; } .vision-stack-grid { grid-template-columns: 1fr !important; } .hero-ctas { flex-direction: column; } .exp-slider-container { display: block; }
             .exp-slider-container { display: block; width: 100%; }
-            .exp-slider-clip { display: block; overflow: hidden; padding: 0; margin: 0; width: 100%; }
             .exp-slider {
                 display: block;
                 width: 100%;
@@ -788,7 +789,8 @@
     <section class="hero" id="hero">
         <div class="hero-content">
             <p class="hero-welcome" data-i18n="hero-welcome">— Bienvenue à La Lizière —</p>
-            <h1 class="hero-headline" data-i18n="hero-headline">Camping haut de gamme ("Glamping") éco-responsable & aventures immersives,<br><em>au cœur de la forêt de Fontainebleau</em></h1>
+            <h1 class="hero-headline" data-i18n="hero-headline">Glamping éco-responsable & aventures immersives,<br><em>au cœur de la forêt de Fontainebleau</em></h1>
+            <p class="hero-glamping-def" data-i18n="hero-glamping-def"><span class="glamping-word">"Glamping"</span> — camping haut de gamme, i.e. glamour-camping</p>
             <p class="hero-description" data-i18n="hero-desc"><strong>Réseau de Maisons Forestières vivantes</strong> créant des séjour-aventures immersifs pour couples, petits groupes et télétravailleurs en quête de reconnexion à la nature.</p>
             <div class="hero-badges"><span class="hero-badge">🥾 Point de départ aventure</span><span class="hero-badge">🌱 100% éco-conçu</span><span class="hero-badge">🏕️ Outdoor & indoor</span><span class="hero-badge">💰 Prix accessible</span><span class="hero-badge">💻 Compatible télétravail</span></div>
             <div class="hero-ctas"><a data-tally-open="yPlX2d" data-tally-layout="modal" data-tally-width="520" href="#waitlist" class="btn btn-primary" data-i18n="btn-reserver">Réserver ma place</a><a href="#lieu" class="btn btn-secondary" data-i18n="btn-decouvrir">Découvrir le lieu</a></div>
@@ -1081,7 +1083,6 @@
   <button class="exp-slider-btn exp-slider-prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
 
   <div class="exp-slider" style="width:100%;">
-    <div class="exp-slider-clip">
     <div class="exp-slider-track">
 
       <div class="exp-card"><span class="exp-plus"></span>
@@ -1175,7 +1176,6 @@
       </div>
 
     </div>
-  </div>
     </div>
 
   <button class="exp-slider-btn exp-slider-next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
@@ -1183,7 +1183,7 @@
 
 <div class="exp-slider-controls">
   <button class="exp-slider-btn exp-slider-prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-  <div class="exp-slider-dots"><span class="exp-dot active" data-index="0"></span><span class="exp-dot" data-index="1"></span><span class="exp-dot" data-index="2"></span></div>
+  <div class="exp-slider-dots" id="exp-slider-dots"></div>
   <button class="exp-slider-btn exp-slider-next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
 </div>
         </div>
@@ -1446,52 +1446,118 @@
         function setActiveHouse(id){mapDots.forEach(d=>d.classList.toggle('active',d.dataset.house===id));houseCards.forEach(c=>c.classList.toggle('active',c.dataset.house===id))}
         mapDots.forEach(d=>{d.addEventListener('mouseenter',()=>setActiveHouse(d.dataset.house));d.addEventListener('click',()=>setActiveHouse(d.dataset.house))});
         houseCards.forEach(c=>{c.addEventListener('mouseenter',()=>setActiveHouse(c.dataset.house));c.addEventListener('click',()=>setActiveHouse(c.dataset.house))});
-        const track=document.querySelector('.exp-slider-track'),cards=document.querySelectorAll('.exp-card'),dots=document.querySelectorAll('.exp-dot');
-        let currentIndex=0;const totalCards=9;
-        function isMobile(){return window.innerWidth<768;}
-        function getCardsToShow(){return isMobile()?1:window.innerWidth<1024?2:3}
-        function updateDots(){
-            dots.forEach((d,i)=>d.classList.toggle('active',i===Math.min(currentIndex,dots.length-1)));
-        }
-        function updateSlider(){
-            if(isMobile()){
-                const sliderEl=document.querySelector('.exp-slider');
-                const cardWidth=sliderEl.offsetWidth;
-                if(cardWidth>0){
-                    // Disable snap briefly so programmatic scrollLeft works reliably
-                    sliderEl.style.scrollSnapType='none';
-                    sliderEl.scrollLeft = currentIndex * cardWidth;
-                    setTimeout(()=>{ sliderEl.style.scrollSnapType=''; }, 50);
+        // ===== EXPERIENCE SLIDER =====
+        (function(){
+            const track = document.querySelector('.exp-slider-track');
+            const slider = document.querySelector('.exp-slider');
+            const cards = document.querySelectorAll('.exp-card');
+            const dotsContainer = document.getElementById('exp-slider-dots');
+            const totalCards = cards.length;
+            let currentStep = 0;
+            let autoPlay = null;
+
+            function isMobile(){ return window.innerWidth < 768; }
+            function getPerPage(){ return isMobile() ? 1 : window.innerWidth < 1024 ? 2 : 3; }
+
+            // Total number of "steps" — each step advances by perPage, but last step
+            // is clamped so the last card is flush-right (no empty space).
+            function getMaxStep(){
+                const perPage = getPerPage();
+                // e.g. 9 cards, 3 per page => max first-card index is 6 (shows 6,7,8)
+                // 9 cards, 2 per page => max first-card index is 7 (shows 7,8) — wait, 
+                // we want steps: 0, 2, 4, 6, 7 — that's awkward for dots.
+                // Simpler: number of distinct positions = ceil(total / perPage)
+                return Math.ceil(totalCards / perPage) - 1;
+            }
+
+            // Convert step to first-card-index, clamped so last group is always full
+            function stepToOffset(step){
+                const perPage = getPerPage();
+                const firstCard = step * perPage;
+                const maxFirst = totalCards - perPage; // last valid first-card index
+                return Math.min(firstCard, Math.max(0, maxFirst));
+            }
+
+            function buildDots(){
+                const total = isMobile() ? totalCards : getMaxStep() + 1;
+                dotsContainer.innerHTML = '';
+                for(let i = 0; i < total; i++){
+                    const dot = document.createElement('span');
+                    dot.className = 'exp-dot' + (i === 0 ? ' active' : '');
+                    dot.dataset.index = i;
+                    dot.addEventListener('click', () => { goTo(i); });
+                    dotsContainer.appendChild(dot);
                 }
-                updateDots();
-                return;
             }
-            track.style.gap='1.5rem';
-            const gap=24,w=cards[0].offsetWidth+gap;
-            track.style.transform='translateX(-'+(currentIndex*w)+'px)';
-            updateDots();
-        }
-        function nextSlide(){currentIndex=currentIndex>=totalCards-1?0:currentIndex+1;updateSlider();}
-        function prevSlide(){currentIndex=currentIndex<=0?totalCards-1:currentIndex-1;updateSlider();}
-        document.querySelectorAll('.exp-slider-prev').forEach(b=>b.addEventListener('click',()=>{prevSlide();}));
-        document.querySelectorAll('.exp-slider-next').forEach(b=>b.addEventListener('click',()=>{nextSlide();}));
-        let autoPlay=null;
-        function startAutoPlay(){if(!isMobile())autoPlay=setInterval(nextSlide,4000);}
-        function stopAutoPlay(){clearInterval(autoPlay);autoPlay=null;}
-        startAutoPlay();
-        const sliderEl=document.querySelector('.exp-slider');
-        sliderEl.addEventListener('mouseenter',stopAutoPlay);
-        sliderEl.addEventListener('mouseleave',startAutoPlay);
-        // On mobile, sync dot index from native scroll position
-        sliderEl.addEventListener('scroll',()=>{
-            if(isMobile()){
-                const w=sliderEl.offsetWidth||1;
-                currentIndex=Math.round(sliderEl.scrollLeft/w);
-                updateDots();
+
+            function updateDots(index){
+                const dots = dotsContainer.querySelectorAll('.exp-dot');
+                dots.forEach((d,i) => d.classList.toggle('active', i === index));
             }
-        },{passive:true});
-        window.addEventListener('resize',()=>{currentIndex=0;stopAutoPlay();updateSlider();startAutoPlay();});
-        updateSlider();
+
+            function goTo(step){
+                if(isMobile()){
+                    currentStep = Math.max(0, Math.min(step, totalCards - 1));
+                    const cardWidth = slider.offsetWidth;
+                    slider.scrollTo({ left: currentStep * cardWidth, behavior: 'smooth' });
+                    updateDots(currentStep);
+                } else {
+                    const maxStep = getMaxStep();
+                    currentStep = Math.max(0, Math.min(step, maxStep));
+                    const gap = 24;
+                    const cardW = cards[0].offsetWidth + gap;
+                    const firstCard = stepToOffset(currentStep);
+                    const offset = firstCard * cardW;
+                    track.style.transform = 'translateX(-' + offset + 'px)';
+                    updateDots(currentStep);
+                }
+            }
+
+            function next(){
+                const max = isMobile() ? totalCards - 1 : getMaxStep();
+                goTo(currentStep >= max ? 0 : currentStep + 1);
+            }
+            function prev(){
+                const max = isMobile() ? totalCards - 1 : getMaxStep();
+                goTo(currentStep <= 0 ? max : currentStep - 1);
+            }
+
+            document.querySelectorAll('.exp-slider-prev').forEach(b => b.addEventListener('click', prev));
+            document.querySelectorAll('.exp-slider-next').forEach(b => b.addEventListener('click', next));
+
+            function startAutoPlay(){ if(!isMobile()) autoPlay = setInterval(next, 4000); }
+            function stopAutoPlay(){ clearInterval(autoPlay); autoPlay = null; }
+            startAutoPlay();
+            slider.addEventListener('mouseenter', stopAutoPlay);
+            slider.addEventListener('mouseleave', startAutoPlay);
+
+            // Mobile: sync dots from native scroll
+            slider.addEventListener('scroll', () => {
+                if(isMobile()){
+                    const w = slider.offsetWidth || 1;
+                    const idx = Math.round(slider.scrollLeft / w);
+                    if(idx !== currentStep){
+                        currentStep = idx;
+                        updateDots(currentStep);
+                    }
+                }
+            }, {passive: true});
+
+            function init(){
+                currentStep = 0;
+                buildDots();
+                if(!isMobile()){
+                    track.style.transform = 'translateX(0)';
+                }
+            }
+
+            window.addEventListener('resize', () => {
+                stopAutoPlay();
+                init();
+                startAutoPlay();
+            });
+            init();
+        })();
         
         // Translation system
         const translations = {
@@ -1504,6 +1570,7 @@
                 'hero-quote': '\"D\u00e9connecter pour se reconnecter\"',
                 'hero-welcome': '\u2014 Bienvenue \u00e0 La Lizi\u00e8re \u2014',
                 'hero-headline': 'Glamping \u00e9co-responsable & aventures,<br><em>au c\u0153ur de la for\u00eat de Fontainebleau</em>',
+                'hero-glamping-def': '<span class="glamping-word">"Glamping"</span> \u2014 camping haut de gamme, i.e. glamour-camping',
                 'hero-desc': '<strong>R\u00e9seau de Maisons Foresti\u00e8res vivantes</strong> cr\u00e9ant des s\u00e9jour-aventures immersifs pour couples, petits groupes et t\u00e9l\u00e9travailleurs en qu\u00eate de reconnexion \u00e0 la nature.',
                 'hero-note': 'OUVERTURE \u2014 RENTR\u00c9E 2026',
                 'def-word': 'lisi\u00e8re',
@@ -1540,6 +1607,7 @@
                 'hero-quote': '"Disconnect to reconnect"',
                 'hero-welcome': '\u2014 Welcome to La Lizi\u00e8re \u2014',
                 'hero-headline': 'Eco-friendly glamping & adventures,<br><em>in the heart of Fontainebleau forest</em>',
+                'hero-glamping-def': '<span class="glamping-word">"Glamping"</span> \u2014 luxury camping, i.e. glamour-camping',
                 'hero-desc': '<strong>Network of living Forest Houses</strong> creating immersive adventure-stays for couples, small groups and remote workers seeking reconnection with nature.',
                 'hero-note': 'OPENING \u2014 FALL 2026',
                 'def-word': 'lisi\u00e8re',
@@ -1576,6 +1644,7 @@
                 'hero-quote': '"Desconectar para reconectar"',
                 'hero-welcome': '\u2014 Bienvenido a La Lizi\u00e8re \u2014',
                 'hero-headline': 'Glamping ecol\u00f3gico y aventuras,<br><em>en el coraz\u00f3n del bosque de Fontainebleau</em>',
+                'hero-glamping-def': '<span class="glamping-word">"Glamping"</span> \u2014 camping de lujo, i.e. glamour-camping',
                 'hero-desc': '<strong>Red de Casas Forestales vivas</strong> creando estancias-aventura inmersivas para parejas, grupos peque\u00f1os y teletrabajadores en busca de reconexi\u00f3n con la naturaleza.',
                 'hero-note': 'APERTURA \u2014 OTO\u00d1O 2026',
                 'def-word': 'lisi\u00e8re',
@@ -1612,6 +1681,7 @@
                 'hero-quote': '"Abschalten um wieder aufzuladen"',
                 'hero-welcome': '\u2014 Willkommen in La Lizi\u00e8re \u2014',
                 'hero-headline': 'Umweltfreundliches Glamping & Abenteuer,<br><em>im Herzen des Fontainebleau-Waldes</em>',
+                'hero-glamping-def': '<span class="glamping-word">"Glamping"</span> \u2014 Luxus-Camping, i.e. Glamour-Camping',
                 'hero-desc': '<strong>Netzwerk lebendiger Waldh\u00e4user</strong>, das immersive Abenteueraufenthalte f\u00fcr Paare, kleine Gruppen und Remote-Arbeiter schafft, die die Natur neu entdecken m\u00f6chten.',
                 'hero-note': 'ER\u00d6FFNUNG \u2014 HERBST 2026',
                 'def-word': 'lisi\u00e8re',
@@ -1648,6 +1718,7 @@
                 'hero-quote': '"\u65ad\u5f00\u8fde\u63a5\uff0c\u91cd\u65b0\u8fde\u63a5"',
                 'hero-welcome': '\u2014 \u6b22\u8fce\u6765\u5230 La Lizi\u00e8re \u2014',
                 'hero-headline': '\u751f\u6001\u8c6a\u534e\u9732\u8425\u4e0e\u5192\u9669\uff0c<br><em>\u4f4d\u4e8e\u67ab\u4e39\u767d\u9732\u68ee\u6797\u7684\u5fc3\u810f\u5730\u5e26</em>',
+                'hero-glamping-def': '<span class="glamping-word">"Glamping"</span> \u2014 \u8c6a\u534e\u9732\u8425, i.e. glamour-camping',
                 'hero-desc': '<strong>\u6d3b\u8dc3\u68ee\u6797\u5c0f\u5c4b\u7f51\u7edc</strong>\uff0c\u4e3a\u5bfb\u6c42\u4e0e\u81ea\u7136\u91cd\u65b0\u8fde\u63a5\u7684\u60c5\u4fa3\u3001\u5c0f\u56e2\u4f53\u548c\u8fdc\u7a0b\u5de5\u4f5c\u8005\u6253\u9020\u6c89\u6d78\u5f0f\u5192\u9669\u4f4f\u5bbf\u4f53\u9a8c\u3002',
                 'hero-note': '\u5f00\u4e1a \u2014 2026\u5e74\u79cb\u5b63',
                 'def-word': 'lisi\u00e8re',
@@ -1684,6 +1755,7 @@
                 'hero-quote': '"Disconnettersi per riconnettersi"',
                 'hero-welcome': '\u2014 Benvenuti a La Lizi\u00e8re \u2014',
                 'hero-headline': 'Glamping ecologico e avventure,<br><em>nel cuore della foresta di Fontainebleau</em>',
+                'hero-glamping-def': '<span class="glamping-word">"Glamping"</span> \u2014 camping di lusso, i.e. glamour-camping',
                 'hero-desc': '<strong>Rete di Case Forestali vive</strong> che crea soggiorni-avventura immersivi per coppie, piccoli gruppi e lavoratori da remoto in cerca di riconnessione con la natura.',
                 'hero-note': 'APERTURA \u2014 AUTUNNO 2026',
                 'def-word': 'lisi\u00e8re',
@@ -1720,6 +1792,7 @@
                 'hero-quote': '"\u3064\u306a\u304c\u308a\u3092\u65ad\u3061\u3001\u518d\u3073\u3064\u306a\u304c\u308b"',
                 'hero-welcome': '\u2014 La Lizi\u00e8re\u3078\u3088\u3046\u3053\u305d \u2014',
                 'hero-headline': '\u30a8\u30b3\u30fb\u30b0\u30e9\u30f3\u30d4\u30f3\u30b0\uff06\u30a2\u30c9\u30d9\u30f3\u30c1\u30e3\u30fc\u3001<br><em>\u30d5\u30a9\u30f3\u30c6\u30fc\u30cc\u30d6\u30ed\u30fc\u306e\u68ee\u306e\u5fc3\u81d3\u90e8\u3067</em>',
+                'hero-glamping-def': '<span class="glamping-word">"Glamping"</span> \u2014 \u30e9\u30b0\u30b8\u30e5\u30a2\u30ea\u30fc\u30ad\u30e3\u30f3\u30d7, i.e. glamour-camping',
                 'hero-desc': '<strong>\u751f\u304d\u305f\u30d5\u30a9\u30ec\u30b9\u30c8\u30cf\u30a6\u30b9\u306e\u30cd\u30c3\u30c8\u30ef\u30fc\u30af</strong>\u3002\u81ea\u7136\u3068\u306e\u518d\u63a5\u7d9a\u3092\u6c42\u3081\u308b\u30ab\u30c3\u30d7\u30eb\u3001\u5c0f\u30b0\u30eb\u30fc\u30d7\u3001\u30ea\u30e2\u30fc\u30c8\u30ef\u30fc\u30ab\u30fc\u306e\u305f\u3081\u306e\u6ca1\u5165\u611f\u899a\u30a2\u30c9\u30d9\u30f3\u30c1\u30e3\u30fc\u4f4f\u5bbf\u3002',
                 'hero-note': '\u30aa\u30fc\u30d7\u30f3 \u2014 2026\u5e74\u79cb',
                 'def-word': 'lisi\u00e8re',
