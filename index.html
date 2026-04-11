@@ -6,7 +6,6 @@
     <title>La Lizière — Glamping éco-responsable | REWILD Aventures</title>
     <meta name="description" content="Déconnecter pour se reconnecter. Glamping éco-responsable au cœur de la forêt de Fontainebleau.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌲</text></svg>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -242,10 +241,7 @@
         .reseau-title { font-family: var(--font-h1); font-size: clamp(2.3rem, 5vw, 3.5rem); font-weight: 700; text-align: center; margin-bottom: 1.5rem; color: var(--forest-dark); text-wrap: balance; overflow-wrap: break-word; hyphens: none; }
         .reseau-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
         .reseau-map { position: relative; width: 100%; aspect-ratio: 1; border-radius: var(--radius-lg); overflow: hidden; background-color: #0d1f14; }
-        #forest-leaflet { position: absolute; inset: 0; z-index: 0; }
-        #forest-leaflet .leaflet-tile-pane { filter: saturate(1.6) brightness(0.48) contrast(1.35) hue-rotate(8deg); }
-        #forest-leaflet .leaflet-container { background: #0a1a10; cursor: default; }
-        #forest-leaflet .leaflet-tile { pointer-events: none !important; }
+        #forest-map-embed { position: absolute; inset: -2px; width: calc(100% + 4px); height: calc(100% + 4px); border: none; pointer-events: none; z-index: 0; }
         .forest-map-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
         .reseau-map-footer { position: absolute; bottom: 0.75rem; right: 0.75rem; color: rgba(248,245,235,0.5); font-size: 0.65rem; z-index: 5; }
         .reseau-map-title { position: absolute; top: 1rem; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.9rem; font-weight: 600; z-index: 5; text-shadow: 0 1px 3px rgba(0,0,0,0.5); }
@@ -575,7 +571,7 @@
             <div class="reseau-grid">
                 <div class="reseau-map-panel fade-in-left">
                     <div class="reseau-map">
-                        <div id="forest-leaflet"></div>
+                        <iframe id="forest-map-embed" src="https://snazzymaps.com/embed/785249" tabindex="-1" aria-hidden="true"></iframe>
                         <svg class="reseau-map-compass" viewBox="0 0 50 50">
                             <circle cx="25" cy="25" r="23" fill="rgba(0,0,0,0.4)" stroke="rgba(248,245,235,0.3)" stroke-width="1"/>
                             <text x="25" y="12" text-anchor="middle" fill="rgba(248,245,235,0.9)" font-size="10" font-weight="bold" font-family="Plus Jakarta Sans, sans-serif">N</text>
@@ -1125,28 +1121,6 @@
         }
         window.addEventListener('scroll', update, { passive: true });
         update();
-    })();
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    <script>
-    (function() {
-        var forestMap = L.map('forest-leaflet', {
-            center: [48.405, 2.615],
-            zoom: 11,
-            zoomControl: false,
-            attributionControl: false,
-            dragging: false,
-            touchZoom: false,
-            doubleClickZoom: false,
-            scrollWheelZoom: false,
-            boxZoom: false,
-            keyboard: false,
-            tap: false
-        });
-        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            maxZoom: 18,
-            opacity: 1
-        }).addTo(forestMap);
     })();
     </script>
     <script async src="https://tally.so/widgets/embed.js"></script>
